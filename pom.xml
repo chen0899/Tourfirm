@@ -8,30 +8,31 @@
     <artifactId>team1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.15</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
-            <scope>provided</scope>
-        </dependency>
-
-
-    </dependencies>
-
     <modules>
         <module>controller</module>
         <module>dao</module>
         <module>model</module>
         <module>service</module>
     </modules>
+
+    <properties>
+        <lombok.version>1.18.6</lombok.version>
+        <mysql-connector-java.version>8.0.15</mysql-connector-java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>
