@@ -1,3 +1,5 @@
+package com.toufrim;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,7 +35,7 @@ public class Country {
 
     @Override
     public String toString() {
-        return "Country{" +
+        return "com.toufrim.Country{" +
                 "id=" + id +
                 ", countryName='" + countryName + '\'' +
                 '}';

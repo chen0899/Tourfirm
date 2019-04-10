@@ -1,3 +1,5 @@
+package com.toufrim;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,7 +54,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "com.toufrim.Client{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
