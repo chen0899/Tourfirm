@@ -16,7 +16,7 @@ public class MySQLDAOFactory extends DAOFactory {
     static {
         basicDataSource.setUrl(RDBMS);
         basicDataSource.setUsername("root");
-        basicDataSource.setPassword("root");
+        basicDataSource.setPassword("1234");
         basicDataSource.setMinIdle(5);
         basicDataSource.setMaxIdle(10);
         basicDataSource.setMaxOpenPreparedStatements(100);

@@ -9,10 +9,9 @@ import lombok.ToString;
 /**
  * Created by Illia Chenchak
  */
-@NoArgsConstructor
-@ToString
 @Getter
 @Setter
+@ToString
 public class Client {
 
     private Long id;
@@ -27,6 +26,9 @@ public class Client {
 
     private Country country;
 
+    public Client() {
+    }
+
     public Client(Long id, String firstName, String lastName, String email, String phone, Country country) {
         this.id = id;
         this.firstName = firstName;
@@ -35,4 +37,5 @@ public class Client {
         this.phone = phone;
         this.country = country;
     }
+
 }
