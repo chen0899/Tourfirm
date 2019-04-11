@@ -4,7 +4,7 @@ import com.toufirm.Room;
 
 import java.util.List;
 
-public interface MySQLRoomDAO {
+public interface RoomDAO  {
 
     Room getRoomById(int id);
 
