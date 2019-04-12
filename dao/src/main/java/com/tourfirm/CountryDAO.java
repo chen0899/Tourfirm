@@ -13,5 +13,7 @@ public interface CountryDAO {
 
     List<Country> findAll();
 
+    void save (Country country);
+
 
 }

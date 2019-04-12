@@ -39,12 +39,12 @@ public class ClientDAOImpl implements ClientDAO {
             result = new Client();
             while (resultSet.next()) {
                 Client client = new Client();
-                client.setId(resultSet.getLong("id"));
+                client.setId(resultSet.getInt("id"));
                 client.setFirstName(resultSet.getString("firstname"));
                 client.setLastName(resultSet.getString("lastname"));
                 client.setEmail(resultSet.getString("e_mail"));
                 client.setPhone(resultSet.getString("phone"));
-                client.setCountry(new Country(resultSet.getLong("id"),resultSet.getString("country_name")));
+                client.setCountry(new Country(resultSet.getInt("id"),resultSet.getString("country_name")));
                 result = client;
             }
         } catch (SQLException e) {
@@ -77,12 +77,12 @@ public class ClientDAOImpl implements ClientDAO {
             result = new ArrayList<>();
             while (resultSet.next()) {
                 Client client = new Client();
-                client.setId(resultSet.getLong("id"));
+                client.setId(resultSet.getInt("id"));
                 client.setFirstName(resultSet.getString("firstname"));
                 client.setLastName(resultSet.getString("lastname"));
                 client.setEmail(resultSet.getString("e_mail"));
                 client.setPhone(resultSet.getString("phone"));
-                client.setCountry(new Country(resultSet.getLong("id"),resultSet.getString("country_name")));
+                client.setCountry(new Country(resultSet.getInt("id"),resultSet.getString("country_name")));
                 result.add(client);
             }
         } catch (SQLException e) {
@@ -98,17 +98,19 @@ public class ClientDAOImpl implements ClientDAO {
     @Override
     public void save(Client client) {
         PreparedStatement stmt = null;
-        ResultSet resultSet = null;
 
-        String query = "INSERT INTO Client(id,firstname,lastname,e_mail,phone,id_country) " +
-                "value("+client.getId()+","+client.getFirstName()+","+client.getLastName()+","+
-                client.getEmail()+","+client.getPhone()+","+client.getCountry().getId()+");";
+        String query = "INSERT INTO Clients(id,firstname,lastname,e_mail,phone,id_country) " +
+                "values(?,?,?,?,?,?);";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
         try {
+            connection.setAutoCommit(false);
             stmt = connection.prepareStatement(query);
-            System.out.println("Save "+client);
+            stmt.setInt(1,client.getId());
+            stmt.setString(2,client.getFirstName());
+            stmt.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
