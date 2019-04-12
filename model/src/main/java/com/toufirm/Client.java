@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Client {
 
-    private Long id;
+    private Integer id;
 
     private String firstName;
 
@@ -29,7 +29,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long id, String firstName, String lastName, String email, String phone, Country country) {
+    public Client(Integer id, String firstName, String lastName, String email, String phone, Country country) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
