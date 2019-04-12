@@ -35,13 +35,13 @@ public class MySQLRoomDAO implements RoomDAO {
             resultSet = stmt.executeQuery();
             result = new ArrayList<>();
             while (resultSet.next()) {
-//                Room room = new Room();
-//                room.setId(resultSet.getLong("id"));
-//                room.setRoomNumber(resultSet.getLong("room_number"));
-//                room.setNumberOfPlaces(resultSet.getInt("count_places"));
-//                room.setsetRoomTypeNameHotel(resultSet.getString("hotel_name"));
-//                room.(resultSet.getString("type"));
-//                result.add(room);
+               Room room = new Room();
+                room.setId(resultSet.getLong("id"));
+                room.setRoomNumber(resultSet.getLong("room_number"));
+                room.setNumberOfPlaces(resultSet.getInt("count_places"));
+                room.setNameHotel(resultSet.getString("hotel_name"));
+                room.setRoomType(resultSet.getString("type"));
+                result.add(room);
             }
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
