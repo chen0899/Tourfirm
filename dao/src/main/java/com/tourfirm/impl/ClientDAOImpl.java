@@ -94,4 +94,27 @@ public class ClientDAOImpl implements ClientDAO {
         factory.closeConnection(connection);
         return result;
     }
+
+    @Override
+    public void save(Client client) {
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+
+        String query = "INSERT INTO Client(id,firstname,lastname,e_mail,phone,id_country) " +
+                "value("+client.getId()+","+client.getFirstName()+","+client.getLastName()+","+
+                client.getEmail()+","+client.getPhone()+","+client.getCountry().getId()+");";
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+        try {
+            stmt = connection.prepareStatement(query);
+            System.out.println("Save "+client);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+        } finally {
+            factory.closeQuietly(stmt);
+            factory.closeQuietly(connection);
+        }
+        factory.closeConnection(connection);
+    }
 }

@@ -25,5 +25,10 @@ public class Main {
 
         Country country2 = countryDAO.getCountryById(1);
         System.out.println(country2);
+
+        System.out.println("save:");
+        System.out.println("---------------------------");
+        Client client3 = new Client((long) 5,"Ivan","Petrovich","e@gmail.com","00000",countryDAO.getCountryById(1));
+        clientDAO.save(client3);
     }
 }
