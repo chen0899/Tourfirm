@@ -2,42 +2,28 @@ package com.toufirm;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 /**
  * Created by Illia Chenchak
  */
 
+@Getter
+@Setter
+@ToString
 public class Country {
 
-    @Getter @Setter
-    private Long id;
+    private Integer id;
 
-    @Getter @Setter
     private String countryName;
 
     public Country() {
+
     }
 
-    public Country(Long id, String countryName) {
+    public Country(Integer id, String countryName) {
         this.id = id;
         this.countryName = countryName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Country country = (Country) o;
-        return id.equals(country.id) &&
-                countryName.equals(country.countryName);
-    }
-
-    @Override
-    public String toString() {
-        return "com.toufirm.Country{" +
-                "id=" + id +
-                ", countryName='" + countryName + '\'' +
-                '}';
     }
 }

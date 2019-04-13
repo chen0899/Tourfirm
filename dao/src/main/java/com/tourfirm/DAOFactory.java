@@ -6,4 +6,5 @@ public abstract class DAOFactory {
     public abstract HotelDAO getHotelDAO();
     public abstract RoomDAO getRoomDAO();
     public abstract ClientDAO geClientDAO();
+    public abstract CountryDAO getCountryDAO();
 }

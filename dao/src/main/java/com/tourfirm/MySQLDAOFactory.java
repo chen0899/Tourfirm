@@ -1,6 +1,7 @@
 package com.tourfirm;
 
 import com.tourfirm.impl.MySQLRoomDAOImpl;
+import com.tourfirm.impl.ClientDAOImpl;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class MySQLDAOFactory extends DAOFactory {
     static {
         basicDataSource.setUrl(RDBMS);
         basicDataSource.setUsername("root");
-        basicDataSource.setPassword("root");
+        basicDataSource.setPassword("1234");
         basicDataSource.setMinIdle(5);
         basicDataSource.setMaxIdle(10);
         basicDataSource.setMaxOpenPreparedStatements(100);
@@ -79,6 +80,11 @@ public class MySQLDAOFactory extends DAOFactory {
     }
 
     public ClientDAO geClientDAO() {
+        return new ClientDAOImpl();
+    }
+
+    @Override
+    public CountryDAO getCountryDAO() {
         return null;
     }
 }
