@@ -87,4 +87,60 @@ public class CityDAOImpl implements CityDAO {
         }
         factory.closeConnection(connection);
     }
+
+    @Override
+    public void update(Integer id, City city) {
+        PreparedStatement stmt = null;
+        final char dm = (char) 34;
+
+        String query = "UPDATE city SET city_name = " + dm+ city.getCityName()+ dm +
+                " ,id_country  = " + city.getCountry().getId()+ " WHERE id =" + id +";";
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
+            stmt.executeUpdate();
+            connection.commit();
+            System.out.println("Update City where id= " + id);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+            factory.rollbackQuietlyConn(connection);
+
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        PreparedStatement stmt = null;
+
+        String query = "DELETE FROM City WHERE city.id = "+ id +" ;";
+
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
+            stmt.executeUpdate();
+            connection.commit();
+            System.out.println("Delete city where id=" + id);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+            factory.rollbackQuietlyConn(connection);
+
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
+
+    }
 }

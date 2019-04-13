@@ -127,4 +127,65 @@ public class VisaDAOImpl implements VisaDAO {
 
 
     }
+
+    @Override
+    public void update(Integer id, Visa visa) {
+        PreparedStatement stmt = null;
+        final char dm = (char) 34;
+
+        String query = "UPDATE visa SET " +
+                "start_date = "+ dm+ visa.getStartDate()+ dm  +","+
+                "end_date = "+ dm+ visa.getEndDate()  + dm  +","+
+                "id_country =" +visa.getCountry().getId() + ","+
+                "id_client = " + visa.getClient().getId()+
+                " WHERE id = "+ visa.getId()+";";
+
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
+            stmt.executeUpdate();
+            connection.commit();
+            System.out.println("Update Visa where id= " + id);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+            factory.rollbackQuietlyConn(connection);
+
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        PreparedStatement stmt = null;
+
+        String query = "DELETE FROM Visa WHERE visa.id = "+ id +" ;";
+
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
+            stmt.executeUpdate();
+            connection.commit();
+            System.out.println("Delete visa where id=" + id);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+            factory.rollbackQuietlyConn(connection);
+
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
+
+    }
 }
