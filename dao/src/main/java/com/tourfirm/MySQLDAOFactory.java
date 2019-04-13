@@ -1,5 +1,6 @@
 package com.tourfirm;
 
+import com.tourfirm.impl.CountryDAOImpl;
 import com.tourfirm.impl.MySQLRoomDAOImpl;
 import com.tourfirm.impl.ClientDAOImpl;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -85,6 +86,6 @@ public class MySQLDAOFactory extends DAOFactory {
 
     @Override
     public CountryDAO getCountryDAO() {
-        return null;
+        return new CountryDAOImpl();
     }
 }

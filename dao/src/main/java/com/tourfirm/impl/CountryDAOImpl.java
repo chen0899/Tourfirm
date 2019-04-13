@@ -4,10 +4,7 @@ import com.toufirm.Country;
 import com.tourfirm.CountryDAO;
 import com.tourfirm.MySQLDAOFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +37,8 @@ public class CountryDAOImpl implements CountryDAO {
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
-            factory.closeQuietly(stmt);
-            factory.closeQuietly(connection);
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         factory.closeConnection(connection);
         return result;
@@ -71,8 +68,8 @@ public class CountryDAOImpl implements CountryDAO {
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
-            factory.closeQuietly(stmt);
-            factory.closeQuietly(connection);
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         factory.closeConnection(connection);
         return result;
@@ -81,35 +78,85 @@ public class CountryDAOImpl implements CountryDAO {
     @Override
     public void save(Country country) {
         PreparedStatement stmt = null;
-        ResultSet resultSet = null;
 
-        String query = "INSERT INTO Country(id,country_name) " +
-                "values(?, ?);";
+        String query = "INSERT INTO Country(country_name) " +
+                "values(?);";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
         try {
             connection.setAutoCommit(false);
-            stmt = connection.prepareStatement(query);
-            stmt.setInt(1,country.getId());
-            stmt.setString(2,country.getCountryName());
+            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, country.getCountryName());
             stmt.executeUpdate();
             connection.commit();
             System.out.println("Save " + country);
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
-            if (connection != null) {
-                try {
-                    System.err.print("Transaction is being rolled back");
-                    connection.rollback();
-                } catch (SQLException excep) {
-                    System.out.println(excep);
-                }
-            }
+            factory.rollbackQuietlyConn(connection);
+
         } finally {
-            factory.closeQuietly(stmt);
-            factory.closeQuietly(connection);
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
+    }
+
+    @Override
+    public void update(Integer id, Country country) {
+        PreparedStatement stmt = null;
+        final char dm = (char) 34;
+
+        String query = "UPDATE Country " +
+                "SET country_name =  "+ dm +country.getCountryName()+dm+
+                " WHERE Country.id = "+id+" ;";
+
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
+            stmt.executeUpdate();
+            connection.commit();
+            System.out.println("Update country where id= " + id);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+            factory.rollbackQuietlyConn(connection);
+
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
+    }
+
+
+    @Override
+    public void delete(Integer id) {
+        PreparedStatement stmt = null;
+
+        String query = "DELETE FROM Country WHERE Country.id = "+ id +" ;";
+
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
+            stmt.executeUpdate();
+            connection.commit();
+            System.out.println("Delete country where id=" + id);
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+            factory.rollbackQuietlyConn(connection);
+
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         factory.closeConnection(connection);
     }
