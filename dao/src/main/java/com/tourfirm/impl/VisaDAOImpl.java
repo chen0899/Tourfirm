@@ -5,10 +5,7 @@ import com.toufirm.Visa;
 import com.tourfirm.VisaDAO;
 import com.tourfirm.MySQLDAOFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,21 +91,21 @@ public class VisaDAOImpl implements VisaDAO {
     public void save(Visa visa) {
 
         PreparedStatement stmt = null;
-        ResultSet resultSet = null;
 
-        String query = "INSERT INTO Visa(id, start_date, end_date, id_client, id_country) " +
-                "values(?, ?, ?,?,?);";
+
+        String query = "INSERT INTO Visa( start_date, end_date, id_client, id_country) " +
+                "values( ?, ?,?,?);";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
         try {
             connection.setAutoCommit(false);
             stmt = connection.prepareStatement(query);
-            stmt.setInt(1,visa.getId());
-            stmt.setDate(2,visa.getStartDate());
-            stmt.setDate(3,visa.getEndDate());
-            stmt.setInt(4,visa.getClient().getId());
-            stmt.setInt(5,visa.getCountry().getId());
+            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setDate(1,visa.getStartDate());
+            stmt.setDate(2,visa.getEndDate());
+            stmt.setInt(3,visa.getClient().getId());
+            stmt.setInt(4,visa.getCountry().getId());
             stmt.executeUpdate();
             connection.commit();
             System.out.println("Save " + visa);
@@ -123,8 +120,8 @@ public class VisaDAOImpl implements VisaDAO {
                 }
             }
         } finally {
-            // factory.closeQuietly(stmt);
-            //  factory.closeQuietly(connection);
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         factory.closeConnection(connection);
 

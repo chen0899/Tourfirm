@@ -6,11 +6,7 @@ import com.toufirm.City;
 import com.tourfirm.CityDAO;
 
 
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,10 +54,10 @@ public class CityDAOImpl implements CityDAO {
     @Override
     public void save(City city) {
         PreparedStatement stmt = null;
-        ResultSet resultSet = null;
 
-        String query = "INSERT INTO City(id,city_name,id_country) " +
-                "values(?, ?,?);";
+
+        String query = "INSERT INTO City(city_name,id_country) " +
+                "values( ?,?);";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -69,9 +65,9 @@ public class CityDAOImpl implements CityDAO {
         try {
             connection.setAutoCommit(false);
             stmt = connection.prepareStatement(query);
-            stmt.setInt(1,city.getId());
-            stmt.setString(2,city.getCityName());
-            stmt.setInt(3,city.getCountry().getId());
+            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,city.getCityName());
+            stmt.setInt(2,city.getCountry().getId());
             stmt.executeUpdate();
             connection.commit();
             System.out.println("Save " + city);
@@ -86,8 +82,8 @@ public class CityDAOImpl implements CityDAO {
                 }
             }
         } finally {
-           // factory.closeConnection(stmt);
-           // factory.closeQuietly(connection);
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         factory.closeConnection(connection);
     }
