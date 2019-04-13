@@ -14,5 +14,8 @@ public interface CityDAO {
 
     void save (City city);
 
+    void update (Integer id, City city);
+
+    void delete (Integer id);
 
 }

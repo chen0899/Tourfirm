@@ -15,5 +15,9 @@ public interface VisaDAO {
 
     void save (Visa visa);
 
+    void update (Integer id, Visa visa);
+
+    void delete (Integer id);
+
 
 }
