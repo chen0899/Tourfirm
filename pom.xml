@@ -6,6 +6,7 @@
 
     <groupId>com.tourfrim</groupId>
     <artifactId>team1</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
@@ -13,6 +14,7 @@
         <module>dao</module>
         <module>model</module>
         <module>service</module>
+        <module>c</module>
     </modules>
 
     <properties>
