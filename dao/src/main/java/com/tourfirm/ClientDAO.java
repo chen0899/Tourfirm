@@ -11,4 +11,8 @@ public interface ClientDAO {
     List<Client> findAll();
 
     void save(Client client);
+
+    void update (Integer id, Client client);
+
+    void delete (Integer id);
 }
