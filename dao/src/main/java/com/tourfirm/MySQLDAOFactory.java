@@ -1,7 +1,7 @@
 package com.tourfirm;
 
+import com.tourfirm.impl.MySQLRoomDAOImpl;
 import com.tourfirm.impl.ClientDAOImpl;
-import com.tourfirm.impl.MySQLRoomDAO;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -41,7 +41,7 @@ public class MySQLDAOFactory extends DAOFactory {
         }
     }
 
-    public void closeQuietly(Connection connection) {
+    public void closePreparedStatement(Connection connection) {
         if (connection != null) {
             try {
                 connection.close();
@@ -51,7 +51,7 @@ public class MySQLDAOFactory extends DAOFactory {
         }
     }
 
-    public void closeQuietly(PreparedStatement preparedStatement) {
+    public void closePreparedStatement(PreparedStatement preparedStatement) {
         try {
             if (preparedStatement != null) {
                 preparedStatement.close();
@@ -76,7 +76,7 @@ public class MySQLDAOFactory extends DAOFactory {
     }
 
     public RoomDAO getRoomDAO() {
-        return new MySQLRoomDAO();
+        return new MySQLRoomDAOImpl();
     }
 
     public ClientDAO geClientDAO() {
