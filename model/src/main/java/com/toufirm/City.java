@@ -9,11 +9,13 @@ import lombok.ToString;
 @Setter
 public class City {
 
-    private Long id;
+    private Integer id;
     private String cityName;
     private Country country;
 
-    public City(Long id, String cityName, Country country) {
+    public City(){};
+
+    public City(Integer id, String cityName, Country country) {
         this.id = id;
         this.cityName = cityName;
         this.country = country;
