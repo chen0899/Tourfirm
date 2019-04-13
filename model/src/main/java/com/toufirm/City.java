@@ -11,6 +11,8 @@ public class City {
     private String cityName;
     private Country country;
 
+    public City() {
+    }
 
     public City(Long id, String cityName, Country country) {
         this.id = id;
