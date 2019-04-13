@@ -4,6 +4,7 @@ import com.toufirm.Country;
 import com.toufirm.Hotel;
 import com.tourfirm.MySQLDAOFactory;
 import com.tourfirm.impl.CountryDAOImpl;
+import sun.misc.Cleaner;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public class BusinessLogic {
 
+    //Select #1
     public List<City> findCityAndCountryInThisFirm() {
 
         CountryDAOImpl countryDAO = new CountryDAOImpl();
@@ -50,7 +52,7 @@ public class BusinessLogic {
         return result;
     }
 
-
+    //Select #2
     public List<Hotel> findHotelsByCityName(String cityName) {
 
         final char dm = (char) 34;
@@ -88,5 +90,33 @@ public class BusinessLogic {
         factory.closeConnection(connection);
         return result;
 
+    }
+
+    //Select #5
+    public void findCountVisaForClient (Client client) {
+
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+        List<Client> result = null;
+
+        String query = "Select Clients.id, Clients.firstname, COUNT(Visa.id) From Visa inner join Clients on Visa.id_client = Clients.id WHERE Clients.id = " +
+                client.getId() + " ;";
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            stmt = connection.prepareStatement(query);
+            resultSet = stmt.executeQuery(query);
+            while (resultSet.next()) {
+                System.out.println("Client: "+ resultSet.getInt("id") + ", " + resultSet.getString("firstname") + " - count of visa = " + resultSet.getInt("COUNT(Visa.id)"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        factory.closeConnection(connection);
     }
 }
