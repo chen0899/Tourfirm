@@ -1,56 +1,31 @@
 package com.tourfirm.impl;
 
-import com.toufirm.Country;
-import com.tourfirm.CountryDAO;
+
 import com.tourfirm.MySQLDAOFactory;
+import com.toufirm.City;
+import com.tourfirm.CityDAO;
+
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Illia Chenchak
- */
-public class CountryDAOImpl implements CountryDAO {
+
+public class CityDAOImpl implements CityDAO {
+
 
     @Override
-    public Country getCountryById(Integer id) {
-        PreparedStatement stmt = null;
-        ResultSet resultSet = null;
-        Country result = null;
-
-        String query = "SELECT * FROM COUNTRY where Country.id =" + id + " order by Country.country_name;";
-
-        MySQLDAOFactory factory = new MySQLDAOFactory();
-        Connection connection = factory.getConnection();
-
-        try {
-            stmt = connection.prepareStatement(query);
-            resultSet = stmt.executeQuery();
-            result = new Country();
-            while (resultSet.next()) {
-                Country country = new Country();
-                country.setId(resultSet.getInt("id"));
-                country.setCountryName(resultSet.getString("country_name"));
-                result = country;
-            }
-        } catch (SQLException e) {
-            System.out.println("Can't execute SQL = '" + query + "'" + e);
-        } finally {
-            factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
-        }
-        factory.closeConnection(connection);
-        return result;
+    public City getCityById(Integer id) {
+        return null;
     }
 
     @Override
-    public List<Country> findAll() {
+    public List<City> findAll() {
         PreparedStatement stmt = null;
         ResultSet resultSet = null;
-        List<Country> result = null;
+        List<City> result = null;
 
-        String query = "SELECT * FROM Country order by Country.country_name;";
+        String query = "SELECT * FROM City order by City.city_name;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -60,42 +35,52 @@ public class CountryDAOImpl implements CountryDAO {
             resultSet = stmt.executeQuery();
             result = new ArrayList<>();
             while (resultSet.next()) {
-                Country country = new Country();
-                country.setId(resultSet.getInt("id"));
-                country.setCountryName(resultSet.getString("country_name"));
-                result.add(country);
+                City city = new City();
+                city.setId(resultSet.getInt("id"));
+                city.setCityName(resultSet.getString("city_name"));
+                result.add(city);
             }
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
-            factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
+           // factory.closeQuietly(stmt);
+           // factory.closeQuietly(connection);
         }
         factory.closeConnection(connection);
         return result;
     }
 
+
     @Override
-    public void save(Country country) {
+    public void save(City city) {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Country(country_name) " +
-                "values(?);";
+
+        String query = "INSERT INTO City(city_name,id_country) " +
+                "values( ?,?);";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
         try {
             connection.setAutoCommit(false);
+            stmt = connection.prepareStatement(query);
             stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, country.getCountryName());
+            stmt.setString(1,city.getCityName());
+            stmt.setInt(2,city.getCountry().getId());
             stmt.executeUpdate();
             connection.commit();
-            System.out.println("Save " + country);
+            System.out.println("Save " + city);
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
-            factory.rollbackQuietlyConn(connection);
-
+            if (connection != null) {
+                try {
+                    System.err.print("Transaction is being rolled back");
+                    connection.rollback();
+                } catch (SQLException excep) {
+                    System.out.println(excep);
+                }
+            }
         } finally {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
@@ -104,14 +89,12 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public void update(Integer id, Country country) {
+    public void update(Integer id, City city) {
         PreparedStatement stmt = null;
         final char dm = (char) 34;
 
-        String query = "UPDATE Country " +
-                "SET country_name =  "+ dm +country.getCountryName()+dm+
-                " WHERE Country.id = "+id+" ;";
-
+        String query = "UPDATE city SET city_name = " + dm+ city.getCityName()+ dm +
+                " ,id_country  = " + city.getCountry().getId()+ " WHERE id =" + id +";";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -121,7 +104,7 @@ public class CountryDAOImpl implements CountryDAO {
             stmt = connection.prepareStatement(query);
             stmt.executeUpdate();
             connection.commit();
-            System.out.println("Update country where id= " + id);
+            System.out.println("Update City where id= " + id);
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
             factory.rollbackQuietlyConn(connection);
@@ -132,13 +115,12 @@ public class CountryDAOImpl implements CountryDAO {
         }
         factory.closeConnection(connection);
     }
-
 
     @Override
     public void delete(Integer id) {
         PreparedStatement stmt = null;
 
-        String query = "DELETE FROM Country WHERE Country.id = "+ id +" ;";
+        String query = "DELETE FROM City WHERE city.id = "+ id +" ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -149,7 +131,7 @@ public class CountryDAOImpl implements CountryDAO {
             stmt = connection.prepareStatement(query);
             stmt.executeUpdate();
             connection.commit();
-            System.out.println("Delete country where id=" + id);
+            System.out.println("Delete city where id=" + id);
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
             factory.rollbackQuietlyConn(connection);
@@ -159,5 +141,6 @@ public class CountryDAOImpl implements CountryDAO {
             factory.closeConnection(connection);
         }
         factory.closeConnection(connection);
+
     }
 }
