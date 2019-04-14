@@ -9,10 +9,7 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
-public class Room {
-    private Long id;
-    private Long roomNumber;
-    private Integer numberOfPlaces;
-    private Hotel hotel;
-    private RoomType roomType;
+public class RoomType {
+    private Integer id;
+    private String type;
 }

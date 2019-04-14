@@ -14,9 +14,8 @@ public class Hotel {
     private String hotelName;
     private String email;
     private String phone;
-    private String city;
+    private City city;
     private String address;
-
 }
 
 
