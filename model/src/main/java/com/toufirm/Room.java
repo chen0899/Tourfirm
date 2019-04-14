@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Room {
     private Long id;
     private Long roomNumber;
-    private int numberOfPlaces;
-    private String nameHotel;
-    private String roomType;
+    private Integer numberOfPlaces;
+    private Hotel hotel;
+    private RoomType roomType;
 }
