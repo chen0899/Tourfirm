@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 //        ClientDAOImpl clientDAO = new ClientDAOImpl();
-//        List<Client> clients = clientDAO.findAll();
+//        List<Client> clients = clientDAO.findAllByHotelName();
 //        clients.stream().forEach(client -> System.out.println(client));
 //
 //        Client client2 = clientDAO.getUserById(1);

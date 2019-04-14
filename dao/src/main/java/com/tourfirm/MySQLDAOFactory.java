@@ -1,6 +1,6 @@
 package com.tourfirm;
 
-import com.tourfirm.impl.MySQLRoomDAOImpl;
+import com.tourfirm.impl.RoomDAOImpl;
 import com.tourfirm.impl.ClientDAOImpl;
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -76,7 +76,7 @@ public class MySQLDAOFactory extends DAOFactory {
     }
 
     public RoomDAO getRoomDAO() {
-        return new MySQLRoomDAOImpl();
+        return new RoomDAOImpl();
     }
 
     public ClientDAO geClientDAO() {
