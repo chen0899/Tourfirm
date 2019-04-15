@@ -50,7 +50,6 @@ public class ClientDAOImpl implements ClientDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
         return result;
     }
 
@@ -88,7 +87,6 @@ public class ClientDAOImpl implements ClientDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
         return result;
     }
 
@@ -119,11 +117,10 @@ public class ClientDAOImpl implements ClientDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
     }
 
     @Override
-    public void update(Integer id, Client client) {
+    public void update(Client client) {
         PreparedStatement stmt = null;
         final char dm = (char) 34;
 
@@ -133,7 +130,7 @@ public class ClientDAOImpl implements ClientDAO {
                 ", e_mail = "  + dm + client.getEmail() + dm +
                 ", phone = " + dm + client.getPhone() + dm +
                 ", id_country = " + client.getCountry().getId() +
-                " WHERE Clients.id = "+id+" ;";
+                " WHERE Clients.id = "+client.getId()+" ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -144,7 +141,7 @@ public class ClientDAOImpl implements ClientDAO {
             stmt = connection.prepareStatement(query);
             stmt.executeUpdate();
             connection.commit();
-            System.out.println("Update client where id= " + id);
+            System.out.println("Update client where id= " + client.getId());
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
             factory.rollbackQuietlyConn(connection);
@@ -153,7 +150,6 @@ public class ClientDAOImpl implements ClientDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
     }
 
     @Override
@@ -180,7 +176,6 @@ public class ClientDAOImpl implements ClientDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
     }
 }
 
