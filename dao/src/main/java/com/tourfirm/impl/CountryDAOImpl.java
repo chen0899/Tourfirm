@@ -40,7 +40,6 @@ public class CountryDAOImpl implements CountryDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
         return result;
     }
 
@@ -71,7 +70,6 @@ public class CountryDAOImpl implements CountryDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
         return result;
     }
 
@@ -100,7 +98,6 @@ public class CountryDAOImpl implements CountryDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
     }
 
     @Override
@@ -130,7 +127,6 @@ public class CountryDAOImpl implements CountryDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
     }
 
 
@@ -158,6 +154,5 @@ public class CountryDAOImpl implements CountryDAO {
             factory.closePreparedStatement(stmt);
             factory.closeConnection(connection);
         }
-        factory.closeConnection(connection);
     }
 }

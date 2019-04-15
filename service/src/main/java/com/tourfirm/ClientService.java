@@ -4,7 +4,7 @@ import com.toufirm.Client;
 
 import java.util.List;
 
-public interface ClientDAO {
+public interface ClientService {
 
     Client getUserById(Integer id);
 
@@ -15,4 +15,5 @@ public interface ClientDAO {
     void update (Client client);
 
     void delete (Integer id);
+
 }
