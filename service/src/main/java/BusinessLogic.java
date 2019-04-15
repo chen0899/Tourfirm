@@ -1,10 +1,8 @@
 import com.toufirm.City;
 import com.toufirm.Client;
-import com.toufirm.Country;
 import com.toufirm.Hotel;
 import com.tourfirm.MySQLDAOFactory;
 import com.tourfirm.impl.CountryDAOImpl;
-import sun.misc.Cleaner;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,7 +35,7 @@ public class BusinessLogic {
             result = new ArrayList<>();
             while (resultSet.next()) {
                 City city= new City();
-                city.setId(resultSet.getLong("id"));
+                city.setId(resultSet.getInt("id"));
                 city.setCityName(resultSet.getString("city_name"));
                 city.setCountry(countryDAO.getCountryById((int) resultSet.getLong("id_country")));
                 result.add(city);
