@@ -28,6 +28,9 @@ public class CountryServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        Integer id = Integer.valueOf(req.getParameter("delete"));
+        countryService.delete(id);
+        resp.sendRedirect(req.getContextPath()+ "/country");
     }
+
 }

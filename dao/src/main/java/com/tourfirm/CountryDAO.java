@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface CountryDAO {
 
+    Country findByCountryName(String countryName);
+
     Country getCountryById(Integer id);
 
     List<Country> findAll();

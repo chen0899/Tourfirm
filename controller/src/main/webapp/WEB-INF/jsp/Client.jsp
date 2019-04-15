@@ -41,12 +41,66 @@
                     <td>${client.getEmail()}</td>
                     <td>${client.getPhone()}</td>
                     <td>${client.country.getCountryName()}</td>
+                    <td>
+                        <form action="client" method="post">
+                            <button class="btn btn-danger" type="submit" name="delete" value="${client.id}">delete
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </form>
 
+    <a class="btn btn-info" data-toggle="collapse" href="#clientadd" role="button" aria-expanded="false"
+       aria-controls="collapseAdd">
+        Create Client
+    </a>
+
+    <div class="collapse" id="clientadd">
+        <div class="form-group mt-3 ">
+            <div class="form-row">
+                <div class="form-group">
+                    <form method="post" action="save-client">
+                        <tr>
+                            <input  type="text" name="firstName" placeholder="Firstname">
+                            <input  type="text" name="lastName" placeholder="LastName">
+                            <input  type="email" name="email" placeholder="E-mail">
+                            <input  type="text" name="phone" placeholder="Phone">
+                            <input  type="text" name="countryName" placeholder="Country from">
+                        </tr>
+                        <button type="submit" class="btn btn-info ml-2">ADD</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-info" data-toggle="collapse" href="#clientupdate" role="button" aria-expanded="false"
+       aria-controls="collapseAdd">
+        Update Client
+    </a>
+
+    <div class="collapse" id="clientupdate">
+        <div class="form-group mt-3 ">
+            <div class="form-row">
+                <div class="form-group">
+                    <form method="post" action="update-client">
+                        <tr>
+                            <input type="text" name="id" placeholder="id">
+                            <input  type="text" name="firstName" placeholder="Firstname">
+                            <input  type="text" name="lastName" placeholder="LastName">
+                            <input  type="email" name="email" placeholder="E-mail">
+                            <input  type="text" name="phone" placeholder="Phone">
+                            <input  type="text" name="countryName" placeholder="Country from">
+                        </tr>
+                    </form>
+                </div>
+                <button type="submit" class="btn btn-info ml-2">update</button>
+            </div>
+        </div>
+    </div>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

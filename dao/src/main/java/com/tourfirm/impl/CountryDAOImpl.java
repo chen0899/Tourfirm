@@ -38,7 +38,6 @@ public class CountryDAOImpl implements CountryDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
         return result;
     }
@@ -68,7 +67,6 @@ public class CountryDAOImpl implements CountryDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
         return result;
     }
@@ -96,7 +94,6 @@ public class CountryDAOImpl implements CountryDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
     }
 
@@ -125,7 +122,6 @@ public class CountryDAOImpl implements CountryDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
     }
 
@@ -152,7 +148,37 @@ public class CountryDAOImpl implements CountryDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
+
         }
+    }
+
+    @Override
+    public Country findByCountryName(String countryName) {
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+        Country result = null;
+        final char dm = (char) 34;
+
+        String query = "SELECT * FROM country where country.country_name =" + dm + countryName + dm + " order by country.country_name;";
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            stmt = connection.prepareStatement(query);
+            resultSet = stmt.executeQuery();
+            result = new Country();
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.setId(resultSet.getInt("id"));
+                country.setCountryName(resultSet.getString("country_name"));
+                result = country;
+            }
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+        } finally {
+            factory.closePreparedStatement(stmt);
+        }
+        return result;
     }
 }

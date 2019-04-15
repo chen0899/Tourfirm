@@ -23,4 +23,11 @@ public class ClientServlet extends HttpServlet {
 
         request.getRequestDispatcher("WEB-INF/jsp/Client.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer id = Integer.valueOf(req.getParameter("delete"));
+        clientService.delete(id);
+        resp.sendRedirect(req.getContextPath()+ "/client");
+    }
 }
