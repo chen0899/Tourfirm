@@ -23,7 +23,7 @@ public class RoomDAOImpl implements RoomDAO {
                 + "inner join roomtype on roomtype.id = room.id_room_type "
                 + "inner join hotel on hotel.id = room.id_hotel "
                 + "WHERE hotel.hotel_name = ? "
-                + "ORDER BY hotel.hotel_name ASC;";
+                + "ORDER BY id ASC;";
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -66,8 +66,8 @@ public class RoomDAOImpl implements RoomDAO {
             preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setLong(1, room.getRoomNumber());
             preparedStatement.setLong(2, room.getNumberOfPlaces());
-            preparedStatement.setLong(3, 1);
-            preparedStatement.setLong(4, 1);
+            preparedStatement.setLong(3, room.getHotel().getId());
+            preparedStatement.setLong(4, room.getRoomType().getId());
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
