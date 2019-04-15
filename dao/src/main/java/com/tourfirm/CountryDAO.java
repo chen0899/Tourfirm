@@ -15,7 +15,7 @@ public interface CountryDAO {
 
     void save (Country country);
 
-    void update (Integer id,Country country);
+    void update (Country country);
 
     void delete (Integer id);
 

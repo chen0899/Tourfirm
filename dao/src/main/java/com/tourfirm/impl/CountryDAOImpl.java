@@ -104,13 +104,13 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public void update(Integer id, Country country) {
+    public void update(Country country) {
         PreparedStatement stmt = null;
         final char dm = (char) 34;
 
         String query = "UPDATE Country " +
                 "SET country_name =  "+ dm +country.getCountryName()+dm+
-                " WHERE Country.id = "+id+" ;";
+                " WHERE Country.id = "+country.getId()+" ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -121,7 +121,7 @@ public class CountryDAOImpl implements CountryDAO {
             stmt = connection.prepareStatement(query);
             stmt.executeUpdate();
             connection.commit();
-            System.out.println("Update country where id= " + id);
+            System.out.println("Update country where id= " + country.getId());
         } catch (SQLException e) {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
             factory.rollbackQuietlyConn(connection);
