@@ -7,15 +7,46 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 </head>
 <body>
+
 <div id="header">
-    <jsp:include page="WEB-INF/jsp/common/header.jsp"/>
+    <jsp:include page="common/header.jsp"/>
 </div>
-<h2>Hello World!</h2>
+<div class="container mt-5">
+    <form>
+        <table class="table table-bordered" width="200px;">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number of room</th>
+                <th>Count places</th>
+                <th>Hotel</th>
+                <th>Room type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="room" items="${roomList}" varStatus="rowCounter">
+                <tr>
+                    <td>${room.getId()}</td>
+                    <td>${room.getRoomNumber()}</td>
+                    <td>${room.getNumberOfPlaces()}</td>
+                    <td>${room.hotel.getHotelName()}</td>
+                    <td>${room.roomType.getType()}</td>
+                </tr>
+
+            </c:forEach>
+            </tbody>
+        </table>
+    </form>
+
+
+
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
