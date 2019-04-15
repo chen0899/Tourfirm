@@ -19,7 +19,7 @@ public class CountryDAOImpl implements CountryDAO {
         ResultSet resultSet = null;
         Country result = null;
 
-        String query = "SELECT * FROM COUNTRY where Country.id =" + id + " order by Country.country_name;";
+        String query = "SELECT * FROM country where country.id =" + id + " order by country.country_name;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -49,7 +49,7 @@ public class CountryDAOImpl implements CountryDAO {
         ResultSet resultSet = null;
         List<Country> result = null;
 
-        String query = "SELECT * FROM Country order by Country.id;";
+        String query = "SELECT * FROM country order by country.id;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -77,7 +77,7 @@ public class CountryDAOImpl implements CountryDAO {
     public void save(Country country) {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Country(country_name) " +
+        String query = "INSERT INTO country(country_name) " +
                 "values(?);";
 
 
@@ -105,9 +105,9 @@ public class CountryDAOImpl implements CountryDAO {
         PreparedStatement stmt = null;
         final char dm = (char) 34;
 
-        String query = "UPDATE Country " +
+        String query = "UPDATE country " +
                 "SET country_name =  "+ dm +country.getCountryName()+dm+
-                " WHERE Country.id = "+country.getId()+" ;";
+                " WHERE country.id = "+country.getId()+" ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -134,7 +134,7 @@ public class CountryDAOImpl implements CountryDAO {
     public void delete(Integer id) {
         PreparedStatement stmt = null;
 
-        String query = "DELETE FROM Country WHERE Country.id = "+ id +" ;";
+        String query = "DELETE FROM country WHERE country.id = "+ id +" ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
