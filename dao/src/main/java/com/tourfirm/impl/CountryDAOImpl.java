@@ -50,7 +50,7 @@ public class CountryDAOImpl implements CountryDAO {
         ResultSet resultSet = null;
         List<Country> result = null;
 
-        String query = "SELECT * FROM Country order by Country.country_name;";
+        String query = "SELECT * FROM Country order by Country.id;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
