@@ -41,6 +41,12 @@
                     <td>${client.getEmail()}</td>
                     <td>${client.getPhone()}</td>
                     <td>${client.country.getCountryName()}</td>
+                    <td>
+                        <form action="client" method="post">
+                            <button class="btn btn-danger" type="submit" name="delete" value="${client.id}">delete
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>

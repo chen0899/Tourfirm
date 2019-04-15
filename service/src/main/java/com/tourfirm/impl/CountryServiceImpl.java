@@ -29,7 +29,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void delete(Country country) {
-        countryDAO.delete(country.getId());
+    public void delete(Integer id ) {
+        countryDAO.delete(id);
     }
 }
