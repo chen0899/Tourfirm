@@ -45,6 +45,25 @@
         </table>
     </form>
 
+    <a class="btn btn-info" data-toggle="collapse" href="#countryadd" role="button" aria-expanded="false"
+       aria-controls="collapseAdd">
+        Create Country
+    </a>
+
+    <div class="collapse" id="countryadd">
+        <div class="form-group mt-3 ">
+            <div class="form-row">
+                <div class="form-group">
+                    <form method="post" action="save-country">
+                        <tr>
+                            <input  type="text" name="countryName" placeholder="Country name">
+                        </tr>
+                        <button type="submit" class="btn btn-info ml-2">ADD</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

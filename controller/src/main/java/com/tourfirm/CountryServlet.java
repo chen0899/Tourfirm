@@ -30,12 +30,7 @@ public class CountryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id = Integer.valueOf(req.getParameter("delete"));
         countryService.delete(id);
-
-        Country country = new Country();
-        String countryName = req.getParameter("add");
-        System.out.println(countryName);
-        country.setCountryName(countryName);
-        countryService.save(country);
         resp.sendRedirect(req.getContextPath()+ "/country");
     }
+
 }
