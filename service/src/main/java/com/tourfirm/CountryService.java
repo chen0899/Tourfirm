@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CountryService {
 
-    void findByCountryName(String countryName);
+    Country findByCountryName(String countryName);
 
     List<Country> findAll();
 

@@ -34,7 +34,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void findByCountryName(String countryName) {
-        countryDAO.findByCountryName(countryName);
+    public Country findByCountryName(String countryName) {
+        return countryDAO.findByCountryName(countryName);
     }
 }

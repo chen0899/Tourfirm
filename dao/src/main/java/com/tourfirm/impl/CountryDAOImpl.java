@@ -157,8 +157,9 @@ public class CountryDAOImpl implements CountryDAO {
         PreparedStatement stmt = null;
         ResultSet resultSet = null;
         Country result = null;
+        final char dm = (char) 34;
 
-        String query = "SELECT * FROM country where country.country_name =" + countryName + " order by country.country_name;";
+        String query = "SELECT * FROM country where country.country_name =" + dm + countryName + dm + " order by country.country_name;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
