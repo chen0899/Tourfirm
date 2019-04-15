@@ -29,3 +29,6 @@ hs_err_pid*
 
 *.jar
 /target/
+model/target
+controller/target
+service/target
