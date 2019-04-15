@@ -21,11 +21,11 @@ public class ClientDAOImpl implements ClientDAO {
         ResultSet resultSet = null;
         Client result = null;
 
-        String query = "SELECT Clients.id, Clients.firstname, Clients.lastname, Clients.e_mail, " +
-                "Clients.phone, Country.id, Country.country_name " +
-                "FROM Clients left join Country on Clients.id_country = Country.id " +
-                "where Clients.id =" + id + " " +
-                "order by Clients.firstname;";
+        String query = "SELECT clients.id, clients.firstname, clients.lastname, clients.e_mail, " +
+                "clients.phone, country.id, country.country_name " +
+                "FROM clients left join country on clients.id_country = country.id " +
+                "where clients.id =" + id + " " +
+                "order by clients.firstname;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -59,10 +59,10 @@ public class ClientDAOImpl implements ClientDAO {
         ResultSet resultSet = null;
         List<Client> result = null;
 
-        String query = "SELECT Clients.id, Clients.firstname, Clients.lastname, Clients.e_mail, " +
-                "Clients.phone, Country.id, Country.country_name " +
-                "FROM Clients left join Country on Clients.id_country = Country.id " +
-                "order by Clients.firstname;";
+        String query = "SELECT clients.id, clients.firstname, clients.lastname, clients.e_mail, " +
+                "clients.phone, country.id, country.country_name " +
+                "FROM clients left join country on clients.id_country = country.id " +
+                "order by clients.id;";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -94,7 +94,7 @@ public class ClientDAOImpl implements ClientDAO {
     public void save(Client client) {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Clients(id,firstname,lastname,e_mail,phone,id_country) " +
+        String query = "INSERT INTO clients(id,firstname,lastname,e_mail,phone,id_country) " +
                 "values(?,?,?,?,?);";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -124,13 +124,13 @@ public class ClientDAOImpl implements ClientDAO {
         PreparedStatement stmt = null;
         final char dm = (char) 34;
 
-        String query = "UPDATE Clients " +
+        String query = "UPDATE clients " +
                 "SET firstname =  "+ dm +client.getFirstName()+ dm +
                 ", lastname = "+ dm + client.getLastName() + dm +
                 ", e_mail = "  + dm + client.getEmail() + dm +
                 ", phone = " + dm + client.getPhone() + dm +
                 ", id_country = " + client.getCountry().getId() +
-                " WHERE Clients.id = "+client.getId()+" ;";
+                " WHERE clients.id = "+client.getId()+" ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -156,7 +156,7 @@ public class ClientDAOImpl implements ClientDAO {
     public void delete(Integer id) {
         PreparedStatement stmt = null;
 
-        String query = "DELETE FROM Clients WHERE Clients.id = " + id + " ;";
+        String query = "DELETE FROM clients WHERE clients.id = " + id + " ;";
 
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
