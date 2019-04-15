@@ -21,7 +21,7 @@
     </div>
     <div class="container mt-5">
         <form>
-            <table class="table table-bordered" width="200px;">
+            <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -33,6 +33,7 @@
                     <tr>
                         <td>${country.getId()}</td>
                         <td>${country.getCountryName()}</td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>

@@ -13,6 +13,9 @@
             <li>
                 <a class="nav-link" href="country">Countries</a>
             </li>
+            <li>
+                <a class="nav-link" href="client">Clients</a>
+            </li>
         </ul>
     </div>
 </nav>
