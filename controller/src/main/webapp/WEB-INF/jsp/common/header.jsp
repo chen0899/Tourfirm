@@ -10,6 +10,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="room">Rooms</a>
             </li>
+            <li>
+                <a class="nav-link" href="country">Countries</a>
+            </li>
         </ul>
     </div>
 </nav>
