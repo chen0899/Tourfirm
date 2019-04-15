@@ -4,8 +4,7 @@ import com.toufirm.Room;
 
 import java.util.List;
 
-public interface RoomDAO {
-
+public interface RoomService {
     List<Room> findAllByHotelName(String hotelName);
 
     void save(Room room);
