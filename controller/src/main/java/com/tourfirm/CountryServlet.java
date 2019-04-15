@@ -26,4 +26,8 @@ public class CountryServlet extends HttpServlet {
         request.getRequestDispatcher("WEB-INF/jsp/Country.jsp").forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
 }
