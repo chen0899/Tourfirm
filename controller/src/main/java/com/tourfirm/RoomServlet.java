@@ -1,6 +1,7 @@
 package com.tourfirm;
 
 
+import com.toufirm.Room;
 import com.tourfirm.impl.RoomServiceImpl;
 
 import javax.servlet.ServletException;
@@ -22,8 +23,14 @@ public class RoomServlet extends HttpServlet {
         request.getRequestDispatcher("WEB-INF/jsp/Room.jsp").forward(request, response);
     }
 
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.getRequestDispatcher("WEB-INF/jsp/Room.jsp").forward(request, response);
-//    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Long id = Long.valueOf(request.getParameter("delete"));
+
+        Room room = new Room();
+        room.setId(id);
+        roomService.delete(room);
+
+        response.sendRedirect(request.getContextPath() + "/room");
+    }
 }
