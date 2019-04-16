@@ -15,6 +15,11 @@ public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO = new RoomDAOImpl();
 
     @Override
+    public Room findById(Long id) {
+        return roomDAO.findById(id);
+    }
+
+    @Override
     public List<Room> findAllByHotelName(String hotelName) {
         return roomDAO.findAllByHotelName(hotelName);
     }
