@@ -23,7 +23,7 @@ public class HotelDAOImpl implements HotelDAO {
         ResultSet resultSet;
         Hotel hotel = new Hotel();
 
-        String query = "SELECT id, hotel_name, e_mail, phone, city.city_name, adress FROM hotel "
+        String query = "SELECT hotel.id, hotel_name, e_mail, phone, city.city_name, adress FROM hotel "
                 + "INNER JOIN city on city.id= hotel.id_city "
                 + "WHERE hotel_name = ? ";
 
