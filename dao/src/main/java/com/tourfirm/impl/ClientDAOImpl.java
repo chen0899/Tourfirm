@@ -48,7 +48,6 @@ public class ClientDAOImpl implements ClientDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
         return result;
     }
@@ -85,7 +84,6 @@ public class ClientDAOImpl implements ClientDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
         return result;
     }
@@ -94,7 +92,7 @@ public class ClientDAOImpl implements ClientDAO {
     public void save(Client client) {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO clients(id,firstname,lastname,e_mail,phone,id_country) " +
+        String query = "INSERT INTO clients(firstname,lastname,e_mail,phone,id_country) " +
                 "values(?,?,?,?,?);";
 
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -115,7 +113,6 @@ public class ClientDAOImpl implements ClientDAO {
             factory.rollbackQuietlyConn(connection);
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
     }
 
@@ -148,7 +145,6 @@ public class ClientDAOImpl implements ClientDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
     }
 
@@ -174,7 +170,6 @@ public class ClientDAOImpl implements ClientDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
-            factory.closeConnection(connection);
         }
     }
 }
