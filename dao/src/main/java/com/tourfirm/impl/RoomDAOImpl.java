@@ -44,6 +44,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
         return room;
     }
@@ -83,7 +84,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
-
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -111,6 +112,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -137,6 +139,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -159,6 +162,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 }
