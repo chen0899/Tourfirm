@@ -26,26 +26,30 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void save(Room room, String hotelName, String type) {
-        HotelDAO hotelDAO = new HotelDAOImpl();
-        RoomTypeDAO roomTypeDAO = new RoomTypeDAOImpl();
-        Hotel hotel = hotelDAO.findHotelByName(hotelName);
-        RoomType roomType = roomTypeDAO.findByRoomType(type);
-        System.out.println(hotel);
-        System.out.println(roomType);
-
-        room.setHotel(hotel);
-        room.setRoomType(roomType);
-
+        room.setHotel(getHotel(hotelName));
+        room.setRoomType(getRoomType(type));
         roomDAO.save(room);
     }
 
     @Override
-    public void update(Room room) {
-
+    public void update(Room room, String hotelName, String type) {
+        room.setHotel(getHotel(hotelName));
+        room.setRoomType(getRoomType(type));
+        roomDAO.update(room);
     }
 
     @Override
     public void delete(Room room) {
         roomDAO.delete(room);
+    }
+
+    private RoomType getRoomType(String type) {
+        RoomTypeDAO roomTypeDAO = new RoomTypeDAOImpl();
+        return roomTypeDAO.findByRoomType(type);
+    }
+
+    private Hotel getHotel(String hotelName) {
+        HotelDAO hotelDAO = new HotelDAOImpl();
+        return hotelDAO.findHotelByName(hotelName);
     }
 }

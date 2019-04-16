@@ -12,7 +12,7 @@ public interface RoomService {
 
     void save(Room room, String hotelName, String roomType);
 
-    void update(Room room);
+    void update(Room room, String hotelName, String roomType);
 
     void delete(Room room);
 }
