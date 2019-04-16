@@ -95,9 +95,9 @@
                             <input  type="text" name="phone" placeholder="Phone">
                             <input  type="text" name="countryName" placeholder="Country from">
                         </tr>
+                        <button type="submit" class="btn btn-info ml-2">update</button>
                     </form>
                 </div>
-                <button type="submit" class="btn btn-info ml-2">update</button>
             </div>
         </div>
     </div>

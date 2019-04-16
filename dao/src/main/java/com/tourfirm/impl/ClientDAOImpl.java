@@ -48,6 +48,7 @@ public class ClientDAOImpl implements ClientDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -84,6 +85,7 @@ public class ClientDAOImpl implements ClientDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -113,6 +115,7 @@ public class ClientDAOImpl implements ClientDAO {
             factory.rollbackQuietlyConn(connection);
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
     }
 
@@ -145,6 +148,7 @@ public class ClientDAOImpl implements ClientDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
     }
 
@@ -170,6 +174,7 @@ public class ClientDAOImpl implements ClientDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
     }
 }
