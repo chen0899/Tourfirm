@@ -6,7 +6,7 @@ import com.tourfirm.CityService;
 import java.util.List;
 
 public class CityServiceImpl implements CityService {
-private  CityDAOImpl cityDAO = new CityDAOImpl();
+private CityDAOImpl cityDAO = new CityDAOImpl();
 
     @Override
     public List<City> findAll() {
