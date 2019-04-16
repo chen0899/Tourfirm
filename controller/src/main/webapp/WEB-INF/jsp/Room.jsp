@@ -65,8 +65,8 @@
                             <button class="btn btn-danger" type="submit" name="delete" value="${room.id}">delete
                             </button>
                         </form>
-                        <form action="" method="get">
-                            <button class="btn btn-success" type="submit" name="edit" value="${room.id}">Edit
+                        <form action="update-room" method="get">
+                            <button class="btn btn-warning" type="submit" name="edit" value="${room.id}">Edit
                             </button>
                         </form>
                     </td>
