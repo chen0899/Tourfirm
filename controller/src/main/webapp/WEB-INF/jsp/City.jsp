@@ -46,29 +46,48 @@
         </div>
 
         <div class="col-lg-5">
-            <div>
-                <h3>Delete City by ID</h3>
-                <form action="city" method="post">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" name="cityID" class="form-control" placeholder="city id">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-danger" name ="todo" value="Delete ">
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-            <div>
-                <h3>Update City</h3>
-                <form action="city" method="post">
-                    <div class="form-group">
+            <div class="row">
+                <div>
+                    <h3>Delete City by ID</h3>
+                    <form action="city" method="post">
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" name="cityID" class="form-control" placeholder="city id">
+                                <input type="text" name="cityiddel" class="form-control" placeholder="city id">
                             </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger" name="todo" value="Delete">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <h3>Update City</h3>
+                    <form action="city" method="post">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" name="cityID" class="form-control" placeholder="city id">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="cityName" class="form-control" placeholder="city name">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="cityCountry" class="form-control"
+                                           placeholder="country name">
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 10px;">
+                                <input type="submit" class="form-control btn btn-success" name="todo" value="Update">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <h3>Create City</h3>
+                    <form action="city" method="post">
+                        <div class="form-row">
                             <div class="col">
                                 <input type="text" name="cityName" class="form-control" placeholder="city name">
                             </div>
@@ -77,34 +96,45 @@
                             </div>
                         </div>
                         <div class="form-row" style="margin-top: 10px;">
-                            <input  type="submit" class="form-control btn btn-success" name ="todo" value="Update">
+                            <input type="submit" class=" form-control btn btn-info" name="todo" value="Create">
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div>
-                <h3>Create City</h3>
-                <form action="city" method="post">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" name="cityName" class="form-control" placeholder="city name">
-                        </div>
-                        <div class="col">
-                            <input type="text" name="cityCountry" class="form-control" placeholder="country name">
-                        </div>
-                    </div>
-                    <div class="form-row" style="margin-top: 10px;">
-                        <input  type="submit" class=" form-control btn btn-info" name ="todo" value="Create">
-                    </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
+            <div class="row">
 
+                <div>
+                    <form>
+                        <table class="table table-bordered" width="200px;">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Hotel name</th>
+                                <th>City name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="hotel" items="${hotelList}" varStatus="rowCounter">
+                                <tr>
+                                    <td>${hotel.getId()}</td>
+                                    <td>${hotel.getHotelName()}</td>
+                                    <td>${hotel.getCity().getCityName()}</td>
+                                </tr>
+
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
+
     </div>
-
-
 </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
