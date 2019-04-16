@@ -38,6 +38,7 @@ public class CountryDAOImpl implements CountryDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -67,6 +68,7 @@ public class CountryDAOImpl implements CountryDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -94,6 +96,7 @@ public class CountryDAOImpl implements CountryDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
     }
 
@@ -122,6 +125,7 @@ public class CountryDAOImpl implements CountryDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
     }
 
@@ -148,6 +152,7 @@ public class CountryDAOImpl implements CountryDAO {
 
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
 
         }
     }
@@ -178,6 +183,7 @@ public class CountryDAOImpl implements CountryDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
         }
         return result;
     }
