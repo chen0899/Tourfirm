@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface RoomDAO {
 
+    Room findById(Long id);
+
     List<Room> findAllByHotelName(String hotelName);
 
     void save(Room room);

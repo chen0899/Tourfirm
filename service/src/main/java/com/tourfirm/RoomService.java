@@ -5,11 +5,14 @@ import com.toufirm.Room;
 import java.util.List;
 
 public interface RoomService {
+
+    Room findById(Long id);
+
     List<Room> findAllByHotelName(String hotelName);
 
-    void save(Room room);
+    void save(Room room, String hotelName, String roomType);
 
-    void update(Room room);
+    void update(Room room, String hotelName, String roomType);
 
     void delete(Room room);
 }

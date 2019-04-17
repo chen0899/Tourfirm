@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelDAOImpl implements HotelDAO {
+
     @Override
     public Hotel findHotelByName(String hotelName) {
         MySQLDAOFactory factory = new MySQLDAOFactory();
@@ -23,7 +24,7 @@ public class HotelDAOImpl implements HotelDAO {
         ResultSet resultSet;
         Hotel hotel = new Hotel();
 
-        String query = "SELECT id, hotel_name, e_mail, phone, city.city_name, adress FROM hotel "
+        String query = "SELECT hotel.id, hotel_name, e_mail, phone, city.city_name, adress FROM hotel "
                 + "INNER JOIN city on city.id= hotel.id_city "
                 + "WHERE hotel_name = ? ";
 
@@ -45,6 +46,7 @@ public class HotelDAOImpl implements HotelDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
         return hotel;
     }
@@ -82,6 +84,7 @@ public class HotelDAOImpl implements HotelDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -110,6 +113,7 @@ public class HotelDAOImpl implements HotelDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -138,6 +142,7 @@ public class HotelDAOImpl implements HotelDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -160,6 +165,7 @@ public class HotelDAOImpl implements HotelDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 

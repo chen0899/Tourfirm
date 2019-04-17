@@ -12,6 +12,42 @@ import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
 
+    @Override
+    public Room findById(Long id) {
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        Room room = new Room();
+
+        String query = "SELECT room.id, room_number, count_places, hotel.hotel_name, roomtype.type FROM room "
+                + "inner join roomtype on roomtype.id = room.id_room_type "
+                + "inner join hotel on hotel.id = room.id_hotel "
+                + "WHERE room.id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1, id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Hotel hotel = new Hotel();
+                RoomType roomType = new RoomType();
+                hotel.setHotelName(resultSet.getString("hotel_name"));
+                roomType.setType(resultSet.getString("type"));
+                room.setId(resultSet.getLong("id"));
+                room.setRoomNumber(resultSet.getLong("room_number"));
+                room.setNumberOfPlaces(resultSet.getInt("count_places"));
+                room.setHotel(hotel);
+                room.setRoomType(roomType);
+            }
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+        } finally {
+            factory.closePreparedStatement(preparedStatement);
+        }
+        return room;
+    }
+
     public List<Room> findAllByHotelName(String hotelName) {
         MySQLDAOFactory factory = new MySQLDAOFactory();
         Connection connection = factory.getConnection();
@@ -47,7 +83,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
-
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -75,6 +111,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -101,6 +138,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -123,6 +161,7 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 }
