@@ -168,4 +168,39 @@ public class HotelDAOImpl implements HotelDAO {
             factory.closeConnection(connection);
         }
     }
+
+    public List<Hotel> findAll() {
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+        List<Hotel> result = null;
+CityDAOImpl cityDAO = new CityDAOImpl();
+        String query = "SELECT * FROM hotel;";
+
+        MySQLDAOFactory factory = new MySQLDAOFactory();
+        Connection connection = factory.getConnection();
+
+        try {
+            stmt = connection.prepareStatement(query);
+            resultSet = stmt.executeQuery();
+            result = new ArrayList<>();
+            while (resultSet.next()) {
+                Hotel hotel = new Hotel();
+                hotel.setId(resultSet.getLong("id"));
+                hotel.setHotelName(resultSet.getString("hotel_name"));
+                hotel.setCity(cityDAO.getCityById(resultSet.getInt("id_city")));
+                result.add(hotel);
+
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Can't execute SQL = '" + query + "'" + e);
+        } finally {
+            factory.closePreparedStatement(stmt);
+            factory.closeConnection(connection);
+        }
+        return result;
+    }
+
+
+
 }

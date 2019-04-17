@@ -16,6 +16,9 @@
             <li>
                 <a class="nav-link" href="client">Clients</a>
             </li>
+            <li>
+                <a class="nav-link" href="city">City</a>
+            </li>
         </ul>
     </div>
 </nav>

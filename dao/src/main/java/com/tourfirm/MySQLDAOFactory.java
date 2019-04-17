@@ -29,8 +29,11 @@ public class MySQLDAOFactory extends DAOFactory {
     public Connection getConnection() {
         Connection connection = null;
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = basicDataSource.getConnection();
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;
