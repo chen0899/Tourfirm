@@ -5,4 +5,6 @@ package com.tourfirm.entity;
  */
 public class Country {
 
+    private String countryName;
+
 }
