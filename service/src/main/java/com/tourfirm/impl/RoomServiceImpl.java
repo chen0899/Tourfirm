@@ -33,9 +33,12 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void update(Room room, String hotelName, String type) {
-        room.setHotel(getHotel(hotelName));
-        room.setRoomType(getRoomType(type));
-        roomDAO.update(room);
+        Room roomDB = roomDAO.findById(room.getId());
+        if (roomDB.getId().equals(room.getId())){
+            room.setHotel(getHotel(hotelName));
+            room.setRoomType(getRoomType(type));
+            roomDAO.update(room);
+        }
     }
 
     @Override
