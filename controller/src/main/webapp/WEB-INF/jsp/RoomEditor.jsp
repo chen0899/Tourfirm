@@ -17,7 +17,7 @@
 <div class="container mt-5">
 
     <form action="update-room" method="post">
-        <input type="text" name="id" value="${room.id}">
+        <input type="text" name="id" value="${room.id}" readonly>
         <input type="text" name="roomNumber" value="${room.roomNumber}">
         <input type="text" name="countPlace" value="${room.numberOfPlaces}">
         <input type="text" name="hotelName" value="${room.hotel.hotelName}">
