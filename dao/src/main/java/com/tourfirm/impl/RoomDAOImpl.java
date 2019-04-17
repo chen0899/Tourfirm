@@ -44,7 +44,6 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
-            factory.closeConnection(connection);
         }
         return room;
     }

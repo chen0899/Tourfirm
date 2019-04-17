@@ -23,6 +23,7 @@ public class MySQLDAOFactory extends DAOFactory {
         basicDataSource.setMinIdle(5);
         basicDataSource.setMaxIdle(10);
         basicDataSource.setMaxOpenPreparedStatements(100);
+        basicDataSource.setMaxTotal(10);
     }
 
     public Connection getConnection() {
@@ -40,16 +41,6 @@ public class MySQLDAOFactory extends DAOFactory {
             connection.close();
         } catch (SQLException e) {
             System.out.println("Connection closed fail" + e);
-        }
-    }
-
-    public void closePreparedStatement(Connection connection) {
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                System.out.println("Connection close fail" + e);
-            }
         }
     }
 

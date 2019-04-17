@@ -32,6 +32,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
         return roomType;
     }
@@ -61,6 +62,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
         return result;
     }
@@ -84,6 +86,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -107,6 +110,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 
@@ -129,6 +133,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
             System.out.println("Can't execute SQL = '" + query + "'" + e);
         } finally {
             factory.closePreparedStatement(preparedStatement);
+            factory.closeConnection(connection);
         }
     }
 }
