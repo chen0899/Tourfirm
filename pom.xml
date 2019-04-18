@@ -84,7 +84,7 @@
         <jstl.version>1.2</jstl.version>
 
         <jdk.version>1.8</jdk.version>
-        <spring.version>4.3.0.RELEASE</spring.version>
+        <spring.version>5.1.5.RELEASE</spring.version>
         <hibernate.version>4.3.9.Final</hibernate.version>
         <hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
     </properties>
@@ -195,6 +195,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate.validator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.8</version>
         </dependency>
 
     </dependencies>
