@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class AbstractDAO<T, ID extends Serializable> implements GenericDAO<T, ID> {
+public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
 
     @Autowired
     protected SessionFactory sessionFactory;
@@ -30,7 +30,7 @@ public class AbstractDAO<T, ID extends Serializable> implements GenericDAO<T, ID
     @SuppressWarnings("unchecked")
     @Override
     public T findById(ID id) {
-        return (T) sessionFactory.getCurrentSession().get(entityClass, id);
+        return (T) sessionFactory.getCurrentSession().get(entityClass, (Serializable) id);
     }
 
     @SuppressWarnings("unchecked")
