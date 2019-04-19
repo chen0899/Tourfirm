@@ -18,13 +18,13 @@ public class CountryServiceImpl implements CountryService {
     private CountryDAO countryDAO;
 
     @Override
-    public Integer save(Country country) {
-        return countryDAO.save(country);
+    public void save(Country country) {
+        countryDAO.save(country);
     }
 
     @Override
     public List<Country> finaAll() {
-        return countryDAO.getAll();
+        return countryDAO.findAll();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Integer delete(Integer id) {
-        return countryDAO.delete(countryDAO.findById(id));
+    public void delete(Integer id) {
+        countryDAO.delete(countryDAO.findById(id));
     }
 }

@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface GenericDAO<T, ID> {
 
-    public T findById(ID id, Class<T> objectClass);
+    public T findById(ID id);
 
-    public List<T> findAll(Class<T> objectClass);
+    public List<T> findAll();
 
     public void save(T entity);
 

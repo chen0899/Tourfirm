@@ -1,5 +1,6 @@
 package com.tourfirm.dao.impl;
 
+import com.tourfirm.configuration.HibernateUtil;
 import com.tourfirm.dao.GenericDAO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +25,9 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
     @PersistenceContext
     protected EntityManager entityManager;
 
+
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
     public AbstractDAO() {
     }
 
@@ -34,16 +39,15 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public T findById(ID id, Class<T> objectClass) {
-        return (T) entityManager.createQuery("from "+objectClass.getName()+"where id = "+id).getSingleResult();
+    public T findById(ID id) {
+        return (T) entityManager.createQuery("from "+entityClass.getName()+"where id = "+id).getSingleResult();
     }
 
     @Override
-    public List<T> findAll(Class<T> objectClass) {
-        return entityManager.createQuery("from "+objectClass.getName()).getResultList();
-
+    @SuppressWarnings("unchecked")
+    public List<T> findAll(){
+        return (List<T>) entityManager.createQuery("from "+entityClass.getName()).getResultList();
     }
-
     @Override
     public void save(T entity) {
         entityManager.persist(entity);
