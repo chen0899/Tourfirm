@@ -1,5 +1,6 @@
 package com.tourfirm.dao.impl;
 
+import com.tourfirm.configuration.HibernateUtil;
 import com.tourfirm.dao.GenericDAO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -8,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,8 +22,14 @@ import java.util.List;
 @Transactional
 public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
 
-    @Autowired
-    protected SessionFactory sessionFactory;
+    @PersistenceContext
+    protected EntityManager entityManager;
+
+
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
+    public AbstractDAO() {
+    }
 
     private Class<T> entityClass;
 
@@ -30,32 +40,27 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
     @SuppressWarnings("unchecked")
     @Override
     public T findById(ID id) {
-        return (T) sessionFactory.getCurrentSession().get(entityClass, (Serializable) id);
+        return (T) entityManager.createQuery("from "+entityClass.getName()+"where id = "+id).getSingleResult();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public List<T> getAll() {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(entityClass);
-        criteria.addOrder(Order.asc("id"));
-        return criteria.list();
-    }
-
     @SuppressWarnings("unchecked")
+    public List<T> findAll(){
+        return (List<T>) entityManager.createQuery("from "+entityClass.getName()).getResultList();
+    }
     @Override
-    public ID save(T entity) {
-        return (ID) sessionFactory.getCurrentSession().save(entity);
+    public void save(T entity) {
+        entityManager.persist(entity);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public T update(T entity) {
-        return (T) sessionFactory.getCurrentSession().merge(entity);
+        return entityManager.merge(entity);
     }
 
     @Override
-    public Integer delete(T entity) {
-        sessionFactory.getCurrentSession().delete(entity);
-        return null;
+    public void delete(T entity) {
+        T mergeEnity = entityManager.merge(entity);
+        entityManager.remove(mergeEnity);
     }
 }
