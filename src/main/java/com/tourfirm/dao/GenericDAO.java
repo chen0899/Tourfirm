@@ -6,11 +6,11 @@ public interface GenericDAO<T, ID> {
 
     public T findById(ID id);
 
-    public List<T> getAll();
+    public List<T> findAll();
 
-    public ID save(T entity);
+    public void save(T entity);
 
     public T update(T entity);
 
-    public Integer delete(T entity);
+    public void delete(T entity);
 }
