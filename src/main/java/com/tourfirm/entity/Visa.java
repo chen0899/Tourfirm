@@ -23,7 +23,7 @@ public class Visa {
     @ManyToOne
     @JoinColumn(name = "id_country", referencedColumnName = "id")
     private Country country;
-    // @ManyToOne
-    //@JoinColumn(name = "id_client", referencedColumnName = "id")
-    //private Client client;
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id")
+    private Client client;
 }
