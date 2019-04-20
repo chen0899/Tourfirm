@@ -15,13 +15,13 @@ public class VisaServiceImpl implements VisaService {
     private VisaDAO visaDAO;
 
     @Override
-    public Integer save(Visa visa) {
-        return visaDAO.save(visa);
+    public void save(Visa visa) {
+         visaDAO.save(visa);
     }
 
     @Override
-    public List<Visa> finaAll() {
-        return visaDAO.getAll();
+    public List<Visa> findAll() {
+        return visaDAO.findAll();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class VisaServiceImpl implements VisaService {
     }
 
     @Override
-    public Integer delete(Integer id) {
-        return visaDAO.delete(visaDAO.findById(id));
+    public void delete(Integer id) {
+         visaDAO.delete(visaDAO.findById(id));
     }
 }

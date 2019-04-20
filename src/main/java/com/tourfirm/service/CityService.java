@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CityService {
 
-    Integer save(City city);
+    void save(City city);
 
-    List<City> finaAll();
+    List<City> findAll();
 
     City findById(Integer id);
 
-    Integer delete(Integer id);
+    void delete(Integer id);
 }
