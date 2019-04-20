@@ -1,16 +1,26 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: junior
-  Date: 18.04.19
-  Time: 15:22
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #49bda2;" >
+        <a class="navbar-brand" href="/tourfirm">Tour around the world</a>
+        <button class="navbar-toggler mb-0 h3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-</body>
-</html>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <a class="nav-link" href="room">Rooms</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="country">Countries</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="client">Clients</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="city">City</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

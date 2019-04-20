@@ -1,6 +1,8 @@
-package com.tourfirm.configuration;
+package com.tourfirm.config;
+
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -10,15 +12,14 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
+@ComponentScan(basePackages = "com.tourfirm.controller")
 public class TilesApplicationConfiguration implements WebMvcConfigurer {
     @Bean
     public TilesConfigurer tilesConfigurer() {
-        TilesConfigurer tilesConfigurer = new TilesConfigurer();
-        tilesConfigurer.setDefinitions(
-                new String[]{"/WEB-INF/views/tiles/tiles.xml"});
-        tilesConfigurer.setCheckRefresh(true);
-
-        return tilesConfigurer;
+        final TilesConfigurer configurer = new TilesConfigurer();
+        configurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
+        configurer.setCheckRefresh(true);
+        return configurer;
     }
 
     @Override
