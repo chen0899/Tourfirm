@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class VisaDAOImpl extends AbstractDAO<Visa, Integer> implements VisaDAO {
-    protected VisaDAOImpl(Class<Visa> entityClass) {
-        super(entityClass);
+    protected VisaDAOImpl() {
+        super(Visa.class);
     }
 }
