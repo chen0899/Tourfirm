@@ -14,13 +14,13 @@ public class CityServiceImpl implements CityService {
     private CityDAO cityDAO;
 
     @Override
-    public Integer save(City city) {
-        return cityDAO.save(city);
+    public void save(City city) {
+         cityDAO.save(city);
     }
 
     @Override
-    public List<City> finaAll() {
-        return cityDAO.getAll();
+    public List<City> findAll() {
+        return cityDAO.findAll();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public Integer delete(Integer id) {
-        return cityDAO.delete(cityDAO.findById(id));
+    public void delete(Integer id) {
+         cityDAO.delete(cityDAO.findById(id));
     }
 }

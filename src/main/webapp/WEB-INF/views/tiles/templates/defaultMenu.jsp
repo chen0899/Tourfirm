@@ -1,16 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: junior
-  Date: 18.04.19
-  Time: 15:24
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<nav class="nav">
+    <a href="${pageContext.request.contextPath}/"></a>
+    <ul id="menu">
+        <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/springmvc">SpringMVC</a></li>
+        <li><a href="${pageContext.request.contextPath}/apachetiles">ApacheTiles</a></li>
+    </ul>
+</nav>

@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface VisaService {
 
-    Integer save(Visa visa);
+    void save(Visa visa);
 
-    List<Visa> finaAll();
+    List<Visa> findAll();
 
     Visa findById(Integer id);
 
-    Integer delete(Integer id);
+    void delete(Integer id);
 }
