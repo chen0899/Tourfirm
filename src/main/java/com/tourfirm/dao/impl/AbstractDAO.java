@@ -1,18 +1,11 @@
 package com.tourfirm.dao.impl;
 
-import com.tourfirm.configuration.HibernateUtil;
 import com.tourfirm.dao.GenericDAO;
-import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +18,6 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
     @PersistenceContext
     protected EntityManager entityManager;
 
-
-    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     public AbstractDAO() {
     }
