@@ -17,6 +17,6 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "contry_name")
+    @Column(name = "country_name")
     private String countryName;
 }
