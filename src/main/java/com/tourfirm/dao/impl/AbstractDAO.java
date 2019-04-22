@@ -18,7 +18,6 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
     @PersistenceContext
     protected EntityManager entityManager;
 
-
     public AbstractDAO() {
     }
 

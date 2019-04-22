@@ -10,12 +10,13 @@ import javax.persistence.*;
  */
 @Entity
 @Data
+@Table(name = "country")
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "contry_name")
+    @Column(name = "country_name")
     private String countryName;
 }
