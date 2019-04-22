@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  * Created by Illia Chenchak
@@ -24,6 +25,12 @@ public class CountryDAOImpl extends AbstractDAO<Country, Integer> implements Cou
 
     @Override
     public Country findCountryByName(String countryName) {
-        return  (Country) entityManager.createQuery("from "+Country.class+" where country_name = "+countryName).getSingleResult();
+        final char dm = (char) 34;
+
+        Query query = entityManager.createNativeQuery("SELECT country.id from country where country.country_name = "+ dm + countryName + dm + ";");
+        Integer id= (Integer) query.getSingleResult();
+        Country country = findById(id);
+        System.out.println(country);
+        return country;
     }
 }

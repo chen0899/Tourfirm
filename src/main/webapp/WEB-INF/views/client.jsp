@@ -13,7 +13,7 @@
         <div class="form-group mt-3 ">
             <div class="form-row">
                 <div class="form-group">
-                    <form method="post" action="save-country">
+                    <form method="post" action="save-client">
                         <input  type="text" name="firstName" placeholder="Firstname">
                         <input  type="text" name="lastName" placeholder="LastName">
                         <input  type="email" name="email" placeholder="E-mail">
@@ -47,12 +47,12 @@
                     <td>${client.getLastName()}</td>
                     <td>${client.getEmail()}</td>
                     <td>${client.getPhone()}</td>
-                    <td>${client.country.getCountryName()}</td>
+                    <td>${client.getCountry().getCountryName()}</td>
                     <td class="align-middle">
                         <form method="post">
                             <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
-                        <form method="post" action="delete-country/${country.id}">
+                        <form method="post" action="delete-client/${client.id}">
                             <button type="submit"  class ="btn btn-outline-danger" class="ml-3" >Delete</button>
                         </form>
                     </td>

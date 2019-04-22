@@ -27,7 +27,7 @@ public class Client {
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "id_country", referencedColumnName = "id")
     private Country country;
 }
