@@ -4,21 +4,18 @@
 <body>
 <div class="container mt-5">
 
-    <a class="btn btn-info" data-toggle="collapse" href="#roomadd" role="button" aria-expanded="false"
+    <a class="btn btn-info" data-toggle="collapse" href="#countryadd" role="button" aria-expanded="false"
        aria-controls="collapseAdd">
-        Create Room
+        Create Country
     </a>
 
-    <div class="collapse" id="roomadd">
+    <div class="collapse" id="countryadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
                 <div class="form-group">
-                    <form method="post" action="save-room">
+                    <form method="post" action="save-country">
                         <tr>
-                            <input type="text" name="roomNumber" placeholder="Number of room">
-                            <input type="text" name="countPlace" placeholder="Count places">
-                            <input type="text" name="hotelName" placeholder="Hotel">
-                            <input type="text" name="roomType" placeholder="Room type">
+                            <input type="text" name="countryName" placeholder="Country name">
                         </tr>
                         <button type="submit" class="btn btn-info ml-2">ADD</button>
                     </form>
