@@ -11,8 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class CountryDAOImpl extends AbstractDAO<Country, Integer> implements CountryDAO {
-
-    public CountryDAOImpl(Class<Country> entityClass) {
-        super(entityClass);
+    public CountryDAOImpl() {
+        super(Country.class);
     }
 }

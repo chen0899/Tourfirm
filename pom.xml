@@ -80,7 +80,11 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <!-- Spring ORM dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -105,21 +109,21 @@
             <version>${hibernate.version}</version>
         </dependency>
         <!--        TILES-->
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-core</artifactId>
-            <version>${apachetiles.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-api</artifactId>
-            <version>${apachetiles.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-servlet</artifactId>
-            <version>${apachetiles.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.tiles</groupId>-->
+<!--            <artifactId>tiles-core</artifactId>-->
+<!--            <version>${apachetiles.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.tiles</groupId>-->
+<!--            <artifactId>tiles-api</artifactId>-->
+<!--            <version>${apachetiles.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.tiles</groupId>-->
+<!--            <artifactId>tiles-servlet</artifactId>-->
+<!--            <version>${apachetiles.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
