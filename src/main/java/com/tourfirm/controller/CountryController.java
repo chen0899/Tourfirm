@@ -6,10 +6,9 @@ import com.tourfirm.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by Illia Chenchak
@@ -23,14 +22,22 @@ public class CountryController {
 
     @GetMapping("/country")
     public String countryList(Model model) {
-        model.addAttribute("countryList",countryService.finaAll());
+        model.addAttribute("countryList",countryService.findAll());
         return "country";
     }
 
     @PostMapping("/save-country")
     public String saveCountry(@ModelAttribute("dispatcher") Country country, Model model) {
         countryService.save(country);
-        model.addAttribute("countryList",countryService.finaAll());
+        model.addAttribute("countryList",countryService.findAll());
         return "country";
+    }
+
+    @PostMapping("/delete-country/{id}")
+    public String deleteCountry(@PathVariable("id") String id1,Model model) {
+        System.out.println(id1);
+        Integer id = Integer.valueOf(id1);
+        countryService.delete(id);
+        return "redirect:/country";
     }
 }

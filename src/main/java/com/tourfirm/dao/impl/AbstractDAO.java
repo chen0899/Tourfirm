@@ -30,7 +30,7 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
     @SuppressWarnings("unchecked")
     @Override
     public T findById(ID id) {
-        return (T) entityManager.createQuery("from "+entityClass.getName()+"where id = "+id).getSingleResult();
+        return (T) entityManager.createQuery("from "+entityClass.getName()+" where id = "+id).getSingleResult();
     }
 
     @Override

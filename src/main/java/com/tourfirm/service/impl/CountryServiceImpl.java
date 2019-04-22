@@ -23,7 +23,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public List<Country> finaAll() {
+    public List<Country> findAll() {
         return countryDAO.findAll();
     }
 
