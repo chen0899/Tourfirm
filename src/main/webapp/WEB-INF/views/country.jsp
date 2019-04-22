@@ -28,19 +28,22 @@
         <table class="table table-bordered text-center">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Country name</th>
+                <th style="width: 20%">Id</th>
+                <th >Country name</th>
+                <th style="width: 30%">Action</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="country" items="${countryList}" varStatus="rowCounter">
                 <tr>
-                    <td>${country.getId()}</td>
-                    <td>${country.countryName}</td>
+                    <td class="align-middle">${country.getId()}</td>
+                    <td class="align-middle">${country.countryName}</td>
                     <td class="align-middle">
-                        <a href="/country/${country.id}" class="btn btn-outline-success">Edit</a>
+                        <form method="post">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
+                        </form>
                         <form method="post" action="delete-country/${country.id}">
-                            <button type="submit"  class="ml-3" >Delete</button>
+                            <button type="submit"  class ="btn btn-outline-danger" class="ml-3" >Delete</button>
                         </form>
                     </td>
                 </tr>

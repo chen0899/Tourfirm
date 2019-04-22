@@ -34,9 +34,7 @@ public class CountryController {
     }
 
     @PostMapping("/delete-country/{id}")
-    public String deleteCountry(@PathVariable("id") String id1,Model model) {
-        System.out.println(id1);
-        Integer id = Integer.valueOf(id1);
+    public String deleteCountry(@PathVariable("id") Integer id,Model model) {
         countryService.delete(id);
         return "redirect:/country";
     }
