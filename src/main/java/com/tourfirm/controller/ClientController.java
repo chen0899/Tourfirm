@@ -43,4 +43,10 @@ public class ClientController {
         clientService.save(client);
         return "redirect:/client";
     }
+
+    @PostMapping("/delete-client/{id}")
+    public String deleteCountry(@PathVariable("id") Integer id,Model model) {
+        clientService.delete(id);
+        return "redirect:/client";
+    }
 }
