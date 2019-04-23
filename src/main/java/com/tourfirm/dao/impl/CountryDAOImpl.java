@@ -13,7 +13,6 @@ import javax.persistence.Query;
  * Created by Illia Chenchak
  */
 @Repository
-@Transactional
 public class CountryDAOImpl extends AbstractDAO<Country, Integer> implements CountryDAO {
     public CountryDAOImpl() {
         super(Country.class);
