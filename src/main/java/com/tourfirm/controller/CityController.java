@@ -41,7 +41,7 @@ public class CityController {
         return "city";
     }
 
-    @RequestMapping("/city/delete/{cityId}")
+    @RequestMapping("/delete-city/{cityId}")
     public String deleteCity(@PathVariable("cityId") Integer cityId) {
 
         cityService.delete(cityId);
