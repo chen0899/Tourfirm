@@ -37,4 +37,18 @@ public class CountryController {
         countryService.delete(id);
         return "redirect:/country";
     }
+
+    @PostMapping("update-form-country/{id}")
+    public String countryEditorFrom(@PathVariable("id") Integer id, Model model) {
+        Country country = countryService.findById(id);
+        model.addAttribute("country", country);
+        return "country-editor";
+    }
+
+    @PostMapping("update-country")
+    public String roomUpdate(@RequestParam Integer id, @RequestParam String countryName) {
+        roomService.update(id, roomNumber, numberOfPlaces, hotel, roomType);
+        countryService.
+        return "redirect:/room";
+    }
 }

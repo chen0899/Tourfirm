@@ -41,4 +41,16 @@ public class CountryServiceImpl implements CountryService {
     public Country findCountryByName(String countryName) {
         return countryDAO.findCountryByName(countryName);
     }
+
+    @Override
+    public void update(Integer id, String countryName) {
+        Country country = countryDAO.findById(id);
+        Country newCountry = new Country();
+
+        newCountry.setId(id);
+        newCountry.setCountryName(countryName);
+
+        countryDAO.update(newCountry);
+
+    }
 }
