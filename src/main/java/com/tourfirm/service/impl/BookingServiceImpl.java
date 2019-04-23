@@ -41,5 +41,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void update(Integer id, Booking booking) {
+        Booking newBooking = booking;
+        newBooking.setId(id);
+        bookingDAO.update(newBooking);
     }
 }

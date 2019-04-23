@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by Illia Chenchak
@@ -28,27 +28,45 @@ public class BookingController {
     private RoomService roomService;
 
     @GetMapping("/booking")
-    public String clientList(Model model) {
-        model.addAttribute("bookingList",bookingService.findAll());
+    public String bookinList(Model model) {
+        model.addAttribute("bookingList", bookingService.findAll());
         return "booking";
     }
 
     @PostMapping("/save-booking")
-    public String saveCountry(@RequestParam Date startDate, @RequestParam Date endDate,
-                              @RequestParam Integer cleintId, @RequestParam Integer roomId) {
+    public String saveBooking(@RequestParam Date startDate, @RequestParam Date endDate,
+                              @RequestParam String clientId, @RequestParam String roomId) {
         Booking booking = new Booking();
-        booking.setStartDate((java.sql.Date) startDate);
-        booking.setEndDate((java.sql.Date) startDate);
-        booking.setClient(clientService.findById(cleintId));
-        booking.setRoom(roomService.findById(roomId));
+        booking.setStartDate(startDate);
+        booking.setEndDate((endDate));
+        booking.setClient(clientService.findById(Integer.parseInt(clientId)));
+        booking.setRoom(roomService.findById(Integer.parseInt(roomId)));
         bookingService.save(booking);
         return "redirect:/booking";
     }
 
     @PostMapping("/delete-booking/{id}")
-    public String deleteCountry(@PathVariable("id") Integer id, Model model) {
+    public String deleteBooking(@PathVariable("id") Integer id) {
         bookingService.delete(id);
         return "redirect:/booking";
     }
 
+    @PostMapping("update-form-booking/{id}")
+    public String bookingFormUpdate(@PathVariable("id") Integer id, Model model) {
+        Booking booking = bookingService.findById(id);
+        model.addAttribute("booking", booking);
+        return "booking-editor";
+    }
+
+    @PostMapping("update-booking")
+    public String bookingUpdate(@RequestParam Integer id, @RequestParam Date startDate, @RequestParam Date endDate,
+                                @RequestParam String clientId, @RequestParam String roomId) {
+        Booking booking = new Booking();
+        booking.setStartDate(startDate);
+        booking.setEndDate(endDate);
+        booking.setClient(clientService.findById(Integer.parseInt(clientId)));
+        booking.setRoom(roomService.findById(Integer.parseInt(roomId)));
+        bookingService.update(id, booking);
+        return "redirect:/booking";
+    }
 }

@@ -74,5 +74,10 @@
         <put-attribute name="body" value="/WEB-INF/views/booking.jsp"/>
     </definition>
 
+    <definition name="booking-editor" extends="template-def">
+        <put-attribute name="title" value="Edit booking"/>
+        <put-attribute name="body" value="/WEB-INF/views/bookingEditor.jsp"/>
+    </definition>
+
 </tiles-definitions>
 

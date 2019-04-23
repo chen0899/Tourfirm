@@ -16,11 +16,11 @@
                     <form method="post" action="/save-booking">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Start date</label>
-                            <input type="text" class="form-control col-sm-4" name="startDate"/>
+                            <input type="date" class="form-control col-sm-4" name="startDate"/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">End date</label>
-                            <input type="text" class="form-control col-sm-4" name="endDate"/>
+                            <input type="date" class="form-control col-sm-4" name="endDate"/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Client id</label>
@@ -65,7 +65,7 @@
                     <td class="align-middle">
                         <div class="row">
                             <div class="col align-middle">
-                                <form method="post" action="delete/${booking.id}">
+                                <form method="post" action="delete-booking/${booking.id}">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                 </form>
                             </div>
