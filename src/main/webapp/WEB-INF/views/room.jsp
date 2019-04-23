@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <body>
 <div class="container mt-5">
@@ -10,19 +10,34 @@
         Create Room
     </a>
 
-    <div class="collapse ml-3" id="roomadd">
+    <div class="collapse col-ml-3" id="roomadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
-                <div class="form-group">
-                    <form:form action="room" modelAttribute="dispatcher" >
-                        <span>
-                            <input type="text" name="roomNumber" placeholder="Number of room">
-                            <input type="text" name="countPlace" placeholder="Count places">
-                            <input type="text" name="hotelName" placeholder="Hotel">
-                            <input type="text" name="roomType" placeholder="Room type">
-                        <input type="submit" class="btn btn-outline-info ml-2" value="ADD"/>
-                        </span>
-                    </form:form>
+                <div class="form-group" style="width: 80%; margin-left: 2%">
+                    <form method="post" action="/room-save">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Room number</label>
+                            <input type="text" class="form-control col-sm-4" name="roomNumber"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Count of places</label>
+                            <input type="text" class="form-control col-sm-4" name="numberOfPlaces"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Hotel name</label>
+                            <input type="text" class="form-control col-sm-4" name="hotel"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Room type</label>
+                            <input type="text" class="form-control col-sm-4" name="roomType"/>
+                        </div>
+                        <div class="form-group row text-right">
+                            <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
+                                    name="update">
+                                Add
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -37,7 +52,8 @@
                 <th style="width: 14%">Count places</th>
                 <th style="width: 20%">Hotel</th>
                 <th style="width: 20%">Room type</th>
-                <th style="width: 20%">Action</th>
+                <th style="width: 20%" colspan="2">Action</th>
+
             </tr>
             </thead>
             <tbody>
@@ -49,8 +65,14 @@
                     <td class="align-middle">${room.hotel.getHotelName()}</td>
                     <td class="align-middle">${room.roomType.getType()}</td>
                     <td class="align-middle">
-                        <a href="/room/${room.id}" class="btn btn-outline-success">Edit</a>
-                        <a href="/room/delete/${room.id}" class="btn btn-outline-danger" class="ml-3">Delete</a>
+                        <form method="post" action="delete/${room.id}">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                    <td class="align-middle">
+                        <form method="post" action="update-form/${room.id}">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

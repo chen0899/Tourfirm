@@ -10,9 +10,11 @@ public interface RoomService {
 
     List<Room> finaAll();
 
-    void save(Room room);
+    List<Room> findAllByHotelId(Long hotelId);
 
-    void update(Room room);
+    void save(Integer roomNumber, Integer numberOfPlaces, String hotel, String roomType);
+
+    void update(Integer id, Integer roomNumber, Integer numberOfPlaces, String hotel, String roomType);
 
     void delete(Room room);
 }

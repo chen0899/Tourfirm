@@ -13,13 +13,10 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
+public class AbstractDAO<T, ID> implements GenericDAO<T, ID> {
 
     @PersistenceContext
     protected EntityManager entityManager;
-
-
-//    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     public AbstractDAO() {
     }
@@ -33,14 +30,15 @@ public class AbstractDAO<T, ID > implements GenericDAO<T, ID> {
     @SuppressWarnings("unchecked")
     @Override
     public T findById(ID id) {
-        return (T) entityManager.createQuery("from "+entityClass.getName()+"where id = "+id).getSingleResult();
+        return (T) entityManager.createQuery("from " + entityClass.getName() + " where id = " + id).getSingleResult();
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<T> findAll(){
-        return (List<T>) entityManager.createQuery("from "+entityClass.getName()).getResultList();
+    public List<T> findAll() {
+        return (List<T>) entityManager.createQuery("from " + entityClass.getName()).getResultList();
     }
+
     @Override
     public void save(T entity) {
         entityManager.persist(entity);

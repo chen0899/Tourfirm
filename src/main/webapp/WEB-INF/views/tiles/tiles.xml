@@ -23,4 +23,20 @@
         <put-attribute name="body" value="/WEB-INF/views/room.jsp"/>
     </definition>
 
+    <definition name="room-editor" extends="template-def">
+        <put-attribute name="title" value="Room editor"/>
+        <put-attribute name="body" value="/WEB-INF/views/roomEditor.jsp"/>
+    </definition>
+
+    <definition name="hotel" extends="template-def">
+        <put-attribute name="title" value="Hotels"/>
+        <put-attribute name="body" value="/WEB-INF/views/hotel.jsp"/>
+    </definition>
+
+    <definition name="hotel-editor" extends="template-def">
+        <put-attribute name="title" value="Hotel editor"/>
+        <put-attribute name="body" value="/WEB-INF/views/hotelEditor.jsp"/>
+    </definition>
+
+
 </tiles-definitions>
