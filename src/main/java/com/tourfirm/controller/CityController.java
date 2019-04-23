@@ -58,11 +58,14 @@ public class CityController {
     }
 
     @PostMapping("update-city")
-    public String cityUpdate(@RequestParam Integer id, @RequestParam String firstName,
-                               @RequestParam String lastName, @RequestParam String email,
-                               @RequestParam String phone,
+    public String cityUpdate(@RequestParam Integer id, @RequestParam String cityName,
                                @RequestParam String countryName) {
-        clientService.update(id,client);
-        return "redirect:/client";
+
+        City city = new City();
+        city.setId(id);
+        city.setCityName(cityName);
+        city.setCountry(countryService.findCountryByName(countryName));
+        cityService.update(id,city);
+        return "redirect:/city";
     }
 }

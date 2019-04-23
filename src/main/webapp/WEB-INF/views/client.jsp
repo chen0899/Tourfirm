@@ -74,14 +74,18 @@
                     <td>${client.getPhone()}</td>
                     <td>${client.getCountry().getCountryName()}</td>
                     <td class="align-middle">
-                        <form method="post" action="delete-client/${client.id}">
-                            <button type="submit"  class ="btn btn-outline-danger" class="ml-3" >Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="update-form-client/${client.id}">
-                            <button type="submit" class="btn btn-outline-success">Edit</button>
-                        </form>
+                        <div class="row">
+                            <div class="col align-middle">
+                                <form method="post" action="delete/${country.id}">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                            <div class="col align-middle">
+                                <form method="post" action="/update-country/${country.id}">
+                                    <button type="submit" class="btn btn-outline-success">Edit</button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>

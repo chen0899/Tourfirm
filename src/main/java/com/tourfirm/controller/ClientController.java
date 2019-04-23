@@ -56,6 +56,7 @@ public class ClientController {
     public String clientFormUpdate(@PathVariable("id") Integer id, Model model) {
         Client client = clientService.findById(id);
         model.addAttribute("client", client);
+        model.addAttribute("countryNameList",countryService.findAll());
         return "client-editor";
     }
 
