@@ -79,5 +79,15 @@
         <put-attribute name="body" value="/WEB-INF/views/bookingEditor.jsp"/>
     </definition>
 
+    <definition name="tasks" extends="template-def">
+        <put-attribute name="title" value="Task"/>
+        <put-attribute name="body" value="/WEB-INF/views/tasks.jsp"/>
+    </definition>
+
+    <definition name="task1" extends="template-def">
+        <put-attribute name="title" value="Task1"/>
+        <put-attribute name="body" value="/WEB-INF/views/task1.jsp"/>
+    </definition>
+
 </tiles-definitions>
 
