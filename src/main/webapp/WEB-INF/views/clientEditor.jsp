@@ -6,11 +6,11 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Firstname</label>
-            <input type="text" class="form-control col-sm-4" name="firstname" value="${client.firstname}"/>
+            <input type="text" class="form-control col-sm-4" name="firstName" value="${client.firstName}"/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Lastname</label>
-            <input type="text" class="form-control col-sm-4" name="lastname" value="${client.lastname}"/>
+            <input type="text" class="form-control col-sm-4" name="lastName" value="${client.lastName}"/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Email</label>

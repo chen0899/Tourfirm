@@ -53,5 +53,10 @@
         <put-attribute name="body" value="/WEB-INF/views/client.jsp"/>
     </definition>
 
+    <definition name="client-editor" extends="template-def">
+        <put-attribute name="title" value="Edit client"/>
+        <put-attribute name="body" value="/WEB-INF/views/clientEditor.jsp"/>
+    </definition>
+
 </tiles-definitions>
 

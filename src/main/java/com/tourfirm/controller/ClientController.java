@@ -70,7 +70,7 @@ public class ClientController {
         client.setEmail(email);
         client.setPhone(phone);
         client.setCountry(countryService.findCountryByName(countryName));
-        clientService.
+        clientService.update(id,client);
         return "redirect:/client";
     }
 }
