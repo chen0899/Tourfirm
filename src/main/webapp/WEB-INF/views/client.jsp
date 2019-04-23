@@ -9,17 +9,37 @@
         Create Client
     </a>
 
-    <div class="collapse ml-3" id="clientadd">
+    <div class="collapse col-ml-3" id="clientadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
-                <div class="form-group">
-                    <form method="post" action="save-client">
-                        <input  type="text" name="firstName" placeholder="Firstname">
-                        <input  type="text" name="lastName" placeholder="LastName">
-                        <input  type="email" name="email" placeholder="E-mail">
-                        <input  type="text" name="phone" placeholder="Phone">
-                        <input  type="text" name="countryName" placeholder="Country from">
-                        <button type="submit" class="btn btn-info ml-2">ADD</button>
+                <div class="form-group" style="width: 80%; margin-left: 2%">
+                    <form method="post" action="/save-client">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Firstname</label>
+                            <input type="text" class="form-control col-sm-4" name="firstName"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Lastname</label>
+                            <input type="text" class="form-control col-sm-4" name="lastName"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Email</label>
+                            <input type="email" class="form-control col-sm-4" name="email"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Phone</label>
+                            <input type="text" class="form-control col-sm-4" name="phone"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Country from</label>
+                            <input type="text" class="form-control col-sm-4" name="countryName"/>
+                        </div>
+                        <div class="form-group row text-right">
+                            <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
+                                    name="update">
+                                Add
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
