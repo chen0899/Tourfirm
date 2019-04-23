@@ -31,16 +31,16 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     public void save(RoomType roomType) {
-
+        roomTypeDAO.save(roomType);
     }
 
     @Override
     public void update(RoomType roomType) {
-
+        roomTypeDAO.update(roomType);
     }
 
     @Override
     public void delete(RoomType roomType) {
-
+        roomTypeDAO.delete(roomType);
     }
 }

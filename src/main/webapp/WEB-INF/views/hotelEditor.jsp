@@ -1,5 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container mt-5">
-    <form action="" method="post">
+    <form  method="post" action="/update-hotel">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Hotel id</label>
             <input type="text" class="form-control col-sm-4" name="id" value="${hotel.id}" readonly/>
@@ -18,7 +19,12 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">City</label>
-            <input type="text" class="form-control col-sm-4" name="city" value="${hotel.city.cityName}"/>
+            <select name="city" class="form-control col-sm-4">
+                <option hidden>${hotel.city.getCityName()}</option>
+                <c:forEach var="city" items="${cityList}">
+                    <option value="${city.id}">${city.getCityName()}</option>
+                </c:forEach>
+            </select>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Address</label>

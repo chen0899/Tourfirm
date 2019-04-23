@@ -12,9 +12,11 @@ public interface HotelService {
 
     List<Hotel> finaAll();
 
-    void save(Hotel roomType);
+    List<Hotel> findAllByCity(String city);
 
-    void update(Hotel roomType);
+    void save(Hotel hotel);
 
-    void delete(Hotel roomType);
+    void update(Hotel hotel);
+
+    void delete(Hotel hotel);
 }
