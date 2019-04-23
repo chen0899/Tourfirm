@@ -65,7 +65,7 @@
                             </form>
                         </div>
                         <div class="col align-middle">
-                            <form method="post" action="/update-city/${city.id}">
+                            <form method="post" action="/update-form-city/${city.id}">
                                 <button type="submit" class="btn btn-outline-success">Edit</button>
                             </form>
                         </div>

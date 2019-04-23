@@ -76,12 +76,12 @@
                     <td class="align-middle">
                         <div class="row">
                             <div class="col align-middle">
-                                <form method="post" action="delete/${country.id}">
+                                <form method="post" action="delete/${client.id}">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                 </form>
                             </div>
                             <div class="col align-middle">
-                                <form method="post" action="/update-country/${country.id}">
+                                <form method="post" action="/update-form-client/${client.id}">
                                     <button type="submit" class="btn btn-outline-success">Edit</button>
                                 </form>
                             </div>

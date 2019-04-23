@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container mt-5">
     <form action="/update-city" method="post">
         <div class="form-group row">
@@ -9,7 +10,7 @@
             <input type="text" class="form-control col-sm-4" name="cityName" value="${city.cityName}"/>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Country</label>
+            <label class="col-sm-2 col-form-label">Country from</label>
             <input type="text" class="form-control col-sm-4" name="countryName" value="${city.getCountry().getCountryName()}"/>
         </div>
         <div class="form-group row text-right">

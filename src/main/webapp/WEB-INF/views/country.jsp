@@ -52,7 +52,7 @@
                                 </form>
                             </div>
                             <div class="col align-middle">
-                                <form method="post" action="/update-country/${country.id}">
+                                <form method="post" action="/update-form-country/${country.id}">
                                     <button type="submit" class="btn btn-outline-success">Edit</button>
                                 </form>
                             </div>
