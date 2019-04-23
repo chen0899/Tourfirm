@@ -59,7 +59,7 @@
                 <tr>
                     <td>${booking.getId()}</td>
                     <td>${booking.getStartDate()}</td>
-                    <td>${booking.getEndDate()()}</td>
+                    <td>${booking.getEndDate()}</td>
                     <td>${booking.getClient().getId()}</td>
                     <td>${booking.getRoom().getId()}</td>
                     <td class="align-middle">
