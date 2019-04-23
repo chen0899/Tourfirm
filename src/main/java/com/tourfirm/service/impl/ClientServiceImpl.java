@@ -36,4 +36,11 @@ public class ClientServiceImpl implements ClientService {
     public void delete(Integer id) {
         clientDAO.delete(clientDAO.findById(id));
     }
+
+    @Override
+    public void update(Integer id, Client client) {
+        Client newClient = client;
+        newClient.setId(id);
+        clientDAO.update(newClient);
+    }
 }
