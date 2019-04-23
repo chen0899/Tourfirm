@@ -49,15 +49,10 @@ public class VisaServiceImpl implements VisaService {
         Visa visa = new Visa();
         visa.setStartDate(startDate);
         visa.setEndDate(endDate);
-        visa.setClient(getByClientName(client));
+        visa.setClient(visaDAO.findClientByName(client));
         visa.setCountry(countryDAO.findCountryByName(country));
         return visa;
     }
-
-    private Client getByClientName(String lastName) {
-        return visaDAO.findClientByName(lastName);
-    }
-
 
     @Override
     public void update(Integer id, Date startDate, Date endDate, String client, String country) {

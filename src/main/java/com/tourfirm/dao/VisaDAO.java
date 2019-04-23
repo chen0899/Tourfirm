@@ -5,4 +5,5 @@ import com.tourfirm.entity.Visa;
 
 public interface VisaDAO extends GenericDAO<Visa,Integer> {
     public Client findClientByName(String lastName);
+
 }

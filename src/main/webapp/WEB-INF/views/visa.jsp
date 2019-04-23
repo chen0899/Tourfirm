@@ -60,28 +60,33 @@
             <tr>
                 <th>Id</th>
                 <th>Start date</th>
-                <th>End Date</th>
+                <th>End date</th>
                 <th>Country</th>
                 <th>Client</th>
+                <th  style="width: 30%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="visa" items="${visaList}" varStatus="rowCounter">
                 <tr>
-                    <td>${visa.getId()}</td>
-                    <td>${visa.getStartDate()}</td>
-                    <td>${visa.getEndDate()}</td>
-                    <td>${visa.getCountry().getCountryName()}</td>
-                    <td>${visa.getClient().getFirstName()} ${visa.getClient().getLastName()} </td>
+                    <td class="align-middle">${visa.getId()}</td>
+                    <td class="align-middle">${visa.getStartDate()}</td>
+                    <td class="align-middle">${visa.getEndDate()}</td>
+                    <td class="align-middle">${visa.getCountry().getCountryName()}</td>
+                    <td class="align-middle">${visa.getClient().getFirstName()} ${visa.getClient().getLastName()} </td>
                     <td class="align-middle">
-                        <form method="post" action="delete-visa/${visa.id}">
-                            <button type="submit"  class ="btn btn-outline-danger" class="ml-3" >Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="update-visa/${visa.id}">
-                            <button type="submit" class="btn btn-outline-success">Edit</button>
-                        </form>
+                        <div class="row">
+                            <div class="col align-middle">
+                                <form method="post" action="delete-visa/${visa.id}">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                            <div class="col align-middle">
+                                <form method="post" action="/update-visa/${visa.id}">
+                                    <button type="submit" class="btn btn-outline-success">Edit</button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
