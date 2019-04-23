@@ -13,10 +13,10 @@
         <div class="form-group mt-3 ">
             <div class="form-row">
                 <div class="form-group" style="width: 80%; margin-left: 2%">
-                    <form method="post" action="/country-save">
+                    <form method="post" action="/save-country">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country name</label>
-                            <input type="text" class="form-control col-sm-4" name="roomNumber"/>
+                            <input type="text" class="form-control col-sm-4" name="countryName"/>
                         </div>
                         <div class="form-group row text-right">
                             <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
