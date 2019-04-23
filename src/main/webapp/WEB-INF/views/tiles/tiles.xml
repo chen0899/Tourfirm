@@ -69,5 +69,10 @@
         <put-attribute name="body" value="/WEB-INF/views/clientEditor.jsp"/>
     </definition>
 
+    <definition name="booking" extends="template-def">
+        <put-attribute name="title" value="Booking"/>
+        <put-attribute name="body" value="/WEB-INF/views/booking.jsp"/>
+    </definition>
+
 </tiles-definitions>
 
