@@ -4,10 +4,12 @@ import com.tourfirm.dao.RoomDAO;
 import com.tourfirm.entity.Room;
 import com.tourfirm.service.RoomService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class RoomServiceImpl implements RoomService {
 
     private final RoomDAO roomDAO;

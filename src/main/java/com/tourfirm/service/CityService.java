@@ -13,4 +13,6 @@ public interface CityService {
     City findById(Integer id);
 
     void delete(Integer id);
+
+    void update(Integer id, City city);
 }
