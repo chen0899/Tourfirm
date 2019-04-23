@@ -32,7 +32,12 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country from</label>
-                            <input type="text" class="form-control col-sm-4" name="countryName"/>
+                            <select name="countryName" class="form-control col-sm-4">
+                                <option hidden >Select</option>
+                                <c:forEach  var="countryName" items="${countryNameList}" >
+                                    <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group row text-right">
                             <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
@@ -56,7 +61,7 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Country from</th>
-                <th style="width: 30%">Action</th>
+                <th style="width: 30%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -74,7 +79,7 @@
                         </form>
                     </td>
                     <td>
-                        <form m ethod="post" action="update-form-client/${client.id}">
+                        <form method="post" action="update-form-client/${client.id}">
                             <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
                     </td>

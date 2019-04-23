@@ -26,6 +26,7 @@ public class ClientController {
     @GetMapping("/client")
     public String clientList(Model model) {
         model.addAttribute("clientList",clientService.findAll());
+        model.addAttribute("countryNameList",countryService.findAll());
         return "client";
     }
 

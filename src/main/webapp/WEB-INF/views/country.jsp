@@ -36,7 +36,7 @@
             <tr>
                 <th style="width: 20%">Id</th>
                 <th >Country name</th>
-                <th style="width: 30%">Action</th>
+                <th style="width: 30%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>

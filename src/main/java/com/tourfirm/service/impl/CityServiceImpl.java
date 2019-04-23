@@ -32,4 +32,11 @@ public class CityServiceImpl implements CityService {
     public void delete(Integer id) {
          cityDAO.delete(cityDAO.findById(id));
     }
+
+    @Override
+    public void update(Integer id, City city) {
+       City newCity = city;
+        newCity.setId(id);
+        cityDAO.update(newCity);
+    }
 }

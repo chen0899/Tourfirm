@@ -26,6 +26,7 @@ public class CityController {
         map.put("city", new City());
         map.put("cityList", cityService.findAll());
         map.put("countryList", countryService.findAll());
+        map.put("countryNameList",countryService.findAll());
         System.out.println(cityService.findAll().get(0).getCityName());
 
         return "city";
@@ -49,5 +50,19 @@ public class CityController {
         return "redirect:/city";
     }
 
+    @PostMapping("update-form-city/{id}")
+    public String cityFromUpdate(@PathVariable("id") Integer id, Model model) {
+        City city = cityService.findById(id);
+        model.addAttribute("city", city);
+        return "city-editor";
+    }
 
+    @PostMapping("update-city")
+    public String cityUpdate(@RequestParam Integer id, @RequestParam String firstName,
+                               @RequestParam String lastName, @RequestParam String email,
+                               @RequestParam String phone,
+                               @RequestParam String countryName) {
+        clientService.update(id,client);
+        return "redirect:/client";
+    }
 }
