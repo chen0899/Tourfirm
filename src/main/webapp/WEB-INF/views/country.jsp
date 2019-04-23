@@ -39,11 +39,13 @@
                     <td class="align-middle">${country.getId()}</td>
                     <td class="align-middle">${country.countryName}</td>
                     <td class="align-middle">
-                        <form method="post">
-                            <button type="submit" class="btn btn-outline-success">Edit</button>
-                        </form>
                         <form method="post" action="delete-country/${country.id}">
                             <button type="submit"  class ="btn btn-outline-danger" class="ml-3" >Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="update-form-country/${country.id}">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
                     </td>
                 </tr>
