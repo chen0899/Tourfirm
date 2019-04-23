@@ -14,7 +14,7 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Hotel name</label>
-            <input type="text" class="form-control col-sm-4" name="hotel" value="${room.hotel.hotelName}"/>
+            <input type="text" class="form-control col-sm-4" name="hotel" value="${room.hotel.hotelName}" readonly/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Room type</label>
