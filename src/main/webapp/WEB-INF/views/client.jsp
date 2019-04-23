@@ -74,7 +74,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="update-form-client/${client.id}">
+                        <form m ethod="post" action="update-form-client/${client.id}">
                             <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
                     </td>
