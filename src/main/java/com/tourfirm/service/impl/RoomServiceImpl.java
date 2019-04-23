@@ -8,10 +8,12 @@ import com.tourfirm.entity.Room;
 import com.tourfirm.entity.RoomType;
 import com.tourfirm.service.RoomService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class RoomServiceImpl implements RoomService {
 
     private final HotelDAO hotelDAO;

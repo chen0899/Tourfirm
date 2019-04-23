@@ -9,17 +9,30 @@
         Create City
     </a>
 
-    <div class="collapse" id="cityadd">
+    <div class="collapse col-ml-3" id="cityadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
-                <div class="form-group">
-                    <form method="post" action="save-city">
-                        <tr>
-                            <input type="text" name="cityName" placeholder="city name">
-                            <input type="text" name="countryName" placeholder="country name">
-
-                        </tr>
-                        <button type="submit" class="btn btn-info ml-2">ADD</button>
+                <div class="form-group" style="width: 80%; margin-left: 2%">
+                    <form method="post" action="/save-city">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">City name</label>
+                            <input type="text" class="form-control col-sm-4" name="cityName"/>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Country name</label>
+                            <select name="countryName" class="form-control col-sm-4">
+                                <option hidden >Select</option>
+                                <c:forEach  var="countryName" items="${countryNameList}" >
+                                    <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group row text-right">
+                            <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
+                                    name="update">
+                                Add
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -33,7 +46,7 @@
                 <th>Id</th>
                 <th>City Name</th>
                 <th>Country Name</th>
-                <th>Action</th>
+                <th colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -41,13 +54,23 @@
             <c:forEach var="city" items="${cityList}" varStatus="rowCounter">
 
 
-                    <td>${city.getId()}</td>
-                    <td>${city.getCityName()}</td>
-                    <td>${city.getCountry().getCountryName()}</td>
-                    <td>
-                        <a href="city/delete/${city.getId()}">Delete</a>
-                        <a href="city/update/${city.getId()}">Update</a>
-                    </td>
+                <td>${city.getId()}</td>
+                <td>${city.getCityName()}</td>
+                <td>${city.getCountry().getCountryName()}</td>
+                <td class="align-middle">
+                    <div class="row">
+                        <div class="col align-middle">
+                            <form method="post" action="delete/${city.id}">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
+                        <div class="col align-middle">
+                            <form method="post" action="/update-form-city/${city.id}">
+                                <button type="submit" class="btn btn-outline-success">Edit</button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
                 </tr>
             </c:forEach>
             </tbody>

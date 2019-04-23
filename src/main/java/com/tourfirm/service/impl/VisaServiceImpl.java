@@ -8,11 +8,13 @@ import com.tourfirm.entity.Visa;
 import com.tourfirm.service.VisaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class VisaServiceImpl implements VisaService {
 
     @Autowired

@@ -13,7 +13,6 @@ import java.util.List;
  * Created by Illia Chenchak
  */
 @Repository
-@Transactional
 public class ClientDAOImpl extends AbstractDAO<Client, Integer> implements ClientDAO {
     public ClientDAOImpl() {
         super(Client.class);

@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-@Transactional
 public class RoomDAOImpl extends AbstractDAO<Room, Integer> implements RoomDAO {
     public RoomDAOImpl(){
         super(Room.class);

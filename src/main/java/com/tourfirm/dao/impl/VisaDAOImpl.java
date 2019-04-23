@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.Query;
 
 @Repository
-@Transactional
 public class VisaDAOImpl extends AbstractDAO<Visa, Integer> implements VisaDAO {
 
 

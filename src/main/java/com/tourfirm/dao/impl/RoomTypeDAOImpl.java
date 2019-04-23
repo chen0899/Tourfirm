@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-@Transactional
 @Repository
 public class RoomTypeDAOImpl extends AbstractDAO<RoomType, Integer> implements RoomTypeDAO {
 
