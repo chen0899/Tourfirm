@@ -12,7 +12,6 @@ import java.util.List;
  * Created by Illia Chenchak
  */
 @Repository
-@Transactional
 public class AbstractDAO<T, ID> implements GenericDAO<T, ID> {
 
     @PersistenceContext

@@ -48,6 +48,12 @@
         <put-attribute name="body" value="/WEB-INF/views/city.jsp"/>
     </definition>
 
+    <definition name="city-editor" extends="template-def">
+        <put-attribute name="title" value="Edit city"/>
+        <put-attribute name="body" value="/WEB-INF/views/cityEditor.jsp"/>
+    </definition>
+
+
     <definition name="country-editor" extends="template-def">
         <put-attribute name="title" value="Edit country"/>
         <put-attribute name="body" value="/WEB-INF/views/countryEditor.jsp"/>
@@ -61,6 +67,16 @@
     <definition name="client-editor" extends="template-def">
         <put-attribute name="title" value="Edit client"/>
         <put-attribute name="body" value="/WEB-INF/views/clientEditor.jsp"/>
+    </definition>
+
+    <definition name="booking" extends="template-def">
+        <put-attribute name="title" value="Booking"/>
+        <put-attribute name="body" value="/WEB-INF/views/booking.jsp"/>
+    </definition>
+
+    <definition name="booking-editor" extends="template-def">
+        <put-attribute name="title" value="Edit booking"/>
+        <put-attribute name="body" value="/WEB-INF/views/bookingEditor.jsp"/>
     </definition>
 
 </tiles-definitions>

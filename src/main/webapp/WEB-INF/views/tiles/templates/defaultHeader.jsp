@@ -23,6 +23,12 @@
                 <li>
                     <a class="nav-link" href="/hotel">Hotels</a>
                 </li>
+                <li>
+                    <a class="nav-link" href="/booking">Booking</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/task">Tasks</a>
+                </li>
             </ul>
         </div>
     </nav>

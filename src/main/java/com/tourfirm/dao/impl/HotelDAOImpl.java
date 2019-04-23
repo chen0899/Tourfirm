@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-@Transactional
 public class HotelDAOImpl extends AbstractDAO<Hotel, Long> implements HotelDAO {
 
     public HotelDAOImpl() {
