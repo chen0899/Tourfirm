@@ -9,15 +9,21 @@
         Create Country
     </a>
 
-    <div class="collapse ml-3" id="countryadd">
+    <div class="collapse col-ml-3" id="countryadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
-                <div class="form-group">
-                    <form method="post" action="save-country">
-                        <tr>
-                            <input type="text" name="countryName" placeholder="Country name">
-                        </tr>
-                        <button type="submit" class="btn btn-info ml-2">ADD</button>
+                <div class="form-group" style="width: 80%; margin-left: 2%">
+                    <form method="post" action="/country-save">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Country name</label>
+                            <input type="text" class="form-control col-sm-4" name="roomNumber"/>
+                        </div>
+                        <div class="form-group row text-right">
+                            <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
+                                    name="update">
+                                Add
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
