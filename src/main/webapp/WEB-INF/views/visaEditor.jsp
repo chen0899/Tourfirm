@@ -14,11 +14,11 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Country</label>
-            <input type="text" class="form-control col-sm-4" name="country" value="${visa.country.countryName}"/>
+            <input type="text" class="form-control col-sm-4" name="countryName" value="${visa.country.countryName}"/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Client</label>
-            <input type="text" class="form-control col-sm-4" name="client" value="${visa.client.lastName}"/>
+            <input type="text" class="form-control col-sm-4" name="clientName" value="${visa.client.lastName}"/>
         </div>
         <div class="form-group row text-right">
             <button class="btn btn-outline-success col-sm-4" style="margin-left: 16.7%" type="submit" name="update">

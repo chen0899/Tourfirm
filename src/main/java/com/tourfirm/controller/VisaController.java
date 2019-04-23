@@ -56,11 +56,12 @@ public class VisaController {
 
     @PostMapping("update-visa")
     public String visaUpdate(@RequestParam Integer id, @RequestParam Date startDate,
-                             @RequestParam Date endDate, @RequestParam String country,
-                             @RequestParam String client) {
-        visaService.update(id, startDate, endDate, country, client); ;
+                             @RequestParam Date endDate, @RequestParam String countryName,
+                             @RequestParam String clientName) {
+        visaService.update(id, startDate, endDate, clientName, countryName); ;
         return "redirect:/visa";
     }
+
 
     @PostMapping("delete-visa/{id}")
     public String deleteRoom(@PathVariable("id") Integer visaId) {
