@@ -49,11 +49,13 @@
                     <td>${client.getPhone()}</td>
                     <td>${client.getCountry().getCountryName()}</td>
                     <td class="align-middle">
-                        <form method="post">
-                            <button type="submit" class="btn btn-outline-success">Edit</button>
-                        </form>
                         <form method="post" action="delete-client/${client.id}">
                             <button type="submit"  class ="btn btn-outline-danger" class="ml-3" >Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="update-form-client/${client.id}">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
                     </td>
                 </tr>
