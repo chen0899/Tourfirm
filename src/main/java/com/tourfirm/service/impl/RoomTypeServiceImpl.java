@@ -26,7 +26,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     public List<RoomType> finaAll() {
-        return null;
+        return roomTypeDAO.findAll();
     }
 
     @Override

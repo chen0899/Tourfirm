@@ -18,14 +18,14 @@ public class HotelDAOImpl extends AbstractDAO<Hotel, Long> implements HotelDAO {
 
     @Override
     public Hotel findByName(String hotelName) {
-        Query query = entityManager.createQuery("SELECT h FROM Hotel h where h.hotelName=:hotelName");
+        Query query = entityManager.createQuery("SELECT hotel From Hotel hotel where hotel.hotelName=:hotelName");
         query.setParameter("hotelName", hotelName);
         return (Hotel) query.getSingleResult();
     }
 
     @Override
     public List<Hotel> findAllByCity(String city) {
-        Query query = entityManager.createQuery("SELECT h FROM Hotel h where h.hotelName=:hotelName");
+        Query query = entityManager.createQuery("SELECT hotel FROM Hotel hotel where hotel.hotelName=:hotelName");
         query.setParameter("hotelName", city);
         List<Hotel> hotelList = query.getResultList();
         return hotelList;

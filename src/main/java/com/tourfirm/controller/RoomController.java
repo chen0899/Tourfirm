@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class RoomController {
@@ -29,12 +31,22 @@ public class RoomController {
     @GetMapping("/room")
     public String roomPage(Model model) {
         model.addAttribute("roomList", roomService.finaAll());
+        model.addAttribute("room", roomService.finaAll());
         return "room";
     }
 
     @GetMapping("/rooms/{id}")
     public String roomPages(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("roomList", roomService.findAllByHotelId(id));
+        List<Room> allByHotelId = roomService.findAllByHotelId(id);
+        model.addAttribute("roomList", allByHotelId);
+        String hotelName = allByHotelId.stream()
+                .map(room -> room.getHotel().getHotelName())
+                .limit(1)
+                .findFirst().get();
+
+
+        model.addAttribute("typesList", roomTypeService.finaAll());
+        model.addAttribute("room", hotelName);
         return "room";
     }
 
@@ -46,7 +58,7 @@ public class RoomController {
         return "redirect:/room";
     }
 
-    @PostMapping("update-form/{id}")
+    @PostMapping("update-room/{id}")
     public String roomEditForm(@PathVariable("id") Integer id, Model model) {
         Room roomDB = roomService.findById(id);
         model.addAttribute("room", roomDB);
