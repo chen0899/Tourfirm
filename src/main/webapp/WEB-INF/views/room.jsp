@@ -25,11 +25,18 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Hotel name</label>
-                            <input type="text" class="form-control col-sm-4" name="hotel"/>
+                            <input type="text" class="form-control col-sm-4" name="hotel"
+                                   value="${room}" readonly/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room type</label>
-                            <input type="text" class="form-control col-sm-4" name="roomType"/>
+<%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
+                            <select name="roomType" class="form-control col-sm-4">
+                                <option hidden >Select</option>
+                                <c:forEach  var="type" items="${typesList}" >
+                                        <option value="${type.getType()}">${type.getType()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group row text-right">
                             <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
@@ -70,7 +77,7 @@
                         </form>
                     </td>
                     <td class="align-middle">
-                        <form method="post" action="update-form/${room.id}">
+                        <form method="post" action="/update-room/${room.id}">
                             <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
                     </td>
