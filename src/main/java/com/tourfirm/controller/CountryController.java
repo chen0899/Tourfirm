@@ -47,8 +47,7 @@ public class CountryController {
 
     @PostMapping("update-country")
     public String roomUpdate(@RequestParam Integer id, @RequestParam String countryName) {
-        roomService.update(id, roomNumber, numberOfPlaces, hotel, roomType);
-        countryService.
-        return "redirect:/room";
+        countryService.update(id,countryName);
+        return "redirect:/country";
     }
 }
