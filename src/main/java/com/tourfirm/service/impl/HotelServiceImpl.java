@@ -32,6 +32,11 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
+    public List<Hotel> findAllByCity(String cityName) {
+        return hotelDAO.findAllByCity(cityName);
+    }
+
+    @Override
     public void save(Hotel hotel) {
 
     }

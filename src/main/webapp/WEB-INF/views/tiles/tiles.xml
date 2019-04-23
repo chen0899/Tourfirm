@@ -89,5 +89,15 @@
         <put-attribute name="body" value="/WEB-INF/views/task1.jsp"/>
     </definition>
 
+    <definition name="task2" extends="template-def">
+        <put-attribute name="title" value="Task2"/>
+        <put-attribute name="body" value="/WEB-INF/views/task2.jsp"/>
+    </definition>
+
+    <definition name="task2-out" extends="template-def">
+        <put-attribute name="title" value="Task2"/>
+        <put-attribute name="body" value="/WEB-INF/views/task2Out.jsp"/>
+    </definition>
+
 </tiles-definitions>
 
