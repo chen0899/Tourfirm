@@ -23,7 +23,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public List<Country> finaAll() {
+    public List<Country> findAll() {
         return countryDAO.findAll();
     }
 
@@ -35,5 +35,10 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public void delete(Integer id) {
         countryDAO.delete(countryDAO.findById(id));
+    }
+
+    @Override
+    public Country findCountryByName(String countryName) {
+        return countryDAO.findCountryByName(countryName);
     }
 }

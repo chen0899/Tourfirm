@@ -38,5 +38,15 @@
         <put-attribute name="body" value="/WEB-INF/views/hotelEditor.jsp"/>
     </definition>
 
+    <definition name="country" extends="template-def">
+        <put-attribute name="title" value="Counties"/>
+        <put-attribute name="body" value="/WEB-INF/views/country.jsp"/>
+    </definition>
+
+    <definition name="client" extends="template-def">
+        <put-attribute name="title" value="Clients"/>
+        <put-attribute name="body" value="/WEB-INF/views/client.jsp"/>
+    </definition>
 
 </tiles-definitions>
+

@@ -8,9 +8,11 @@ public interface CountryService {
 
     void save(Country country);
 
-    List<Country> finaAll();
+    List<Country> findAll();
 
     Country findById(Integer id);
 
     void delete(Integer id);
+
+    Country findCountryByName(String countryName);
 }
