@@ -21,9 +21,9 @@ public class Hotel {
     private String email;
     @Column(name = "phone")
     private String phone;
-//    @ManyToOne
-//    @JoinColumn(name = "id_city", referencedColumnName = "id")
-//    private City city;
+    @ManyToOne
+    @JoinColumn(name = "id_city", referencedColumnName = "id")
+    private City city;
     @Column(name = "adress")
     private String address;
 }

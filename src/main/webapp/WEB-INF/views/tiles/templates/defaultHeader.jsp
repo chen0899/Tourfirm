@@ -9,16 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="room">Rooms</a>
+                    <a class="nav-link" href="/room">Rooms</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="country">Countries</a>
+                    <a class="nav-link" href="/country">Countries</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="client">Clients</a>
+                    <a class="nav-link" href="/client">Clients</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="city">City</a>
+                    <a class="nav-link" href="/city">City</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/hotel">Hotels</a>
                 </li>
             </ul>
         </div>
