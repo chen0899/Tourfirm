@@ -43,6 +43,11 @@
         <put-attribute name="body" value="/WEB-INF/views/country.jsp"/>
     </definition>
 
+    <definition name="city" extends="template-def">
+        <put-attribute name="title" value="City"/>
+        <put-attribute name="body" value="/WEB-INF/views/city.jsp"/>
+    </definition>
+
     <definition name="country-editor" extends="template-def">
         <put-attribute name="title" value="Edit country"/>
         <put-attribute name="body" value="/WEB-INF/views/countryEditor.jsp"/>
