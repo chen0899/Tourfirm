@@ -71,7 +71,7 @@
                     <td class="align-middle">${hotel.city.cityName}</td>
                     <td class="align-middle">${hotel.address}</td>
                     <td class="align-middle">
-                        <form method="post" action="delete/${hotel.id}">
+                        <form method="post" action="delete-hotel/${hotel.id}">
                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                         </form>
                     </td>

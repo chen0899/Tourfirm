@@ -30,7 +30,7 @@
         <thead>
         <tr>
             <th style="width: 20%">Id</th>
-            <th >City name</th>
+            <th>City name</th>
             <th>Country name</th>
         </tr>
         </thead>

@@ -15,15 +15,17 @@ public class VisaDAOImpl extends AbstractDAO<Visa, Integer> implements VisaDAO {
 
 
     protected VisaDAOImpl() {
-        super(Visa.class);}
+        super(Visa.class);
+    }
 
     @Autowired
     private ClientDAO clientDAO;
+
     @Override
     public Client findClientByName(String lastName) {
         final char dm = (char) 34;
-        Query query = entityManager.createNativeQuery("SELECT Clients.id from Clients where Clients.lastname = "+ dm + lastName + dm + ";");
-        Integer id= (Integer) query.getSingleResult();
+        Query query = entityManager.createNativeQuery("SELECT Clients.id from Clients where Clients.lastname = " + dm + lastName + dm + ";");
+        Integer id = (Integer) query.getSingleResult();
         Client client = clientDAO.findById(id);
         return client;
     }
@@ -32,8 +34,8 @@ public class VisaDAOImpl extends AbstractDAO<Visa, Integer> implements VisaDAO {
     public List<Visa> findAllVisaByClient(String lastName) {
         Query query = entityManager.createQuery("SELECT visa FROM Visa visa " +
                 "inner  join visa.client client where client.lastName=:lastName");
-        query.setParameter("lastName",lastName);
-        List<Visa> visaList= query.getResultList();
+        query.setParameter("lastName", lastName);
+        List<Visa> visaList = query.getResultList();
         return visaList;
     }
 
@@ -41,8 +43,8 @@ public class VisaDAOImpl extends AbstractDAO<Visa, Integer> implements VisaDAO {
     public List<Visa> findAllVisaByCountry(String countryName) {
         Query query = entityManager.createQuery("SELECT visa FROM Visa visa " +
                 "inner  join visa.country country where country.countryName=:countryName");
-        query.setParameter("countryName",countryName);
-        List<Visa> visaList= query.getResultList();
+        query.setParameter("countryName", countryName);
+        List<Visa> visaList = query.getResultList();
         return visaList;
     }
 }

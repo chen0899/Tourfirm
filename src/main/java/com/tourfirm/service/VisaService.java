@@ -11,7 +11,7 @@ public interface VisaService {
 
     void update(Integer id, Date startDate, Date endDate, String client, String country);
 
-    void save( Date startDate, Date endDate, String client, String country);
+    void save(Date startDate, Date endDate, String client, String country);
 
     void delete(Visa visa);
 

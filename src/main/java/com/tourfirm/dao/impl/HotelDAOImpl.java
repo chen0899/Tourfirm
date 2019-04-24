@@ -3,7 +3,6 @@ package com.tourfirm.dao.impl;
 import com.tourfirm.dao.HotelDAO;
 import com.tourfirm.entity.Hotel;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import java.util.List;

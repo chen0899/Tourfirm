@@ -6,11 +6,11 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Room number</label>
-            <input type="text" class="form-control col-sm-4" name="roomNumber" value="${room.roomNumber}"/>
+            <input type="text" class="form-control col-sm-4" name="roomNumber" value="${room.roomNumber}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Count of places</label>
-            <input type="text" class="form-control col-sm-4" name="numberOfPlaces" value="${room.numberOfPlaces}"/>
+            <input type="text" class="form-control col-sm-4" name="numberOfPlaces" value="${room.numberOfPlaces}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Hotel name</label>
@@ -18,7 +18,7 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Room type</label>
-            <input type="text" class="form-control col-sm-4" name="roomType" value="${room.roomType.type}"/>
+            <input type="text" class="form-control col-sm-4" name="roomType" value="${room.roomType.type}" required/>
         </div>
         <div class="form-group row text-right">
             <button class="btn btn-outline-success col-sm-4" style="margin-left: 16.7%" type="submit" name="update">

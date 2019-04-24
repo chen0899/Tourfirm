@@ -26,8 +26,8 @@
                             <label class="col-sm-2 col-form-label">Country</label>
                             <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
                             <select name="country" class="form-control col-sm-4">
-                                <option hidden >Select</option>
-                                <c:forEach  var="country" items="${countryList}" >
+                                <option hidden>Select</option>
+                                <c:forEach var="country" items="${countryList}">
                                     <option value="${country.getCountryName()}">${country.getCountryName()}</option>
                                 </c:forEach>
                             </select>
@@ -36,8 +36,8 @@
                             <label class="col-sm-2 col-form-label">Client</label>
                             <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
                             <select name="client" class="form-control col-sm-4">
-                                <option hidden >Select</option>
-                                <c:forEach  var="client" items="${clientList}" >
+                                <option hidden>Select</option>
+                                <c:forEach var="client" items="${clientList}">
                                     <option value="${client.getLastName()}">${client.getLastName()}</option>
                                 </c:forEach>
                             </select>
@@ -63,7 +63,7 @@
                 <th>End date</th>
                 <th>Country</th>
                 <th>Client</th>
-                <th  style="width: 30%" colspan="2">Action</th>
+                <th style="width: 30%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
