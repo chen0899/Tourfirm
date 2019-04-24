@@ -30,11 +30,11 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room type</label>
-<%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
+                            <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
                             <select name="roomType" class="form-control col-sm-4">
-                                <option hidden >Select</option>
-                                <c:forEach  var="type" items="${typesList}" >
-                                        <option value="${type.getType()}">${type.getType()}</option>
+                                <option hidden>Select</option>
+                                <c:forEach var="type" items="${typesList}">
+                                    <option value="${type.getType()}">${type.getType()}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -72,7 +72,7 @@
                     <td class="align-middle">${room.hotel.getHotelName()}</td>
                     <td class="align-middle">${room.roomType.getType()}</td>
                     <td class="align-middle">
-                        <form method="post" action="delete/${room.id}">
+                        <form method="post" action="delete-room/${room.id}">
                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                         </form>
                     </td>

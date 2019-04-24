@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class TilesController {
-    @RequestMapping(value = { "/", "/tourfirm" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/tourfirm"}, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
         return "home";
     }

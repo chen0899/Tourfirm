@@ -15,13 +15,13 @@ public class HotelController {
     private HotelService hotelService;
 
     @GetMapping("/hotel")
-    public String findAllHotels(Model model){
+    public String findAllHotels(Model model) {
         model.addAttribute("hotelList", hotelService.finaAll());
         return "hotel";
     }
 
     @PostMapping("update-hotel/{id}")
-    public String companyEditForm(@PathVariable("id")Long id, Model model) {
+    public String companyEditForm(@PathVariable("id") Long id, Model model) {
         Hotel hotelDB = hotelService.findById(id);
         model.addAttribute("hotel", hotelDB);
         return "hotel-editor";

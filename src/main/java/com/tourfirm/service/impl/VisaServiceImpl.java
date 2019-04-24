@@ -3,7 +3,6 @@ package com.tourfirm.service.impl;
 import com.tourfirm.dao.ClientDAO;
 import com.tourfirm.dao.CountryDAO;
 import com.tourfirm.dao.VisaDAO;
-import com.tourfirm.entity.Client;
 import com.tourfirm.entity.Visa;
 import com.tourfirm.service.VisaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class VisaServiceImpl implements VisaService {
 
     @Override
     public void save(Visa visa) {
-         visaDAO.save(visa);
+        visaDAO.save(visa);
     }
 
     @Override
@@ -42,7 +41,7 @@ public class VisaServiceImpl implements VisaService {
 
     @Override
     public void delete(Integer id) {
-         visaDAO.delete(visaDAO.findById(id));
+        visaDAO.delete(visaDAO.findById(id));
     }
 
     private Visa getVisa(Date startDate, Date endDate, String client, String country) {
@@ -58,7 +57,7 @@ public class VisaServiceImpl implements VisaService {
     public void update(Integer id, Date startDate, Date endDate, String client, String country) {
         Visa visaDB = visaDAO.findById(id);
 
-        Visa updatedVisa = getVisa(startDate, endDate,client,country);
+        Visa updatedVisa = getVisa(startDate, endDate, client, country);
         updatedVisa.setId(id);
 
         if (updatedVisa.getId().equals(visaDB.getId())) {
@@ -68,7 +67,7 @@ public class VisaServiceImpl implements VisaService {
 
     @Override
     public void save(Date startDate, Date endDate, String client, String country) {
-        Visa visa = getVisa( startDate,  endDate,  client,  country);
+        Visa visa = getVisa(startDate, endDate, client, country);
         visaDAO.save(visa);
     }
 

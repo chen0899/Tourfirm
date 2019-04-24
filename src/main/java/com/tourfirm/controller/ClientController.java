@@ -1,7 +1,6 @@
 package com.tourfirm.controller;
 
 import com.tourfirm.entity.Client;
-import com.tourfirm.entity.Country;
 import com.tourfirm.service.ClientService;
 import com.tourfirm.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,8 @@ public class ClientController {
 
     @GetMapping("/client")
     public String clientList(Model model) {
-        model.addAttribute("clientList",clientService.findAll());
-        model.addAttribute("countryNameList",countryService.findAll());
+        model.addAttribute("clientList", clientService.findAll());
+        model.addAttribute("countryNameList", countryService.findAll());
         return "client";
     }
 
@@ -47,7 +46,7 @@ public class ClientController {
     }
 
     @PostMapping("/delete-client/{id}")
-    public String deleteCountry(@PathVariable("id") Integer id,Model model) {
+    public String deleteCountry(@PathVariable("id") Integer id, Model model) {
         clientService.delete(id);
         return "redirect:/client";
     }
@@ -56,7 +55,7 @@ public class ClientController {
     public String clientFormUpdate(@PathVariable("id") Integer id, Model model) {
         Client client = clientService.findById(id);
         model.addAttribute("client", client);
-        model.addAttribute("countryNameList",countryService.findAll());
+        model.addAttribute("countryNameList", countryService.findAll());
         return "client-editor";
     }
 
@@ -72,7 +71,7 @@ public class ClientController {
         client.setEmail(email);
         client.setPhone(phone);
         client.setCountry(countryService.findCountryByName(countryName));
-        clientService.update(id,client);
+        clientService.update(id, client);
         return "redirect:/client";
     }
 }

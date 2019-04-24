@@ -16,7 +16,7 @@
                     <form method="post" action="/save-country">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country name</label>
-                            <input type="text" class="form-control col-sm-4" name="countryName"/>
+                            <input type="text" class="form-control col-sm-4" name="countryName" required/>
                         </div>
                         <div class="form-group row text-right">
                             <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
@@ -30,12 +30,15 @@
         </div>
     </div>
 
+    <div>
+        ${error}
+    </div>
     <form class="mt-3">
         <table class="table table-bordered text-center">
             <thead>
             <tr>
                 <th style="width: 20%">Id</th>
-                <th >Country name</th>
+                <th>Country name</th>
                 <th style="width: 30%" colspan="2">Action</th>
             </tr>
             </thead>
@@ -47,7 +50,7 @@
                     <td class="align-middle">
                         <div class="row">
                             <div class="col align-middle">
-                                <form method="post" action="delete/${country.id}">
+                                <form method="post" action="delete-country/${country.id}">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                 </form>
                             </div>

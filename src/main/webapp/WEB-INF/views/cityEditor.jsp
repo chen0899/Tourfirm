@@ -12,7 +12,6 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Country name</label>
             <select name="countryName" class="form-control col-sm-4" required>
-
                 <c:forEach  var="countryName" items="${countryList}" >
                     <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
                 </c:forEach>

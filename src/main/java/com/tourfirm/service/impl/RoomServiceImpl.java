@@ -83,6 +83,6 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> findAllAvailalbe(Long hotelId, String startDate, String endDate) {
-        return roomDAO.findAllAvailalbe(hotelId,startDate,endDate);
+        return roomDAO.findAllAvailalbe(hotelId, startDate, endDate);
     }
 }

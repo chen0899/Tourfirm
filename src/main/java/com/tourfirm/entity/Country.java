@@ -1,7 +1,6 @@
 package com.tourfirm.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
