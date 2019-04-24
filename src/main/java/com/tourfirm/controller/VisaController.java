@@ -27,7 +27,7 @@ public class VisaController {
     private ClientService clientService;
 
     @RequestMapping("/visa")
-    public String listContacts(Map<String, Object> map) {
+    public String listVisa(Map<String, Object> map) {
 
         map.put("visa", new Visa());
         map.put("visaList", visaService.findAll());
@@ -39,11 +39,23 @@ public class VisaController {
     }
 
     @PostMapping("/visa-save")
-    public String saveRoom(@RequestParam Date startDate, @RequestParam Date endDate,
-                           @RequestParam String country, @RequestParam String client) {
+    public String saveVisa(@RequestParam Date startDate, @RequestParam Date endDate,
+                           @RequestParam String country, @RequestParam String client, Model model) {
 
-        visaService.save(startDate, endDate, client, country);
-        return "redirect:/visa";
+        Integer codeMsg = visaService.save(startDate, endDate, client, country);
+        if (codeMsg == 3) {
+            model.addAttribute("msg", "Success");
+            return "redirect:/visa";
+
+        } else {
+            if (codeMsg == 1) {
+                model.addAttribute("msg", "Can't_add_visa!_Same_country_for_client!");
+            }
+            if (codeMsg == 2) {
+                model.addAttribute("msg", "Can't_add_visa!_End_date_before_start_date!");
+            }
+            return "redirect:/visa";
+        }
     }
 
     @PostMapping("update-visa/{id}")
