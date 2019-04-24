@@ -4,6 +4,9 @@ import com.tourfirm.entity.Room;
 
 import java.util.List;
 
-public interface RoomDAO extends GenericDAO<Room, Integer>{
+public interface RoomDAO extends GenericDAO<Room, Integer> {
     List<Room> findAllByHotelId(Long hotelId);
+
+    Room findByRoomNumber(Integer roomNumber);
 }
+

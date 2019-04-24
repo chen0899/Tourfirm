@@ -8,9 +8,11 @@ public interface RoomService {
 
     Room findById(Integer id);
 
-    List<Room> finaAll();
+    List<Room> findAll();
 
     List<Room> findAllByHotelId(Long hotelId);
+
+    Room findByRoomNumber(Integer roomNumber);
 
     void save(Room room);
 

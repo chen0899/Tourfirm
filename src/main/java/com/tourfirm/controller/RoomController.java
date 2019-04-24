@@ -37,7 +37,18 @@ public class RoomController {
     @PostMapping("/room-save")
     public String saveRoom(@RequestParam Integer roomNumber, @RequestParam Integer numberOfPlaces,
                            @RequestParam String hotel, @RequestParam String roomType,
-                           @RequestParam Long hotelId) {
+                           @RequestParam Long hotelId, Model model) {
+
+        if (roomService.findByRoomNumber(roomNumber) != null) {
+            model.addAttribute("roomNumberError", "Room with the same number is present in this hotel");
+            model.addAttribute("roomList", roomService.findAllByHotelId(hotelId));
+            model.addAttribute("hotel", hotelService.findById(hotelId));
+            model.addAttribute("typesList", roomTypeService.finaAll());
+            model.addAttribute("room", getRoom(roomNumber, numberOfPlaces, hotel, roomType));
+            model.addAttribute("notEmpty", "notEmpty");
+            return "room";
+        }
+
         Room room = getRoom(roomNumber, numberOfPlaces, hotel, roomType);
         roomService.save(room);
         return "redirect:/room/" + hotelId;
@@ -54,7 +65,17 @@ public class RoomController {
     @PostMapping("/update-room")
     public String roomUpdate(@RequestParam Integer id, @RequestParam Integer roomNumber,
                              @RequestParam Integer numberOfPlaces, @RequestParam String hotel,
-                             @RequestParam String roomType, @RequestParam Long hotelId) {
+                             @RequestParam String roomType, @RequestParam Long hotelId, Model model) {
+
+        if (roomService.findByRoomNumber(roomNumber) != null) {
+            Room room = getRoom(roomNumber, numberOfPlaces, hotel, roomType);
+            room.setId(id);
+            model.addAttribute("roomNumberError", "Room with the same number is present in this hotel");
+            model.addAttribute("typesList", roomTypeService.finaAll());
+            model.addAttribute("room", room);
+            return "room-editor";
+        }
+
         Room room = getRoom(roomNumber, numberOfPlaces, hotel, roomType);
         room.setId(id);
         roomService.update(room);

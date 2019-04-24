@@ -3,9 +3,9 @@ package com.tourfirm.dao.impl;
 import com.tourfirm.dao.RoomTypeDAO;
 import com.tourfirm.entity.RoomType;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -23,6 +23,11 @@ public class RoomTypeDAOImpl extends AbstractDAO<RoomType, Integer> implements R
     public RoomType findByRoomType(String type) {
         Query query = entityManager.createQuery("SELECT t FROM RoomType t where t.type=:type");
         query.setParameter("type", type);
-        return (RoomType) query.getSingleResult();
+        RoomType result = null;
+        try {
+            result = (RoomType) query.getSingleResult();
+        } catch (NoResultException ex) {
+        }
+        return result;
     }
 }

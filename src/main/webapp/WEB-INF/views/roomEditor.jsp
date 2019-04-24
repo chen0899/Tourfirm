@@ -7,11 +7,18 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Room number</label>
-            <input type="text" class="form-control col-sm-4" name="roomNumber" value="${room.roomNumber}"/>
+            <input type="number" min="1" class="form-control col-sm-4" name="roomNumber" value="${room.roomNumber}"
+                   required/>
+        </div>
+        <div class="invalid-feedback d-block" style="margin-left: 12%; width: 42%">
+            <c:if test="${not empty roomNumberError}">
+                <div class="alert alert-danger text-center"><c:out value="${roomNumberError}"/></div>
+            </c:if>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Count of places</label>
-            <input type="text" class="form-control col-sm-4" name="numberOfPlaces" value="${room.numberOfPlaces}"/>
+            <input type="text" min="1" max="10" class="form-control col-sm-4" name="numberOfPlaces"
+                   value="${room.numberOfPlaces}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Hotel name</label>

@@ -10,18 +10,27 @@
         Create Room
     </a>
 
-    <div class="collapse col-ml-3" id="roomadd">
+    <div class="collapse col-ml-3 <c:if test="${notEmpty == 'notEmpty'}">show</c:if>" id="roomadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
                 <div class="form-group" style="width: 80%; margin-left: 2%">
                     <form method="post" action="/room-save">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room number</label>
-                            <input type="text" class="form-control col-sm-4" name="roomNumber"/>
+                            <input type="number" min="1" class="form-control col-sm-4" name="roomNumber"
+                                   <c:if test="${not empty notEmpty}">value="${room.roomNumber}" </c:if>required/>
                         </div>
+
+                        <div class="invalid-feedback d-block" style="margin-left: 12%; width: 42%">
+                            <c:if test="${not empty roomNumberError}">
+                                <div class="alert alert-danger text-center"><c:out value="${roomNumberError}"/></div>
+                            </c:if>
+                        </div>
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Count of places</label>
-                            <input type="text" class="form-control col-sm-4" name="numberOfPlaces"/>
+                            <input type="number" min="1" max="10" class="form-control col-sm-4" name="numberOfPlaces"
+                                   <c:if test="${not empty notEmpty}">value="${room.numberOfPlaces}"</c:if> required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Hotel name</label>
@@ -30,9 +39,10 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room type</label>
-                            <select name="roomType" class="form-control col-sm-4">
+                            <select name="roomType" class="form-control col-sm-4" required>
                                 <option hidden>Select</option>
                                 <c:forEach var="type" items="${typesList}">
+                                    <option hidden selected value="Comfort">Select</option>
                                     <option value="${type.getType()}">${type.getType()}</option>
                                 </c:forEach>
                             </select>

@@ -24,13 +24,18 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> finaAll() {
+    public List<Room> findAll() {
         return roomDAO.findAll();
     }
 
     @Override
     public List<Room> findAllByHotelId(Long hotelId) {
         return roomDAO.findAllByHotelId(hotelId);
+    }
+
+    @Override
+    public Room findByRoomNumber(Integer roomNumber) {
+        return roomDAO.findByRoomNumber(roomNumber);
     }
 
     @Override
