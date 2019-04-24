@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface VisaService {
 
-    void save(Visa visa);
+    Integer save(Visa visa);
 
     void update(Integer id, Date startDate, Date endDate, String client, String country);
 
-    void save(Date startDate, Date endDate, String client, String country);
+    Integer save(Date startDate, Date endDate, String client, String country);
 
     void delete(Visa visa);
 

@@ -25,8 +25,25 @@ public class VisaServiceImpl implements VisaService {
 
 
     @Override
-    public void save(Visa visa) {
-        visaDAO.save(visa);
+    public Integer save(Visa visa) {
+
+        Integer idCountry = visa.getCountry().getId();
+        Integer idCountryClient = visa.getClient().getCountry().getId();
+
+        if (visa.getStartDate().before(visa.getEndDate()) == true) {
+            if (idCountry == idCountryClient) {
+                return 1;
+            }
+            if ((idCountry != idCountryClient)) {
+                visaDAO.save(visa);
+                return 3;
+            }
+        }
+        if (visa.getStartDate().before(visa.getEndDate()) == false) {
+            return 2;
+        }
+
+        return 1;
     }
 
     @Override
@@ -66,9 +83,11 @@ public class VisaServiceImpl implements VisaService {
     }
 
     @Override
-    public void save(Date startDate, Date endDate, String client, String country) {
+    public Integer save(Date startDate, Date endDate, String client, String country) {
         Visa visa = getVisa(startDate, endDate, client, country);
-        visaDAO.save(visa);
+        Integer codeMsg = save(visa);
+
+        return codeMsg;
     }
 
     @Override
