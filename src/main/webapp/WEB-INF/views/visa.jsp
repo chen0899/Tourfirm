@@ -16,17 +16,17 @@
                     <form method="post" action="/visa-save">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Start date</label>
-                            <input type="date" class="form-control col-sm-4" name="startDate"/>
+                            <input type="date" class="form-control col-sm-4" name="startDate" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">End Date</label>
-                            <input type="date" class="form-control col-sm-4" name="endDate"/>
+                            <input type="date" class="form-control col-sm-4" name="endDate" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country</label>
                             <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
-                            <select name="country" class="form-control col-sm-4">
-                                <option hidden >Select</option>
+                            <select name="country" class="form-control col-sm-4" required>
+
                                 <c:forEach  var="country" items="${countryList}" >
                                     <option value="${country.getCountryName()}">${country.getCountryName()}</option>
                                 </c:forEach>
@@ -35,8 +35,8 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Client</label>
                             <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
-                            <select name="client" class="form-control col-sm-4">
-                                <option hidden >Select</option>
+                            <select name="client" class="form-control col-sm-4" required>
+
                                 <c:forEach  var="client" items="${clientList}" >
                                     <option value="${client.getLastName()}">${client.getLastName()}</option>
                                 </c:forEach>

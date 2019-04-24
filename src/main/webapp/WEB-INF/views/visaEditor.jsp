@@ -7,27 +7,17 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Start date</label>
-            <input type="date" class="form-control col-sm-4" name="startDate" value="${visa.startDate}"/>
+            <input type="date" class="form-control col-sm-4" name="startDate" value="${visa.startDate}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">End Date</label>
-            <input type="date" class="form-control col-sm-4" name="endDate" value="${visa.endDate}"/>
+            <input type="date" class="form-control col-sm-4" name="endDate" value="${visa.endDate}" required/>
         </div>
-     <!--   <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Country</label>
-            <input type="text" class="form-control col-sm-4" name="countryName" value="${visa.country.countryName}"/>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Client</label>
-            <input type="text" class="form-control col-sm-4" name="clientName" value="${visa.client.lastName}"/>
-        </div>
-
--->
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Country</label>
             <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
-            <select name="countryName" class="form-control col-sm-4">
+            <select name="countryName" class="form-control col-sm-4" required>
                 <option hidden value="${visa.country.countryName}">${visa.country.countryName}</option>
                 <c:forEach  var="country" items="${countryList}" >
                     <option value="${country.getCountryName()}">${country.getCountryName()}</option>
@@ -37,7 +27,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Client</label>
             <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
-            <select name="clientName" class="form-control col-sm-4">
+            <select name="clientName" class="form-control col-sm-4" required>
                 <option hidden value="${visa.client.lastName}">${visa.client.lastName}</option>
                 <c:forEach  var="client" items="${clientList}" >
                     <option value="${client.getLastName()}">${client.getLastName()}</option>
