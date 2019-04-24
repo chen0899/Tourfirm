@@ -24,7 +24,7 @@ public class VisaDAOImpl extends AbstractDAO<Visa, Integer> implements VisaDAO {
     @Override
     public Client findClientByName(String lastName) {
         final char dm = (char) 34;
-        Query query = entityManager.createNativeQuery("SELECT clients.id from clients where clients.lastname = " + dm + lastName + dm + ";");
+        Query query = entityManager.createNativeQuery("SELECT Clients.id from Clients where Clients.lastname = " + dm + lastName + dm + ";");
         Integer id = (Integer) query.getSingleResult();
         Client client = clientDAO.findById(id);
         return client;

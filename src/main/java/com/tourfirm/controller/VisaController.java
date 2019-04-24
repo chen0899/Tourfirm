@@ -50,6 +50,9 @@ public class VisaController {
     public String visaEdit(@PathVariable("id") Integer id, Model model) {
         Visa visaDB = visaService.findById(id);
         model.addAttribute("visa", visaDB);
+        model.addAttribute("visaList", visaService.findAll());
+        model.addAttribute("clientList", clientService.findAll());
+        model.addAttribute("countryList", countryService.findAll());
         return "visa-editor";
     }
 
