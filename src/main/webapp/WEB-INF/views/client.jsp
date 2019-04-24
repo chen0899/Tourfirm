@@ -16,11 +16,11 @@
                     <form method="post" action="/save-client">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Firstname</label>
-                            <input type="text" class="form-control col-sm-4" name="firstName"/>
+                            <input type="text" class="form-control col-sm-4" name="firstName" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Lastname</label>
-                            <input type="text" class="form-control col-sm-4" name="lastName"/>
+                            <input type="text" class="form-control col-sm-4" name="lastName" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Email</label>
@@ -28,12 +28,12 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Phone</label>
-                            <input type="text" class="form-control col-sm-4" name="phone"/>
+                            <input type="text" class="form-control col-sm-4" name="phone" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country from</label>
                             <select name="countryName" class="form-control col-sm-4">
-                                <option hidden>Select</option>
+                                <option hidden>Ukraine</option>
                                 <c:forEach var="countryName" items="${countryNameList}">
                                     <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
                                 </c:forEach>

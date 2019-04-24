@@ -10,7 +10,7 @@
             <form method="get" action="/task4-out">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Enter country name</label>
-                    <input type="text" class="form-control col-sm-4" name="countryName"/>
+                    <input type="text" class="form-control col-sm-4" name="countryName" required/>
                 </div>
                 <div class="form-group row text-right">
                     <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"

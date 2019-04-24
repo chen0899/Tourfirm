@@ -7,19 +7,19 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Firstname</label>
-            <input type="text" class="form-control col-sm-4" name="firstName" value="${client.firstName}"/>
+            <input type="text" class="form-control col-sm-4" name="firstName" value="${client.firstName}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Lastname</label>
-            <input type="text" class="form-control col-sm-4" name="lastName" value="${client.lastName}"/>
+            <input type="text" class="form-control col-sm-4" name="lastName" value="${client.lastName}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Email</label>
-            <input type="email" class="form-control col-sm-4" name="email" value="${client.email}"/>
+            <input type="email" class="form-control col-sm-4" name="email" value="${client.email}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Phone</label>
-            <input type="text" class="form-control col-sm-4" name="phone" value="${client.phone}"/>
+            <input type="text" class="form-control col-sm-4" name="phone" value="${client.phone}" required/>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Country from</label>
