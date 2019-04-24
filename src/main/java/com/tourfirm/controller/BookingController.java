@@ -29,6 +29,8 @@ public class BookingController {
 
     @GetMapping("/booking")
     public String bookinList(Model model) {
+        model.addAttribute("clientList",clientService.findAll());
+        model.addAttribute("roomList",roomService.finaAll());
         model.addAttribute("bookingList", bookingService.findAll());
         return "booking";
     }
@@ -55,6 +57,8 @@ public class BookingController {
     public String bookingFormUpdate(@PathVariable("id") Integer id, Model model) {
         Booking booking = bookingService.findById(id);
         model.addAttribute("booking", booking);
+        model.addAttribute("clientList",clientService.findAll());
+        model.addAttribute("roomList",roomService.finaAll());
         return "booking-editor";
     }
 
