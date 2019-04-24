@@ -99,5 +99,16 @@
         <put-attribute name="body" value="/WEB-INF/views/task2Out.jsp"/>
     </definition>
 
+    <definition name="book-hotel" extends="template-def">
+        <put-attribute name="title" value="Book hotel"/>
+        <put-attribute name="body" value="/WEB-INF/views/hotelBook.jsp"/>
+    </definition>
+
+
+    <definition name="book-room" extends="template-def">
+        <put-attribute name="title" value="Book room"/>
+        <put-attribute name="body" value="/WEB-INF/views/roomBook.jsp"/>
+    </definition>
+
 </tiles-definitions>
 

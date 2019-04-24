@@ -57,7 +57,7 @@
                 <th style="width: 20%">Phone</th>
                 <th style="width: 20%">City</th>
                 <th style="width: 20%">Address</th>
-                <th style="width: 20%" colspan="2">Action</th>
+                <th style="width: 20%" colspan="3">Action</th>
 
             </tr>
             </thead>

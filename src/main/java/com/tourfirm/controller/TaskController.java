@@ -1,8 +1,8 @@
 package com.tourfirm.controller;
 
-import com.tourfirm.service.CityService;
-import com.tourfirm.service.CountryService;
-import com.tourfirm.service.HotelService;
+import com.tourfirm.entity.Booking;
+import com.tourfirm.entity.Room;
+import com.tourfirm.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Illia Chenchak
@@ -26,6 +30,12 @@ public class TaskController {
 
     @Autowired
     private HotelService hotelService;
+
+    @Autowired
+    private RoomService roomService;
+
+    @Autowired
+    private BookingService bookingService;
 
     @GetMapping("/task")
     public String allTasks(){
@@ -49,5 +59,25 @@ public class TaskController {
     public String outHotels(@RequestParam String cityName, Model model){
         model.addAttribute("hotelList",hotelService.findAllByCity(cityName));
         return "task2-out";
+    }
+
+    @PostMapping("/availeble-room")
+    public String availebleRoom(@RequestParam Date startDate, @RequestParam Date endDate,
+                                @RequestParam String clientId, @RequestParam String hotelId, Model model){
+
+        List<Room> available = null;
+        List<Booking> bookings = bookingService.findAll();
+        List<Long> listId = new ArrayList<>();
+        List<Room> rooms = roomService.findAllByHotelId(Long.parseLong(hotelId));
+        for (Booking booking: bookings
+             ) {
+
+            listId.add(Long.valueOf(booking.getRoom().getId()));
+
+        }
+
+
+
+        return "book-room";
     }
 }
