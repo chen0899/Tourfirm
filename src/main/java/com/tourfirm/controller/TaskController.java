@@ -41,56 +41,50 @@ public class TaskController {
     private VisaService visaService;
 
     @GetMapping("/task")
-    public String allTasks(){
+    public String allTasks() {
         return "tasks";
     }
 
     @GetMapping("/task1")
-    public String citiesAndCountries(Model model){
-        model.addAttribute("countryList",countryService.findAll());
+    public String citiesAndCountries(Model model) {
+        model.addAttribute("countryList", countryService.findAll());
         model.addAttribute("cityList", cityService.findAll());
         return "task1";
     }
 
 
     @GetMapping("/task2")
-    public String hotelsByCityName(){
+    public String hotelsByCityName() {
         return "task2";
     }
 
     @GetMapping("/task2-out")
-    public String outHotels(@RequestParam String cityName, Model model){
-        model.addAttribute("hotelList",hotelService.findAllByCity(cityName));
+    public String outHotels(@RequestParam String cityName, Model model) {
+        model.addAttribute("hotelList", hotelService.findAllByCity(cityName));
         return "task2-out";
     }
 
     @GetMapping("/task3")
-    public String visaByClientName(){
+    public String visaByClientName() {
         return "task3";
     }
 
     @GetMapping("/task3-out")
-    public String outVisa(@RequestParam String lastName, Model model){
+    public String outVisa(@RequestParam String lastName, Model model) {
         model.addAttribute("visaList", visaService.findAllVisaByClient(lastName));
         return "task3-out";
     }
-    @PostMapping("/availeble-room")
-    public String availebleRoom(@RequestParam Date startDate, @RequestParam Date endDate,
-                                @RequestParam String clientId, @RequestParam String hotelId, Model model){
 
-        List<Room> available = null;
-        List<Booking> bookings = bookingService.findAll();
-        List<Long> listId = new ArrayList<>();
-        List<Room> rooms = roomService.findAllByHotelId(Long.parseLong(hotelId));
-        for (Booking booking: bookings
-             ) {
-
-            listId.add(Long.valueOf(booking.getRoom().getId()));
-
-        }
+    @GetMapping("/task4")
+    public String visaByCountryName() {
+        return "task4";
+    }
 
 
+    @GetMapping("/task4-out")
+    public String outVisaByCountry(@RequestParam String countryName, Model model) {
+        model.addAttribute("visaList", visaService.findAllVisaByCountry(countryName));
+        return "task4-out";
 
-        return "book-room";
     }
 }

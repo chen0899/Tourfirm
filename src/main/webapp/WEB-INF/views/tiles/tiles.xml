@@ -120,6 +120,16 @@
         <put-attribute name="body" value="/WEB-INF/views/task3Out.jsp"/>
     </definition>
 
+    <definition name="task4" extends="template-def">
+        <put-attribute name="title" value="Task4"/>
+        <put-attribute name="body" value="/WEB-INF/views/task4.jsp"/>
+    </definition>
+
+    <definition name="task4-out" extends="template-def">
+        <put-attribute name="title" value="Task4"/>
+        <put-attribute name="body" value="/WEB-INF/views/task4Out.jsp"/>
+    </definition>
+
     <definition name="book-hotel" extends="template-def">
         <put-attribute name="title" value="Book hotel"/>
         <put-attribute name="body" value="/WEB-INF/views/hotelBook.jsp"/>
