@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface RoomDAO extends GenericDAO<Room, Integer>{
     List<Room> findAllByHotelId(Long hotelId);
+
+    List<Room> findAllAvailelbe (Integer hotelId);
 }

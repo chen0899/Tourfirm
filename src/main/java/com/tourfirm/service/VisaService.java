@@ -20,4 +20,6 @@ public interface VisaService {
     Visa findById(Integer id);
 
     void delete(Integer id);
+
+    List<Visa> findAllVisaByClient(String lastName);
 }
