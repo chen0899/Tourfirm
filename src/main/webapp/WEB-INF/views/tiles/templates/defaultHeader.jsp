@@ -24,6 +24,9 @@
                     <a class="nav-link" href="/hotel">Hotels</a>
                 </li>
                 <li>
+                    <a class="nav-link" href="/visa">Visa</a>
+                </li>
+                <li>
                     <a class="nav-link" href="/booking">Booking</a>
                 </li>
                 <li>

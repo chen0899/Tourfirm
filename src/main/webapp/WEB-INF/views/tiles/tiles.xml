@@ -69,6 +69,16 @@
         <put-attribute name="body" value="/WEB-INF/views/clientEditor.jsp"/>
     </definition>
 
+    <definition name="visa" extends="template-def">
+        <put-attribute name="title" value="Visa"/>
+        <put-attribute name="body" value="/WEB-INF/views/visa.jsp"/>
+    </definition>
+
+    <definition name="visa-editor" extends="template-def">
+        <put-attribute name="title" value="Edit visa"/>
+        <put-attribute name="body" value="/WEB-INF/views/visaEditor.jsp"/>
+    </definition>
+
     <definition name="booking" extends="template-def">
         <put-attribute name="title" value="Booking"/>
         <put-attribute name="body" value="/WEB-INF/views/booking.jsp"/>
