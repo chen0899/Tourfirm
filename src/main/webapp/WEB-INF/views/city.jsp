@@ -15,12 +15,15 @@
                 <div class="form-group" style="width: 80%; margin-left: 2%">
                     <form method="post" action="/save-city">
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">City name</label>
-                            <input type="text" class="form-control col-sm-4" name="cityName"/>
+                            <label for="validationCustom03" class="col-sm-2 col-form-label">City name</label>
+                            <input type="text" class="form-control col-sm-4" id="validationCustom03" placeholder="City"  name="cityName" required/>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country name</label>
-                            <select name="countryName" class="form-control col-sm-4">
+                            <select name="countryName" class="form-control col-sm-4" required>
                                 <option hidden >Select</option>
                                 <c:forEach  var="countryName" items="${countryNameList}" >
                                     <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
@@ -77,5 +80,8 @@
         </table>
     </form>
 </div>
+
+
+
 </body>
 </html>
