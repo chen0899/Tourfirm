@@ -51,7 +51,7 @@
     </div>
 
     <form class="mt-3">
-        <table class="table table-bordered">
+        <table class="table able-bordered text-center ">
             <thead>
             <tr>
                 <th>Id</th>
@@ -59,7 +59,7 @@
                 <th>End date</th>
                 <th>Country</th>
                 <th>Client</th>
-                <th style="width: 30%" colspan="2">Action</th>
+                <th style="width: 18%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -70,15 +70,21 @@
                     <td class="align-middle">${visa.getEndDate()}</td>
                     <td class="align-middle">${visa.getCountry().getCountryName()}</td>
                     <td class="align-middle">${visa.getClient().getFirstName()} ${visa.getClient().getLastName()} </td>
+
+
                     <td class="align-middle">
-                        <form method="post" action="delete-visa/${visa.id}">
-                            <button type="submit" class="btn btn-outline-danger">Delete</button>
-                        </form>
-                    </td>
-                    <td class="align-middle">
-                        <form method="post" action="/update-visa/${visa.id}">
-                            <button type="submit" class="btn btn-outline-success">Edit</button>
-                        </form>
+                        <div class="row">
+                            <div class="col align-middle">
+                                <form method="post" action="delete-visa/${visa.id}">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                            <div class="col align-middle">
+                                <form method="post" action="/update-visa/${visa.id}">
+                                    <button type="submit" class="btn btn-outline-success">Edit</button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
