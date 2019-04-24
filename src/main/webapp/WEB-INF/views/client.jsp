@@ -67,25 +67,22 @@
             <tbody>
             <c:forEach var="client" items="${clientList}" varStatus="rowCounter">
                 <tr>
-                    <td>${client.getId()}</td>
-                    <td>${client.getFirstName()}</td>
-                    <td>${client.getLastName()}</td>
-                    <td>${client.getEmail()}</td>
-                    <td>${client.getPhone()}</td>
-                    <td>${client.getCountry().getCountryName()}</td>
+                    <td class="align-middle">${client.getId()}</td>
+                    <td class="align-middle">${client.getFirstName()}</td>
+                    <td class="align-middle">${client.getLastName()}</td>
+                    <td class="align-middle">${client.getEmail()}</td>
+                    <td class="align-middle">${client.getPhone()}</td>
+                    <td class="align-middle">${client.getCountry().getCountryName()}</td>
                     <td class="align-middle">
-                        <div class="row">
-                            <div class="col align-middle">
-                                <form method="post" action="delete-client/${client.id}">
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                </form>
-                            </div>
-                            <div class="col align-middle">
-                                <form method="post" action="/update-form-client/${client.id}">
-                                    <button type="submit" class="btn btn-outline-success">Edit</button>
-                                </form>
-                            </div>
-                        </div>
+                        <form method="post" action="delete-client/${client.id}">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+
+                    <td class="align-middle">
+                        <form method="post" action="/update-form-client/${client.id}">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>
