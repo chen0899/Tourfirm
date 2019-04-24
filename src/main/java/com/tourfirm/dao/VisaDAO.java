@@ -3,7 +3,13 @@ package com.tourfirm.dao;
 import com.tourfirm.entity.Client;
 import com.tourfirm.entity.Visa;
 
-public interface VisaDAO extends GenericDAO<Visa,Integer> {
-    public Client findClientByName(String lastName);
+import java.util.List;
+
+public interface VisaDAO extends GenericDAO<Visa, Integer> {
+     Client findClientByName(String lastName);
+
+     List<Visa> findAllVisaByClient(String lastName);
+
+     List<Visa> findAllVisaByCountry(String countryName);
 
 }
