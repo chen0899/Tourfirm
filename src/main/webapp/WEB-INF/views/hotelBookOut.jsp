@@ -12,7 +12,6 @@
             <th style="width: 14%">Count places</th>
             <th style="width: 20%">Hotel</th>
             <th style="width: 20%">Room type</th>
-            <th style="width: 20%" colspan="2">Action</th>
 
         </tr>
         </thead>
