@@ -89,5 +89,36 @@
         <put-attribute name="body" value="/WEB-INF/views/bookingEditor.jsp"/>
     </definition>
 
+    <definition name="tasks" extends="template-def">
+        <put-attribute name="title" value="Task"/>
+        <put-attribute name="body" value="/WEB-INF/views/tasks.jsp"/>
+    </definition>
+
+    <definition name="task1" extends="template-def">
+        <put-attribute name="title" value="Task1"/>
+        <put-attribute name="body" value="/WEB-INF/views/task1.jsp"/>
+    </definition>
+
+    <definition name="task2" extends="template-def">
+        <put-attribute name="title" value="Task2"/>
+        <put-attribute name="body" value="/WEB-INF/views/task2.jsp"/>
+    </definition>
+
+    <definition name="task2-out" extends="template-def">
+        <put-attribute name="title" value="Task2"/>
+        <put-attribute name="body" value="/WEB-INF/views/task2Out.jsp"/>
+    </definition>
+
+    <definition name="book-hotel" extends="template-def">
+        <put-attribute name="title" value="Book hotel"/>
+        <put-attribute name="body" value="/WEB-INF/views/hotelBook.jsp"/>
+    </definition>
+
+
+    <definition name="book-room" extends="template-def">
+        <put-attribute name="title" value="Book room"/>
+        <put-attribute name="body" value="/WEB-INF/views/roomBook.jsp"/>
+    </definition>
+
 </tiles-definitions>
 

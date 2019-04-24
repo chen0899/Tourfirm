@@ -26,4 +26,5 @@ public class HotelController {
         model.addAttribute("hotel", hotelDB);
         return "hotel-editor";
     }
+
 }

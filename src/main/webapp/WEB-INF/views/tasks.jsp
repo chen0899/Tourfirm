@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: i.chen
-  Date: 23.04.2019
-  Time: 15:40
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-</body>
-</html>
+<form method="get" action="/task1">
+    <button type="submit" class="btn btn-outline-info ml-3"> Task 1: Show all cities and countries in this tourfirm!</button>
+</form>
+
+<form method="get" action="/task2">
+    <button type="submit" class="btn btn-outline-info ml-3"> Task 2: Find hotels by city name</button>
+</form>
+

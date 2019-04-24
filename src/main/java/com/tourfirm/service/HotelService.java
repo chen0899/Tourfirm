@@ -17,4 +17,6 @@ public interface HotelService {
     void update(Hotel roomType);
 
     void delete(Hotel roomType);
+
+    List<Hotel> findAllByCity (String cityName);
 }

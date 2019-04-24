@@ -46,7 +46,7 @@
                 <th>Id</th>
                 <th>City Name</th>
                 <th>Country Name</th>
-                <th colspan="2">Action</th>
+                <th style="width: 30%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
