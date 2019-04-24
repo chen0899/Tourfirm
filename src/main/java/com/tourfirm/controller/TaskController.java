@@ -1,6 +1,7 @@
 package com.tourfirm.controller;
 
 import com.tourfirm.entity.Booking;
+import com.tourfirm.entity.Hotel;
 import com.tourfirm.entity.Room;
 import com.tourfirm.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,23 +96,27 @@ public class TaskController {
 
     @GetMapping("/book-hotel-out")
     public String availableRoom(@RequestParam String startDate, @RequestParam String endDate,
-                                @RequestParam String clientId,@RequestParam String hotelId,
+                                @RequestParam String clientId, @RequestParam String hotelId,
                                 Model model) {
 
-        List<Room> notAv = roomService.findAllAvailalbe(Long.valueOf(hotelId), startDate,endDate);
+        List<Room> notAv = roomService.findAllAvailalbe(Long.valueOf(hotelId), startDate, endDate);
         List<Room> allRoom = roomService.findAllByHotelId(Long.valueOf(hotelId));
 
 
-            for (Room  room1: notAv
-                 ) {
-                allRoom.remove(room1);
-            }
-
-
+        for (Room room1 : notAv
+        ) {
+            allRoom.remove(room1);
+        }
 
 
         model.addAttribute("roomList", allRoom);
         return "book-room-out";
     }
+
+    @GetMapping("/book-hotel-by-city")
+    public String outHotelBookByCity() {
+        return "book-hotel-city";
+    }
+
 }
 
