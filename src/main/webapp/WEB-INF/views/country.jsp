@@ -56,7 +56,6 @@
                         <form method="post" action="/update-form-country/${country.id}">
                             <button type="submit" class="btn btn-outline-success">Edit</button>
                         </form>
-
                     </td>
                 </tr>
             </c:forEach>
