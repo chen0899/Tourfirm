@@ -8,13 +8,15 @@ public interface RoomService {
 
     Room findById(Integer id);
 
-    List<Room> finaAll();
+    List<Room> findAll();
 
     List<Room> findAllByHotelId(Long hotelId);
 
-    void save(Integer roomNumber, Integer numberOfPlaces, String hotel, String roomType);
+    Room findByRoomNumber(Integer roomNumber);
 
-    void update(Integer id, Integer roomNumber, Integer numberOfPlaces, String hotel, String roomType);
+    void save(Room room);
+
+    void update(Room room);
 
     void delete(Room room);
 

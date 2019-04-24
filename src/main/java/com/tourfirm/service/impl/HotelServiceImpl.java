@@ -37,17 +37,40 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void save(Hotel hotel) {
+    public Hotel findByNameAndCity(String hotelName, Integer city) {
+        return hotelDAO.findByNameAndCity(hotelName, city);
+    }
 
+    @Override
+    public Hotel findByEmail(String email) {
+        return hotelDAO.findByEmail(email);
+    }
+
+    @Override
+    public Hotel findByPhone(String phone) {
+        return hotelDAO.findByPhone(phone);
+    }
+
+    @Override
+    public Hotel findByAddress(String address, Integer city) {
+        return hotelDAO.findByAddress(address, city);
+    }
+
+    @Override
+    public void save(Hotel hotel) {
+        hotelDAO.save(hotel);
     }
 
     @Override
     public void update(Hotel hotel) {
-
+        Hotel hotelDB = hotelDAO.findById(hotel.getId());
+        if (hotel.getId().equals(hotelDB.getId())) {
+            hotelDAO.update(hotel);
+        }
     }
 
     @Override
     public void delete(Hotel hotel) {
-
+        hotelDAO.delete(hotel);
     }
 }
