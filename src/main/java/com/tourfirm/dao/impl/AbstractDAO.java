@@ -2,7 +2,6 @@ package com.tourfirm.dao.impl;
 
 import com.tourfirm.dao.GenericDAO;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

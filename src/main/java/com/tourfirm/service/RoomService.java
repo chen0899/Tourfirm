@@ -2,7 +2,6 @@ package com.tourfirm.service;
 
 import com.tourfirm.entity.Room;
 
-import java.sql.Date;
 import java.util.List;
 
 public interface RoomService {

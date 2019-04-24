@@ -3,7 +3,6 @@ package com.tourfirm.service.impl;
 import com.tourfirm.dao.ClientDAO;
 import com.tourfirm.dao.CountryDAO;
 import com.tourfirm.dao.VisaDAO;
-import com.tourfirm.entity.Client;
 import com.tourfirm.entity.Visa;
 import com.tourfirm.service.VisaService;
 import org.springframework.beans.factory.annotation.Autowired;

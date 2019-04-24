@@ -3,7 +3,7 @@ package com.tourfirm.dao.impl;
 import com.tourfirm.entity.Country;
 import com.tourfirm.dao.CountryDAO;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

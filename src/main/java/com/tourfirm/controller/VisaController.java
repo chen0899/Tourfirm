@@ -1,7 +1,6 @@
 package com.tourfirm.controller;
 
-import com.tourfirm.entity.Client;
-import com.tourfirm.entity.Country;
+
 import com.tourfirm.entity.Visa;
 import com.tourfirm.service.ClientService;
 import com.tourfirm.service.CountryService;

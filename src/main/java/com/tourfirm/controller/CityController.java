@@ -1,8 +1,6 @@
-
 package com.tourfirm.controller;
 
 import com.tourfirm.entity.City;
-import com.tourfirm.entity.Country;
 import com.tourfirm.service.CityService;
 import com.tourfirm.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;

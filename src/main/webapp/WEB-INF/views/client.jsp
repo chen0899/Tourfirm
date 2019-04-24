@@ -33,8 +33,8 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country from</label>
                             <select name="countryName" class="form-control col-sm-4">
-                                <option hidden >Select</option>
-                                <c:forEach  var="countryName" items="${countryNameList}" >
+                                <option hidden>Select</option>
+                                <c:forEach var="countryName" items="${countryNameList}">
                                     <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
                                 </c:forEach>
                             </select>

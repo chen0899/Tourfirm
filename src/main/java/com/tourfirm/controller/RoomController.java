@@ -1,8 +1,6 @@
 package com.tourfirm.controller;
 
-import com.tourfirm.entity.Hotel;
 import com.tourfirm.entity.Room;
-import com.tourfirm.entity.RoomType;
 import com.tourfirm.service.HotelService;
 import com.tourfirm.service.RoomService;
 import com.tourfirm.service.RoomTypeService;
