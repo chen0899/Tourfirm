@@ -22,4 +22,9 @@ public class RoomDAOImpl extends AbstractDAO<Room, Integer> implements RoomDAO {
         List<Room> hotelList = query.getResultList();
         return hotelList;
     }
+
+    @Override
+    public List<Room> findAllAvailelbe(Integer hotelId) {
+        return null;
+    }
 }
