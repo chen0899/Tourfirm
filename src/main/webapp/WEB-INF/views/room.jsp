@@ -10,34 +10,44 @@
         Create Room
     </a>
 
-    <div class="collapse col-ml-3" id="roomadd">
+    <div class="collapse col-ml-3 <c:if test="${notEmpty == 'notEmpty'}">show</c:if>" id="roomadd">
         <div class="form-group mt-3 ">
             <div class="form-row">
                 <div class="form-group" style="width: 80%; margin-left: 2%">
                     <form method="post" action="/room-save">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room number</label>
-                            <input type="text" class="form-control col-sm-4" name="roomNumber"/>
+                            <input type="number" min="1" class="form-control col-sm-4" name="roomNumber"
+                                   <c:if test="${not empty notEmpty}">value="${room.roomNumber}" </c:if>required/>
                         </div>
+
+                        <div class="invalid-feedback d-block" style="margin-left: 12%; width: 42%">
+                            <c:if test="${not empty roomNumberError}">
+                                <div class="alert alert-danger text-center"><c:out value="${roomNumberError}"/></div>
+                            </c:if>
+                        </div>
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Count of places</label>
-                            <input type="text" class="form-control col-sm-4" name="numberOfPlaces"/>
+                            <input type="number" min="1" max="10" class="form-control col-sm-4" name="numberOfPlaces"
+                                   <c:if test="${not empty notEmpty}">value="${room.numberOfPlaces}"</c:if> required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Hotel name</label>
                             <input type="text" class="form-control col-sm-4" name="hotel"
-                                   value="${room}" readonly/>
+                                   value="${hotel.hotelName}" readonly/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room type</label>
-                            <%--                            <input type="text" class="form-control col-sm-4" name="roomType"/>--%>
-                            <select name="roomType" class="form-control col-sm-4">
+                            <select name="roomType" class="form-control col-sm-4" required>
                                 <option hidden>Select</option>
                                 <c:forEach var="type" items="${typesList}">
+                                    <option hidden selected value="Comfort">Select</option>
                                     <option value="${type.getType()}">${type.getType()}</option>
                                 </c:forEach>
                             </select>
                         </div>
+                        <input hidden value="${hotel.getId()}" name="hotelId">
                         <div class="form-group row text-right">
                             <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
                                     name="update">
@@ -59,7 +69,7 @@
                 <th style="width: 14%">Count places</th>
                 <th style="width: 20%">Hotel</th>
                 <th style="width: 20%">Room type</th>
-                <th style="width: 20%" colspan="2">Action</th>
+                <th style="width: 20%">Action</th>
 
             </tr>
             </thead>
@@ -72,14 +82,19 @@
                     <td class="align-middle">${room.hotel.getHotelName()}</td>
                     <td class="align-middle">${room.roomType.getType()}</td>
                     <td class="align-middle">
-                        <form method="post" action="delete-room/${room.id}">
-                            <button type="submit" class="btn btn-outline-danger">Delete</button>
-                        </form>
-                    </td>
-                    <td class="align-middle">
-                        <form method="post" action="/update-room/${room.id}">
-                            <button type="submit" class="btn btn-outline-success">Edit</button>
-                        </form>
+                        <div class="row">
+                            <div class="col align-middle">
+                                <form method="post" action="/delete/${room.id}">
+                                    <input hidden value="${room.hotel.getId()}" name="hotelId">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                            <div class="col align-middle">
+                                <form method="post" action="/update-room/${room.id}">
+                                    <button type="submit" class="btn btn-outline-success">Edit</button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>

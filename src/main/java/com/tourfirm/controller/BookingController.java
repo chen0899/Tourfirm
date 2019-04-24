@@ -30,7 +30,7 @@ public class BookingController {
     @GetMapping("/booking")
     public String bookinList(Model model) {
         model.addAttribute("clientList",clientService.findAll());
-        model.addAttribute("roomList",roomService.finaAll());
+        model.addAttribute("roomList",roomService.findAll());
         model.addAttribute("bookingList", bookingService.findAll());
         return "booking";
     }
@@ -58,7 +58,7 @@ public class BookingController {
         Booking booking = bookingService.findById(id);
         model.addAttribute("booking", booking);
         model.addAttribute("clientList",clientService.findAll());
-        model.addAttribute("roomList",roomService.finaAll());
+        model.addAttribute("roomList",roomService.findAll());
         return "booking-editor";
     }
 
