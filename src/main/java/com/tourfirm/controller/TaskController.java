@@ -37,6 +37,9 @@ public class TaskController {
     @Autowired
     private BookingService bookingService;
 
+    @Autowired
+    private VisaService visaService;
+
     @GetMapping("/task")
     public String allTasks(){
         return "tasks";
@@ -61,6 +64,16 @@ public class TaskController {
         return "task2-out";
     }
 
+    @GetMapping("/task3")
+    public String visaByClientName(){
+        return "task3";
+    }
+
+    @GetMapping("/task3-out")
+    public String outVisa(@RequestParam String lastName, Model model){
+        model.addAttribute("visaList", visaService.findAllVisaByClient(lastName));
+        return "task3-out";
+    }
     @PostMapping("/availeble-room")
     public String availebleRoom(@RequestParam Date startDate, @RequestParam Date endDate,
                                 @RequestParam String clientId, @RequestParam String hotelId, Model model){

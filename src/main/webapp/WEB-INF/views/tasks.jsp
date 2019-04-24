@@ -9,3 +9,6 @@
     <button type="submit" class="btn btn-outline-info ml-3"> Task 2: Find hotels by city name</button>
 </form>
 
+<form method="get" action="/task3">
+    <button type="submit" class="btn btn-outline-info ml-3"> Task 3: Find visa for client</button>
+</form>
