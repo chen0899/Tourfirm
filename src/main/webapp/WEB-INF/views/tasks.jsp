@@ -16,3 +16,7 @@
 <form method="get" action="/task4">
     <button type="submit" class="btn btn-outline-info ml-3"> Task 4: Find visa by country name</button>
 </form>
+
+<form method="get" action="/book-hotel">
+    <button type="submit" class="btn btn-outline-info ml-3"> Task 5:Book hotel</button>
+</form>

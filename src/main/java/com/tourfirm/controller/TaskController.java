@@ -87,4 +87,31 @@ public class TaskController {
         return "task4-out";
 
     }
+
+    @GetMapping("/book-hotel")
+    public String outHotelBook() {
+        return "book-room";
+    }
+
+    @GetMapping("/book-hotel-out")
+    public String availableRoom(@RequestParam String startDate, @RequestParam String endDate,
+                                @RequestParam String clientId,@RequestParam String hotelId,
+                                Model model) {
+
+        List<Room> notAv = roomService.findAllAvailalbe(Long.valueOf(hotelId), startDate,endDate);
+        List<Room> allRoom = roomService.findAllByHotelId(Long.valueOf(hotelId));
+
+
+            for (Room  room1: notAv
+                 ) {
+                allRoom.remove(room1);
+            }
+
+
+
+
+        model.addAttribute("roomList", allRoom);
+        return "book-room-out";
+    }
 }
+

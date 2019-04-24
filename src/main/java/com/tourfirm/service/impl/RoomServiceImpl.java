@@ -10,6 +10,7 @@ import com.tourfirm.service.RoomService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -78,5 +79,10 @@ public class RoomServiceImpl implements RoomService {
 
     private RoomType getRoomType(String roomType) {
         return roomTypeDAO.findByRoomType(roomType);
+    }
+
+    @Override
+    public List<Room> findAllAvailalbe(Long hotelId, String startDate, String endDate) {
+        return roomDAO.findAllAvailalbe(hotelId,startDate,endDate);
     }
 }
