@@ -41,7 +41,7 @@ public class BookingController {
         Booking booking = new Booking();
         booking.setStartDate(startDate);
         booking.setEndDate((endDate));
-        booking.setClient(clientService.findById(Integer.valueOf(clientId)));
+        booking.setClient(clientService.findById(Integer.parseInt(clientId)));
         booking.setRoom(roomService.findById(Integer.parseInt(roomId)));
         bookingService.save(booking);
         return "redirect:/booking";
