@@ -26,8 +26,8 @@ public class CountryDAOImpl extends AbstractDAO<Country, Integer> implements Cou
     public Country findCountryByName(String countryName) {
         final char dm = (char) 34;
 
-        Query query = entityManager.createNativeQuery("SELECT country.id from country where country.country_name = "+ dm + countryName + dm + ";");
-        Integer id= (Integer) query.getSingleResult();
+        Query query = entityManager.createNativeQuery("SELECT country.id from country where country.country_name = " + dm + countryName + dm + ";");
+        Integer id = (Integer) query.getSingleResult();
         Country country = findById(id);
         System.out.println(country);
         return country;

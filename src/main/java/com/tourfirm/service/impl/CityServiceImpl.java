@@ -17,7 +17,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public void save(City city) {
-         cityDAO.save(city);
+        cityDAO.save(city);
     }
 
     @Override
@@ -32,12 +32,12 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public void delete(Integer id) {
-         cityDAO.delete(cityDAO.findById(id));
+        cityDAO.delete(cityDAO.findById(id));
     }
 
     @Override
     public void update(Integer id, City city) {
-       City newCity = city;
+        City newCity = city;
         newCity.setId(id);
         cityDAO.update(newCity);
     }

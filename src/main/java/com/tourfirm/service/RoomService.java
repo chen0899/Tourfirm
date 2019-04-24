@@ -19,5 +19,5 @@ public interface RoomService {
 
     void delete(Room room);
 
-    List<Room> findAllAvailalbe (Long hotelId, String startDate, String endDate);
+    List<Room> findAllAvailalbe(Long hotelId, String startDate, String endDate);
 }

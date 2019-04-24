@@ -29,8 +29,8 @@ public class RoomDAOImpl extends AbstractDAO<Room, Integer> implements RoomDAO {
                 "inner join b.room r " +
                 "inner join r.hotel h  " +
                 "where h.id=?1 and ?2  between b.startDate and b.endDate");
-        query.setParameter(1,hotelId);
-        query.setParameter(2,Date.valueOf(startDate));
+        query.setParameter(1, hotelId);
+        query.setParameter(2, Date.valueOf(startDate));
         List<Room> roomList = query.getResultList();
         return roomList;
 

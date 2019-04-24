@@ -22,7 +22,7 @@ public class CountryController {
 
     @GetMapping("/country")
     public String countryList(Model model) {
-        model.addAttribute("countryList",countryService.findAll());
+        model.addAttribute("countryList", countryService.findAll());
         return "country";
     }
 
@@ -33,7 +33,7 @@ public class CountryController {
     }
 
     @PostMapping("/delete-country/{id}")
-    public String deleteCountry(@PathVariable("id") Integer id,Model model) {
+    public String deleteCountry(@PathVariable("id") Integer id, Model model) {
         countryService.delete(id);
         return "redirect:/country";
     }
@@ -47,7 +47,7 @@ public class CountryController {
 
     @PostMapping("update-country")
     public String countryUpdate(@RequestParam Integer id, @RequestParam String countryName) {
-        countryService.update(id,countryName);
+        countryService.update(id, countryName);
         return "redirect:/country";
     }
 }
