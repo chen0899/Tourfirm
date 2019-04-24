@@ -76,7 +76,7 @@
                     <td class="align-middle">
                         <div class="row">
                             <div class="col align-middle">
-                                <form method="post" action="delete/${client.id}">
+                                <form method="post" action="delete-client/${client.id}">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                 </form>
                             </div>

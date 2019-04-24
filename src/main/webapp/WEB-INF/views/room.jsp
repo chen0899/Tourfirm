@@ -72,7 +72,7 @@
                     <td class="align-middle">${room.hotel.getHotelName()}</td>
                     <td class="align-middle">${room.roomType.getType()}</td>
                     <td class="align-middle">
-                        <form method="post" action="delete/${room.id}">
+                        <form method="post" action="delete-room/${room.id}">
                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                         </form>
                     </td>

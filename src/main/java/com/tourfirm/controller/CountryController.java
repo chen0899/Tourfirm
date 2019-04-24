@@ -26,8 +26,13 @@ public class CountryController {
 
     @PostMapping("/save-country")
     public String saveCountry(@ModelAttribute("dispatcher") Country country, Model model) {
-        countryService.save(country);
-        return "redirect:/country";
+        if (country.getCountryName() != null) {
+            countryService.save(country);
+            return "redirect:/country";
+        } else {
+            model.addAttribute("error","Name must be not null!");
+            return "redirect:/country";
+        }
     }
 
     @PostMapping("/delete-country/{id}")

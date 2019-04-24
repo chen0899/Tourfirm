@@ -30,6 +30,9 @@
         </div>
     </div>
 
+    <div>
+        ${error}
+    </div>
     <form class="mt-3">
         <table class="table table-bordered text-center">
             <thead>
@@ -47,7 +50,7 @@
                     <td class="align-middle">
                         <div class="row">
                             <div class="col align-middle">
-                                <form method="post" action="delete/${country.id}">
+                                <form method="post" action="delete-country/${country.id}">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                 </form>
                             </div>
