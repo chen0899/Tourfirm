@@ -6,8 +6,10 @@ import com.tourfirm.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -52,6 +54,7 @@ public class CityController {
     public String cityFromUpdate(@PathVariable("id") Integer id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
+        model.addAttribute("countryList", countryService.findAll());
         return "city-editor";
     }
 
