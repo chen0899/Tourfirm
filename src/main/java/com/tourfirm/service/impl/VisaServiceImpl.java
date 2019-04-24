@@ -81,4 +81,9 @@ public class VisaServiceImpl implements VisaService {
     public List<Visa> findAllVisaByClient(String lastName) {
         return visaDAO.findAllVisaByClient(lastName);
     }
+
+    @Override
+    public List<Visa> findAllVisaByCountry(String countryName) {
+        return visaDAO.findAllVisaByCountry(countryName);
+    }
 }

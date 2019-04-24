@@ -22,4 +22,6 @@ public interface VisaService {
     void delete(Integer id);
 
     List<Visa> findAllVisaByClient(String lastName);
+
+    List<Visa> findAllVisaByCountry(String countryName);
 }

@@ -5,8 +5,11 @@ import com.tourfirm.entity.Visa;
 
 import java.util.List;
 
-public interface VisaDAO extends GenericDAO<Visa,Integer> {
-    public Client findClientByName(String lastName);
+public interface VisaDAO extends GenericDAO<Visa, Integer> {
+     Client findClientByName(String lastName);
 
-    public List<Visa>  findAllVisaByClient (String lastName);
+     List<Visa> findAllVisaByClient(String lastName);
+
+     List<Visa> findAllVisaByCountry(String countryName);
+
 }
