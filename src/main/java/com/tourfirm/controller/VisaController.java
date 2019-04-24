@@ -1,7 +1,6 @@
 package com.tourfirm.controller;
 
-import com.tourfirm.entity.Client;
-import com.tourfirm.entity.Country;
+
 import com.tourfirm.entity.Visa;
 import com.tourfirm.service.ClientService;
 import com.tourfirm.service.CountryService;
@@ -21,36 +20,51 @@ import java.util.Map;
 public class VisaController {
 
     @Autowired
-    private VisaService visaService ;
+    private VisaService visaService;
     @Autowired
-    private CountryService countryService ;
+    private CountryService countryService;
     @Autowired
-    private ClientService clientService ;
+    private ClientService clientService;
 
     @RequestMapping("/visa")
-    public String listContacts(Map<String, Object> map) {
+    public String listVisa(Map<String, Object> map) {
 
         map.put("visa", new Visa());
         map.put("visaList", visaService.findAll());
         map.put("clientList", clientService.findAll());
         map.put("countryList", countryService.findAll());
-     //System.out.println(visaService.findAll().get(0).toString());
+        //System.out.println(visaService.findAll().get(0).toString());
 
         return "visa";
     }
 
     @PostMapping("/visa-save")
-    public String saveRoom(@RequestParam  Date startDate, @RequestParam Date endDate,
-                           @RequestParam String country, @RequestParam String client) {
+    public String saveVisa(@RequestParam Date startDate, @RequestParam Date endDate,
+                           @RequestParam String country, @RequestParam String client, Model model) {
 
-        visaService.save(startDate,endDate,client,country);
-        return "redirect:/visa";
+        Integer codeMsg = visaService.save(startDate, endDate, client, country);
+        if (codeMsg == 3) {
+            model.addAttribute("msg", "Success");
+            return "redirect:/visa";
+
+        } else {
+            if (codeMsg == 1) {
+                model.addAttribute("msg", "Can't_add_visa!_Same_country_for_client!");
+            }
+            if (codeMsg == 2) {
+                model.addAttribute("msg", "Can't_add_visa!_End_date_before_start_date!");
+            }
+            return "redirect:/visa";
+        }
     }
 
     @PostMapping("update-visa/{id}")
     public String visaEdit(@PathVariable("id") Integer id, Model model) {
         Visa visaDB = visaService.findById(id);
         model.addAttribute("visa", visaDB);
+        model.addAttribute("visaList", visaService.findAll());
+        model.addAttribute("clientList", clientService.findAll());
+        model.addAttribute("countryList", countryService.findAll());
         return "visa-editor";
     }
 
@@ -58,7 +72,8 @@ public class VisaController {
     public String visaUpdate(@RequestParam Integer id, @RequestParam Date startDate,
                              @RequestParam Date endDate, @RequestParam String countryName,
                              @RequestParam String clientName) {
-        visaService.update(id, startDate, endDate, clientName, countryName); ;
+        visaService.update(id, startDate, endDate, clientName, countryName);
+        ;
         return "redirect:/visa";
     }
 
@@ -69,7 +84,6 @@ public class VisaController {
         visaService.delete(visaById.getId());
         return "redirect:/visa";
     }
-
 
 
 }

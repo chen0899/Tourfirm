@@ -108,22 +108,7 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <!--        TILES-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.tiles</groupId>-->
-<!--            <artifactId>tiles-core</artifactId>-->
-<!--            <version>${apachetiles.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.tiles</groupId>-->
-<!--            <artifactId>tiles-api</artifactId>-->
-<!--            <version>${apachetiles.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.tiles</groupId>-->
-<!--            <artifactId>tiles-servlet</artifactId>-->
-<!--            <version>${apachetiles.version}</version>-->
-<!--        </dependency>-->
+
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
@@ -133,6 +118,11 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>2.0.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.2.2</version>
         </dependency>
     </dependencies>
 

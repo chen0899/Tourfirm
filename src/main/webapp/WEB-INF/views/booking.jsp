@@ -16,19 +16,29 @@
                     <form method="post" action="/save-booking">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Start date</label>
-                            <input type="date" class="form-control col-sm-4" name="startDate"/>
+                            <input type="date" class="form-control col-sm-4" name="startDate" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">End date</label>
-                            <input type="date" class="form-control col-sm-4" name="endDate"/>
+                            <input type="date" class="form-control col-sm-4" name="endDate" required/>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Client id</label>
-                            <input type="text" class="form-control col-sm-4" name="clientId"/>
+                            <label class="col-sm-2 col-form-label">Client lastName</label>
+                            <select name="clientId" class="form-control col-sm-4">
+                                <option hidden>Select</option>
+                                <c:forEach var="client" items="${clientList}">
+                                    <option value="${client.getId()}">${client.getLastName()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Room id</label>
-                            <input type="text" class="form-control col-sm-4" name="roomId"/>
+                            <select name="roomId" class="form-control col-sm-4">
+                                <option hidden></option>
+                                <c:forEach var="room" items="${roomList}">
+                                    <option value="${room.getId()}">${room.getId()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group row text-right">
                             <button class="btn btn-outline-info col-sm-4" style="margin-left: 16.7%" type="submit"
@@ -49,7 +59,7 @@
                 <th>Id</th>
                 <th>Start date</th>
                 <th>End date</th>
-                <th>Client id</th>
+                <th>Client last name</th>
                 <th>Room id</th>
                 <th style="width: 30%" colspan="2">Action</th>
             </tr>
@@ -57,24 +67,21 @@
             <tbody>
             <c:forEach var="booking" items="${bookingList}" varStatus="rowCounter">
                 <tr>
-                    <td>${booking.getId()}</td>
-                    <td>${booking.getStartDate()}</td>
-                    <td>${booking.getEndDate()}</td>
-                    <td>${booking.getClient().getId()}</td>
-                    <td>${booking.getRoom().getId()}</td>
+                    <td class="align-middle">${booking.getId()}</td>
+                    <td class="align-middle">${booking.getStartDate()}</td>
+                    <td class="align-middle">${booking.getEndDate()}</td>
+                    <td class="align-middle">${booking.getClient().getLastName()}</td>
+                    <td class="align-middle">${booking.getRoom().getId()}</td>
                     <td class="align-middle">
-                        <div class="row">
-                            <div class="col align-middle">
-                                <form method="post" action="delete-booking/${booking.id}">
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                </form>
-                            </div>
-                            <div class="col align-middle">
-                                <form method="post" action="/update-form-booking/${booking.id}">
-                                    <button type="submit" class="btn btn-outline-success">Edit</button>
-                                </form>
-                            </div>
-                        </div>
+                        <form method="post" action="delete-booking/${booking.id}">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                    <td class="align-middle">
+                        <form method="post" action="/update-form-booking/${booking.id}">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
+                        </form>
+
                     </td>
                 </tr>
             </c:forEach>

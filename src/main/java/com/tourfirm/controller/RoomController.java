@@ -82,7 +82,8 @@ public class RoomController {
         return "redirect:/room/" + hotelId;
     }
 
-    @PostMapping("delete/{id}")
+
+    @PostMapping("delete-room/{id}")
     public String deleteRoom(@PathVariable("id") Integer roomId, @RequestParam Long hotelId) {
         Room roomById = roomService.findById(roomId);
         roomService.delete(roomById);

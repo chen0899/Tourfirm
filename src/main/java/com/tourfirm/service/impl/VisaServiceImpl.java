@@ -3,7 +3,6 @@ package com.tourfirm.service.impl;
 import com.tourfirm.dao.ClientDAO;
 import com.tourfirm.dao.CountryDAO;
 import com.tourfirm.dao.VisaDAO;
-import com.tourfirm.entity.Client;
 import com.tourfirm.entity.Visa;
 import com.tourfirm.service.VisaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,25 @@ public class VisaServiceImpl implements VisaService {
 
 
     @Override
-    public void save(Visa visa) {
-         visaDAO.save(visa);
+    public Integer save(Visa visa) {
+
+        Integer idCountry = visa.getCountry().getId();
+        Integer idCountryClient = visa.getClient().getCountry().getId();
+
+        if (visa.getStartDate().before(visa.getEndDate()) == true) {
+            if (idCountry == idCountryClient) {
+                return 1;
+            }
+            if ((idCountry != idCountryClient)) {
+                visaDAO.save(visa);
+                return 3;
+            }
+        }
+        if (visa.getStartDate().before(visa.getEndDate()) == false) {
+            return 2;
+        }
+
+        return 1;
     }
 
     @Override
@@ -42,7 +58,7 @@ public class VisaServiceImpl implements VisaService {
 
     @Override
     public void delete(Integer id) {
-         visaDAO.delete(visaDAO.findById(id));
+        visaDAO.delete(visaDAO.findById(id));
     }
 
     private Visa getVisa(Date startDate, Date endDate, String client, String country) {
@@ -58,7 +74,7 @@ public class VisaServiceImpl implements VisaService {
     public void update(Integer id, Date startDate, Date endDate, String client, String country) {
         Visa visaDB = visaDAO.findById(id);
 
-        Visa updatedVisa = getVisa(startDate, endDate,client,country);
+        Visa updatedVisa = getVisa(startDate, endDate, client, country);
         updatedVisa.setId(id);
 
         if (updatedVisa.getId().equals(visaDB.getId())) {
@@ -67,9 +83,11 @@ public class VisaServiceImpl implements VisaService {
     }
 
     @Override
-    public void save(Date startDate, Date endDate, String client, String country) {
-        Visa visa = getVisa( startDate,  endDate,  client,  country);
-        visaDAO.save(visa);
+    public Integer save(Date startDate, Date endDate, String client, String country) {
+        Visa visa = getVisa(startDate, endDate, client, country);
+        Integer codeMsg = save(visa);
+
+        return codeMsg;
     }
 
     @Override
@@ -77,4 +95,13 @@ public class VisaServiceImpl implements VisaService {
 
     }
 
+    @Override
+    public List<Visa> findAllVisaByClient(String lastName) {
+        return visaDAO.findAllVisaByClient(lastName);
+    }
+
+    @Override
+    public List<Visa> findAllVisaByCountry(String countryName) {
+        return visaDAO.findAllVisaByCountry(countryName);
+    }
 }

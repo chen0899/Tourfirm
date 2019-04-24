@@ -16,11 +16,11 @@
                     <form method="post" action="/save-client">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Firstname</label>
-                            <input type="text" class="form-control col-sm-4" name="firstName"/>
+                            <input type="text" class="form-control col-sm-4" name="firstName" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Lastname</label>
-                            <input type="text" class="form-control col-sm-4" name="lastName"/>
+                            <input type="text" class="form-control col-sm-4" name="lastName" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Email</label>
@@ -28,13 +28,13 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Phone</label>
-                            <input type="text" class="form-control col-sm-4" name="phone"/>
+                            <input type="text" class="form-control col-sm-4" name="phone" required/>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country from</label>
                             <select name="countryName" class="form-control col-sm-4">
-                                <option hidden >Select</option>
-                                <c:forEach  var="countryName" items="${countryNameList}" >
+                                <option hidden>Ukraine</option>
+                                <c:forEach var="countryName" items="${countryNameList}">
                                     <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
                                 </c:forEach>
                             </select>
@@ -67,25 +67,22 @@
             <tbody>
             <c:forEach var="client" items="${clientList}" varStatus="rowCounter">
                 <tr>
-                    <td>${client.getId()}</td>
-                    <td>${client.getFirstName()}</td>
-                    <td>${client.getLastName()}</td>
-                    <td>${client.getEmail()}</td>
-                    <td>${client.getPhone()}</td>
-                    <td>${client.getCountry().getCountryName()}</td>
+                    <td class="align-middle">${client.getId()}</td>
+                    <td class="align-middle">${client.getFirstName()}</td>
+                    <td class="align-middle">${client.getLastName()}</td>
+                    <td class="align-middle">${client.getEmail()}</td>
+                    <td class="align-middle">${client.getPhone()}</td>
+                    <td class="align-middle">${client.getCountry().getCountryName()}</td>
                     <td class="align-middle">
-                        <div class="row">
-                            <div class="col align-middle">
-                                <form method="post" action="delete/${client.id}">
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                </form>
-                            </div>
-                            <div class="col align-middle">
-                                <form method="post" action="/update-form-client/${client.id}">
-                                    <button type="submit" class="btn btn-outline-success">Edit</button>
-                                </form>
-                            </div>
-                        </div>
+                        <form method="post" action="delete-client/${client.id}">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+
+                    <td class="align-middle">
+                        <form method="post" action="/update-form-client/${client.id}">
+                            <button type="submit" class="btn btn-outline-success">Edit</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

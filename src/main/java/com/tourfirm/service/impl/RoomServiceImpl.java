@@ -55,4 +55,10 @@ public class RoomServiceImpl implements RoomService {
     public void delete(Room room) {
         roomDAO.delete(room);
     }
+
+    @Override
+    public List<Room> findAllAvailalbe(Long hotelId, String startDate, String endDate) {
+        return roomDAO.findAllAvailalbe(hotelId, startDate, endDate);
+    }
+
 }

@@ -15,14 +15,17 @@
                 <div class="form-group" style="width: 80%; margin-left: 2%">
                     <form method="post" action="/save-city">
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">City name</label>
-                            <input type="text" class="form-control col-sm-4" name="cityName"/>
+                            <label for="validationCustom03" class="col-sm-2 col-form-label">City name</label>
+                            <input type="text" class="form-control col-sm-4" id="validationCustom03" placeholder="City"
+                                   name="cityName" required/>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Country name</label>
-                            <select name="countryName" class="form-control col-sm-4">
-                                <option hidden >Select</option>
-                                <c:forEach  var="countryName" items="${countryNameList}" >
+                            <select name="countryName" class="form-control col-sm-4" required>
+                                <c:forEach var="countryName" items="${countryNameList}">
                                     <option value="${countryName.getCountryName()}">${countryName.getCountryName()}</option>
                                 </c:forEach>
                             </select>
@@ -40,36 +43,30 @@
     </div>
 
     <form class="mt-3">
-        <table class="table table-bordered">
+        <table class="table  table-bordered text-center">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>City Name</th>
                 <th>Country Name</th>
-                <th colspan="2">Action</th>
+                <th style="width: 18%" colspan="2">Action</th>
             </tr>
             </thead>
             <tbody>
-
             <c:forEach var="city" items="${cityList}" varStatus="rowCounter">
+                <td class="align-middle">${city.getId()}</td>
+                <td class="align-middle">${city.getCityName()}</td>
+                <td class="align-middle">${city.getCountry().getCountryName()}</td>
 
-
-                <td>${city.getId()}</td>
-                <td>${city.getCityName()}</td>
-                <td>${city.getCountry().getCountryName()}</td>
                 <td class="align-middle">
-                    <div class="row">
-                        <div class="col align-middle">
-                            <form method="post" action="delete/${city.id}">
-                                <button type="submit" class="btn btn-outline-danger">Delete</button>
-                            </form>
-                        </div>
-                        <div class="col align-middle">
-                            <form method="post" action="/update-form-city/${city.id}">
-                                <button type="submit" class="btn btn-outline-success">Edit</button>
-                            </form>
-                        </div>
-                    </div>
+                    <form method="post" action="delete/${city.id}">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+                <td class="align-middle">
+                    <form method="post" action="/update-form-city/${city.id}">
+                        <button type="submit" class="btn btn-outline-success">Edit</button>
+                    </form>
                 </td>
                 </tr>
             </c:forEach>
@@ -77,5 +74,7 @@
         </table>
     </form>
 </div>
+
+
 </body>
 </html>
