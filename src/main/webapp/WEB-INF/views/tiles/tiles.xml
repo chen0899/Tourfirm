@@ -138,8 +138,12 @@
 
     <definition name="book-room" extends="template-def">
         <put-attribute name="title" value="Book room"/>
-        <put-attribute name="body" value="/WEB-INF/views/roomBook.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/hotelBook.jsp"/>
     </definition>
 
+    <definition name="book-room-out" extends="template-def">
+        <put-attribute name="title" value="Book room"/>
+        <put-attribute name="body" value="/WEB-INF/views/hotelBookOut.jsp"/>
+    </definition>
 </tiles-definitions>
 
