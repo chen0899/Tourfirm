@@ -50,26 +50,19 @@
             </tr>
             </thead>
             <tbody>
-
             <c:forEach var="city" items="${cityList}" varStatus="rowCounter">
-
-
-                <td>${city.getId()}</td>
-                <td>${city.getCityName()}</td>
-                <td>${city.getCountry().getCountryName()}</td>
+                <td class="align-middle">${city.getId()}</td>
+                <td class="align-middle">${city.getCityName()}</td>
+                <td class="align-middle">${city.getCountry().getCountryName()}</td>
                 <td class="align-middle">
-                    <div class="row">
-                        <div class="col align-middle">
-                            <form method="post" action="delete/${city.id}">
-                                <button type="submit" class="btn btn-outline-danger">Delete</button>
-                            </form>
-                        </div>
-                        <div class="col align-middle">
-                            <form method="post" action="/update-form-city/${city.id}">
-                                <button type="submit" class="btn btn-outline-success">Edit</button>
-                            </form>
-                        </div>
-                    </div>
+                    <form method="post" action="delete/${city.id}">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+                <td class="align-middle">
+                    <form method="post" action="/update-form-city/${city.id}">
+                        <button type="submit" class="btn btn-outline-success">Edit</button>
+                    </form>
                 </td>
                 </tr>
             </c:forEach>
